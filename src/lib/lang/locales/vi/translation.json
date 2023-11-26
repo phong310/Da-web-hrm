@@ -1,44 +1,44 @@
 {
-    "menu":{
+    "menu": {
         "overview": "Tổng quan",
         "timekeeping": "Chấm công",
-        "application":"Đơn",
-        "my_application":"Đơn của tôi",
-        "employee_application":"Tất cả đơn xin nghỉ",
-        "timesheet":"Thời gian biểu",
-        "management_timekeeping":"Quản lý chấm công",
-        "management_timesheet_log":"Quản lý nhật ký chấm công",
-        "management":"Quản lý đơn xin nghỉ",
-        "employee_management":"Quản lý nhân viên"
+        "application": "Đơn",
+        "my_application": "Đơn của tôi",
+        "employee_application": "Tất cả đơn xin nghỉ",
+        "timesheet": "Thời gian biểu",
+        "management_timekeeping": "Quản lý chấm công",
+        "management_timesheet_log": "Quản lý nhật ký chấm công",
+        "management": "Quản lý đơn xin nghỉ",
+        "employee_management": "Quản lý nhân viên"
     },
     "application_management": {
-        "leave_management":"Đơn xin nghỉ",
-        "overtime_management":"Đơn tăng ca",
-        "request_change_timesheet_management":"Đơn thay đổi TG làm việc",
-        "compensatory_leave_management":"Đơn xin nghỉ bù"
+        "leave_management": "Đơn xin nghỉ",
+        "overtime_management": "Đơn tăng ca",
+        "request_change_timesheet_management": "Đơn thay đổi TG làm việc",
+        "compensatory_leave_management": "Đơn xin nghỉ bù"
     },
-    "setting":{
-        "profile":"Tài khoản cá nhân",
-        "change_password":"Đổi mật khẩu"
+    "setting": {
+        "profile": "Tài khoản cá nhân",
+        "change_password": "Đổi mật khẩu"
     },
-    "profile":{
-        "logout":"Đăng xuất"
+    "profile": {
+        "logout": "Đăng xuất"
     },
-    "labor_contract":{
-        "name":"Hợp đồng lao động"
+    "labor_contract": {
+        "name": "Hợp đồng lao động"
     },
-    "salary":{
-        "salary":"Lương"
+    "salary": {
+        "salary": "Lương"
     },
-    "email_address":"Email",
-    "password":"Mật khẩu",
-    "login":"Đăng nhập",
-    "create_account":"Tạo tài khoản",
-    "forget_password":"Quên mật khẩu",
-    "validate":{
-        "invalid_email":"Email không hợp lệ",
-        "email_valid":"Email không được bỏ trống",
-        "password_valid":"Mật khẩu không được bỏ trống"
+    "email_address": "Email",
+    "password": "Mật khẩu",
+    "login": "Đăng nhập",
+    "create_account": "Tạo tài khoản",
+    "forget_password": "Quên mật khẩu",
+    "validate": {
+        "invalid_email": "Email không hợp lệ",
+        "email_valid": "Email không được bỏ trống",
+        "password_valid": "Mật khẩu không được bỏ trống"
     },
     "companies": {
         "name": "Tên công ty",
@@ -162,6 +162,124 @@
         "role": "Nhóm quyền",
         "name": "Tên người dùng"
     },
-    "submit":"Xác nhận",
-    "finish":"Hoàn thành"
+    "submit": "Xác nhận",
+    "finish": "Hoàn thành",
+    "order_number": "STT",
+    "view_more": "xem thêm",
+    "yes": "Có",
+    "add": "Tạo mới",
+    "no": "Không",
+    "filter": "Bộ lọc",
+    "back": "Quay lại",
+    "custom": "Tùy chỉnh",
+    "quit_work": "Nghỉ việc",
+    "working": "Đang làm việc",
+    "employee": {
+        "employee_management_breadcrumb": "Quản lý nhân viên",
+        "role": "Nhóm người dùng",
+        "create": "Tạo mới nhân viên",
+        "edit": "Chỉnh sửa nhân viên",
+        "email-placeholderV2": "email@address.com",
+        "last_name": "Họ",
+        "first_name": "Tên",
+        "enter_name": "Nhập tên",
+        "enter_last_name": "Nhập họ",
+        "email": "Nhập email",
+        "postion": "Vị trí",
+        "department": "Bộ phận",
+        "branch": "Chi nhánh",
+        "department_select": "Chọn bộ phận",
+        "branch_select": "Chọn chi nhánh",
+        "enter_no": "Nhập mã nhân viên",
+        "enter_ethnic": "Nhập dân tộc",
+        "enter_user_email": "Nhập email người dùng",
+        "enter_account": "Nhập tài khoản",
+        "enter_role": "Chọn nhóm người dùng",
+        "enter_province": "Nhập tỉnh/thành phố",
+        "enter_district": "Nhập quận/huyện",
+        "enter_ward": "Nhập xã/phường",
+        "enter_address": "Nhập địa chỉ",
+        "enter_issued_by": "Nhập nơi cấp",
+        "enter_id_no": "Nhập số CMND",
+        "list": "Danh sách nhân viên",
+        "no": "Mã nhân viên",
+        "full_name": "Họ và tên",
+        "working_time_off": "Ngày phép",
+        "date": "Ngày",
+        "number_of_leave_time": "Thời gian nghỉ phép",
+        "number_of_minutes": "Số phút",
+        "time_off_remains": "Ngày phép còn lại",
+        "birth_day": "Ngày sinh",
+        "nick_name": "Nhập biệt danh",
+        "phone_number": "Nhập số điện thoại",
+        "add_time_remains": "Thêm mới thời gian nghỉ phép",
+        "delete_text_emp": "Bạn muốn xoá nhân viên này không?",
+        "delete_text_time_off_remains": "Bạn muốn xoá ngày phép này không?",
+        "employee_note": "Nhập ghi chú",
+        "preview_data_sheets": "Dữ liệu xem trước",
+        "status":"Trạng thái",
+        "leave_time_note": {
+            "working_day": "1 ngày làm việc = 8 giờ"
+        }
+    },
+    "information": {
+        "employee": "Thông tin nhân viên",
+        "title": "Thông tin chung",
+        "user_info": "Thông tin người dùng",
+        "id": "ID nhân viên",
+        "name": "Họ và tên",
+        "nickname": "Biệt danh",
+        "card_number": "Mã nhân viên",
+        "first_name": "Tên",
+        "last_name": "Họ",
+        "full_name": "Họ và tên",
+        "sex": "Giới tính",
+        "birthday": "Ngày sinh",
+        "birth_place": "Nơi sinh",
+        "home_town": "Quê quán",
+        "nationality": "Quốc tịch",
+        "religion": "Tôn giáo",
+        "ethnic": "Dân tộc",
+        "marital_status": "Tình trạng hôn nhân",
+        "get_back_info": "Nhận lại thông tin",
+        "update_info": "Cập nhật thông tin",
+        "resident": "Nơi ở hiện tại",
+        "domicile": "Quê quán",
+        "bank_account": "Thông tin tài khoản ngân hàng",
+        "identification": "Giấy tờ tùy thân",
+        "employee_code": "Mã nhân viên",
+        "official_employee_date": "Ngày là nhân viên chính thức",
+        "date_start_work": "Ngày bắt đầu làm việc",
+        "jobs": "Công việc",
+        "education_level": "Trình độ học vấn",
+        "position": "Vị trí",
+        "branch": "Chi nhánh",
+        "country": "Quốc tịch",
+        "email": "Email",
+        "phone": "Số điện thoại",
+        "number_card": "Số thẻ",
+        "phone_number": "Số điện thoại",
+        "department": "Bộ phận",
+        "note": "Ghi chú",
+        "user_email": "Email người dùng",
+        "user_name": "Tài khoản",
+        "role": "Quyền",
+        "password": "Mật khẩu",
+        "district": "Quận/Huyện",
+        "ward": "Xã/Phường",
+        "address": "Địa chỉ",
+        "ID_no": "Số CCCD",
+        "province": "Tỉnh/Thành phố",
+        "issued_by": "Nơi cấp",
+        "issued_date": "Ngày cấp",
+        "ID_expire": "Ngày hết hạn",
+        "preview_data": "Xem"
+    },
+    "number_of_days": {
+        "type": "Loại ngày nghỉ",
+        "types": {
+            "annual_leave": "Cộng phép hàng năm",
+            "leave_form": "Nghỉ phép"
+        }
+    }
 }

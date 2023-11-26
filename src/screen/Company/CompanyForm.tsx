@@ -77,7 +77,7 @@ export const CompanyForm = () => {
 
   return (
     <Container>
-      <Page elevation={0} title="TẠO MỚI CÔNG TY">
+      <Page elevation={0} title={t('companies.create_page')}>
         <CompanyStepper
           steps={steps}
           activeStep={activeStep}
@@ -125,7 +125,6 @@ export const CompanyForm = () => {
             statusStep={statusStep}
           />
         ) : null}
-
       </Page>
     </Container>
   )

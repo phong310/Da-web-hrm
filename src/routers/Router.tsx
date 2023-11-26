@@ -10,6 +10,7 @@ import { useAuth } from 'lib/hook/useAth'
 import { FullScreenLoading } from 'components/Loader'
 import i18n from 'lib/lang/translations/i18n'
 import { CompanyForm } from 'screen/Company/CompanyForm'
+import { ListEmployee } from 'screen/employee/ListEmployee'
 
 interface RouterItem {
   path: string
@@ -38,6 +39,22 @@ export const routers: RouterItem[] = [
     permissions: [allPermissions.timekeeping_list],
     breadCrumb: {
       name: i18n.t('menu.timekeeping'),
+      parents: [
+        {
+          name: i18n.t('menu.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  // Employee
+  {
+    path: '/employees/manager',
+    protected: true,
+    element: <ListEmployee />,
+    permissions: [allPermissions.employees_manage],
+    breadCrumb: {
+      name: i18n.t('employee.employee_management_breadcrumb'),
       parents: [
         {
           name: i18n.t('menu.overview'),
