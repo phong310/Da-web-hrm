@@ -1,0 +1,43 @@
+{
+    "menu": {
+        "overview": "Overview",
+        "timekeeping": "Timekeeping",
+        "application": "Application",
+        "my_application": "My Application",
+        "employee_application": "All applications for leave",
+        "timesheet": "Timesheet",
+        "management_timekeeping": "Timekeeping Management",
+        "management_timesheet_log": "Timesheet Log Management",
+        "management": "Application Management",
+        "employee_management": "Employee Management"
+    },
+    "application_management": {
+        "leave_management": "Leave Application",
+        "overtime_management": "Overtime Application",
+        "request_change_timesheet_management": "Request Change Timesheet",
+        "compensatory_leave_management": "Compensatory Application"
+    },
+    "setting": {
+        "profile": "My Profile",
+        "change_password": "Change password"
+    },
+    "profile": {
+        "logout": "Logout"
+    },
+    "labor_contract": {
+        "name": "labor contract"
+    },
+    "salary": {
+        "salary": "Salary"
+    },
+    "email_address": "Email",
+    "password": "Password",
+    "login": "Login",
+    "create_account": "Create new account",
+    "forget_password": "Forget password ?",
+    "validate": {
+        "invalid_email": "Email invalid",
+        "email_valid": "Email must be entered",
+        "password_valid": "Password must be entered"
+    }
+}

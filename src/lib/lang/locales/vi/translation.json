@@ -1,0 +1,167 @@
+{
+    "menu":{
+        "overview": "Tổng quan",
+        "timekeeping": "Chấm công",
+        "application":"Đơn",
+        "my_application":"Đơn của tôi",
+        "employee_application":"Tất cả đơn xin nghỉ",
+        "timesheet":"Thời gian biểu",
+        "management_timekeeping":"Quản lý chấm công",
+        "management_timesheet_log":"Quản lý nhật ký chấm công",
+        "management":"Quản lý đơn xin nghỉ",
+        "employee_management":"Quản lý nhân viên"
+    },
+    "application_management": {
+        "leave_management":"Đơn xin nghỉ",
+        "overtime_management":"Đơn tăng ca",
+        "request_change_timesheet_management":"Đơn thay đổi TG làm việc",
+        "compensatory_leave_management":"Đơn xin nghỉ bù"
+    },
+    "setting":{
+        "profile":"Tài khoản cá nhân",
+        "change_password":"Đổi mật khẩu"
+    },
+    "profile":{
+        "logout":"Đăng xuất"
+    },
+    "labor_contract":{
+        "name":"Hợp đồng lao động"
+    },
+    "salary":{
+        "salary":"Lương"
+    },
+    "email_address":"Email",
+    "password":"Mật khẩu",
+    "login":"Đăng nhập",
+    "create_account":"Tạo tài khoản",
+    "forget_password":"Quên mật khẩu",
+    "validate":{
+        "invalid_email":"Email không hợp lệ",
+        "email_valid":"Email không được bỏ trống",
+        "password_valid":"Mật khẩu không được bỏ trống"
+    },
+    "companies": {
+        "name": "Tên công ty",
+        "phone_number": "Số điện thoại",
+        "tax_code": "Mã số thuế",
+        "address": "Địa chỉ",
+        "status": "Trạng thái",
+        "status_option": {
+            "new": "Mới",
+            "active": "Hoạt động",
+            "inactive": "Không hoạt động",
+            "rejected": "Từ chối"
+        },
+        "start_time": "Ngày bắt đầu",
+        "type_of_business": "Loại hình kinh doanh",
+        "representative": "Người đại diện",
+        "logo": "Logo",
+        "end_time": "Ngày kết thúc",
+        "register_date": "Ngày đăng ký",
+        "list": "Danh sách công ty",
+        "create_page": "Tạo mới công ty",
+        "edit_info": "Chỉnh sửa thông tin",
+        "edit_page": "Chỉnh sửa công ty",
+        "download_template": "Tải về bản mẫu",
+        "company_profile_image": "Ảnh hồ sơ công ty",
+        "format": "Định dạng",
+        "maximum_file_size": "Kích thước file tối đa",
+        "setting_display_format": "Cài đặt định dạng hiển thị",
+        "working_time_setting": "Cài đặt thời gian làm việc",
+        "please_complete_step_1": "Vui lòng hoàn thành bước 1",
+        "please_complete_step_2": "Vui lòng hoàn thành bước 2",
+        "please_complete_step_3": "Vui lòng hoàn thành bước 3",
+        "please_complete_step_4": "Vui lòng hoàn thành bước 4",
+        "steps": {
+            "information": "Thông tin công ty",
+            "branch": "Chi nhánh công ty",
+            "branch_department": "Chi nhánh và bộ phận",
+            "position_titles": "Vị trí và chức vụ",
+            "account_info": "Thông tin tài khoản",
+            "department": "Bộ phận",
+            "settings": "Cài đặt",
+            "next": "Kế tiếp"
+        }
+    },
+    "department_obj": {
+        "name": "Tên bộ phận",
+        "list": "Danh sách bộ phận",
+        "create_page": "Tạo mới bộ phận",
+        "edit_page": "Sửa bộ phận"
+    },
+    "branch_obj": {
+        "name": "Tên chi nhánh",
+        "list": "Danh sách chi nhánh",
+        "create_page": "Tạo mới chi nhánh",
+        "edit_page": "Sửa trình chi nhánh"
+    },
+    "positions_obj": {
+        "name": "Tên vị trí",
+        "list": "Danh sách vị trí",
+        "create_page": "Tạo mới vị trí",
+        "edit_page": "Sửa trình chi nhánh"
+    },
+    "titles_obj": {
+        "name": "Tên chức vụ",
+        "list": "Danh sách chức vụ",
+        "create_page": "Tạo mới chức vụ",
+        "edit_page": "Sửa trình chức vụ"
+    },
+    "system_setting": {
+        "format_date": "Định dạng ngày",
+        "time_zone": "Múi giờ",
+        "locale": "Ngôn ngữ",
+        "salary_coefficient_management": "Salary Coefficient Management",
+        "ot_weekend": "Tăng ca vào cuối tuần",
+        "ot_holiday": "Tăng ca vào ngày nghỉ lễ",
+        "ot_after_office_hours": "Tăng ca ngoài giờ hành chính"
+    },
+    "language": {
+        "vietnamese": "Tiếng Việt",
+        "english": "Tiếng Anh",
+        "japanese": "Tiếng Nhật"
+    },
+    "working_day": {
+        "name": "Tên",
+        "type": "Kiểu",
+        "working_day": "Ngày làm việc",
+        "title_delete": "Bạn có muốn xóa ngày làm việc này không?",
+        "start_time": "Giờ bắt đầu làm việc",
+        "end_time": "Giờ kết thúc làm việc",
+        "start_lunch_break": "Giờ bắt đầu nghỉ trưa",
+        "end_lunch_break": "Giờ kết thúc nghỉ trưa",
+        "day_in_week_id": "Ngày trong tuần",
+        "day_in_week_name": {
+            "monday": "Thứ hai",
+            "tuesday": "Thứ ba",
+            "wednesday": "Thứ tư",
+            "thursday": "Thứ năm",
+            "friday": "Thứ sáu",
+            "saturday": "Thứ bảy",
+            "sunday": "Chủ nhật"
+        },
+        "week_days_calender_symbol": {
+            "monday": "Thứ 2",
+            "tuesday": "Thứ 3",
+            "wednesday": "Thứ 4",
+            "thursday": "Thứ 5",
+            "friday": "Thứ 6",
+            "saturday": "Thứ 7",
+            "sunday": "CN"
+        },
+        "create_page": "Tạo mới ngày làm việc",
+        "edit_page": "Chỉnh sửa ngày làm việc",
+        "working_time": "Thời gian làm việc",
+        "working_day_of_date": "Ngày làm việc trong tuần"
+    },
+    "account": {
+        "user_name": "Tài khoản",
+        "email": "Email",
+        "create_page": "Tạo mới tài khoản",
+        "password": "Mật khẩu",
+        "role": "Nhóm quyền",
+        "name": "Tên người dùng"
+    },
+    "submit":"Xác nhận",
+    "finish":"Hoàn thành"
+}
