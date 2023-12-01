@@ -123,3 +123,29 @@ export const TYPE_OPTIONS_ADMIN = {
     POSITION: 'Position',
     TITLES: 'Titles'
 }
+
+export const DEFAULT_EMPLOYEE_PASSWORD = 'admin@123'
+
+
+export const NUMBER_OF_DAY_TYPES = {
+    1: i18n.t('number_of_days.types.annual_leave'),
+    2: i18n.t('number_of_days.types.leave_form')
+}
+
+
+export const RELATIVES_TYPES = (type?: number | null) => {
+    if (type == 0) return i18n.t('relatives.dad')
+    if (type == 1) return i18n.t('relatives.mom')
+    if (type == 2) return i18n.t('relatives.younger_brother')
+    if (type == 3) return i18n.t('relatives.older_brother')
+    if (type == 4) return i18n.t('relatives.younger_sister')
+    if (type == 5) return i18n.t('relatives.older_sister')
+    if (type == 6) return i18n.t('relatives.child')
+
+    return 'Different'
+}
+
+export const CHECK_NUMBER_PHONE = (phone?: string) => {
+    if (phone && phone.slice(0, 1) !== '0') return '0' + phone
+    return phone
+}

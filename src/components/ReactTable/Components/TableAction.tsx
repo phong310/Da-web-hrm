@@ -173,9 +173,7 @@ function TableAction<T extends object>(props: TableActionProps<T>) {
         {!!(defaultActionEdit || hasEdit) && (
           <MenuItem onClick={handleEdit}>
             <ListItemIcon>
-              <SvgIcon>
-                <EditIcon fontSize="20px" />
-              </SvgIcon>
+                <img src={EditIcon} alt="" />
             </ListItemIcon>
             <ListItemText>{editText}</ListItemText>
           </MenuItem>
@@ -183,9 +181,7 @@ function TableAction<T extends object>(props: TableActionProps<T>) {
         {hasDelete && (
           <MenuItem onClick={handleDelete}>
             <ListItemIcon>
-              <SvgIcon>
-                <DeleteIcon fontSize="20px" />
-              </SvgIcon>
+                <img src={DeleteIcon} alt="" />
             </ListItemIcon>
             <ListItemText>{deleteText}</ListItemText>
           </MenuItem>

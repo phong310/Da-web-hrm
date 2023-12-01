@@ -13,6 +13,15 @@ import { CompanyForm } from 'screen/Company/CompanyForm'
 import { ListEmployee } from 'screen/employee/ListEmployee'
 import { checkHasRole } from 'constants/roles'
 import { NewEmployeeForm } from 'screen/employee/NewEmployeeForm'
+import { EmployeeEditForm } from 'screen/employee/EmployeeEditForm'
+import { EmployeeBankAccount } from 'screen/employee/EmployeeBankAccount'
+import { EmployeeIdenCard } from 'screen/employee/EmployeeIdenCard'
+import { EmployeeAddress } from 'screen/employee/EmployeeAddress'
+import { EmployeeEducation } from 'screen/employee/EmployeeEducation'
+import { EmployeeAccountInformation } from 'screen/employee/EmployeeAccountInformation'
+import { NewEmployeeEducation } from 'screen/employee/NewEmployeeEducation'
+import { EmployeeNumberTimeOff } from 'screen/employee/EmployeeNumberTimeOff'
+import EmployeeRelatives from 'screen/employee/EmployeeRelatives'
 
 interface RouterItem {
   path: string
@@ -84,6 +93,158 @@ export const routers: RouterItem[] = [
         }
       ]
     }
+  },
+  {
+    path: '/employees/edit/:id',
+    protected: true,
+    element: <EmployeeEditForm />,
+    permissions: [allPermissions.employees_manage],
+    breadCrumb: {
+      name: i18n.t('employee.edit'),
+      parents: [
+        {
+          name: i18n.t('employee.employee_management_breadcrumb'),
+          link: '/employees/manager'
+        },
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/employees/edit/:id/bank-account',
+    protected: true,
+    element: <EmployeeBankAccount />,
+    breadCrumb: {
+      name: i18n.t('employee.edit'),
+      parents: [
+        {
+          name: i18n.t('employee.employee_management_breadcrumb'),
+          link: '/employees/manager'
+        },
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    },
+    permissions: [allPermissions.employees_manage]
+  },
+  {
+    path: '/employees/edit/:id/account-information',
+    protected: true,
+    element: <EmployeeAccountInformation />,
+    breadCrumb: {
+      name: i18n.t('employee.edit'),
+      parents: [
+        {
+          name: i18n.t('employee.employee_management_breadcrumb'),
+          link: '/employees/manager'
+        },
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    },
+    permissions: [allPermissions.employees_manage]
+  },
+  {
+    path: '/employees/edit/:id/address',
+    protected: true,
+    element: <EmployeeAddress />,
+    breadCrumb: {
+      name: i18n.t('employee.edit'),
+      parents: [
+        {
+          name: i18n.t('employee.employee_management_breadcrumb'),
+          link: '/employees/manager'
+        },
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    },
+    permissions: [allPermissions.employees_manage]
+  },
+  {
+    path: '/employees/edit/:id/education',
+    protected: true,
+    element: <EmployeeEducation />,
+    breadCrumb: {
+      name: i18n.t('employee.edit'),
+      parents: [
+        {
+          name: i18n.t('employee.employee_management_breadcrumb'),
+          link: '/employees/manager'
+        },
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    },
+    permissions: [allPermissions.employees_manage]
+  },
+  {
+    path: '/employees/edit/:id/identification-card',
+    protected: true,
+    element: <EmployeeIdenCard />,
+    breadCrumb: {
+      name: i18n.t('employee.edit'),
+      parents: [
+        {
+          name: i18n.t('employee.employee_management_breadcrumb'),
+          link: '/employees/manager'
+        },
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    },
+    permissions: [allPermissions.employees_manage]
+  },
+  {
+    path: '/employees/edit/:id/working-time-off',
+    protected: true,
+    element: <EmployeeNumberTimeOff />,
+    breadCrumb: {
+      name: i18n.t('employee.edit'),
+      parents: [
+        {
+          name: i18n.t('employee.employee_management_breadcrumb'),
+          link: '/employees/manager'
+        },
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    },
+    permissions: [allPermissions.employees_manage]
+  },
+  {
+    path: '/employees/edit/:id/relatives',
+    protected: true,
+    element: <EmployeeRelatives />,
+    breadCrumb: {
+      name: i18n.t('employee.edit'),
+      parents: [
+        {
+          name: i18n.t('employee.employee_management_breadcrumb'),
+          link: '/employees/manager'
+        },
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    },
+    permissions: [allPermissions.employees_manage]
   }
 ]
 

@@ -1,4 +1,4 @@
-import { format } from 'date-fns'
+import { format, parseISO } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
 
 export const formatNormalDate = (d: Date | string) => {
@@ -37,12 +37,12 @@ export const replaceDashesToSlashes = (d: any) => {
     return d
 }
 
-export const formatTime = (d: Date | string | any) => {
+export const formatTime = (d: Date | string) => {
   d = replaceDashesToSlashes(d)
   return format(new Date(d), 'HH:mm')
 }
 
-export const formatDate = (d: Date | string | any, formatDate = 'dd/MM/yyyy') => {
+export const formatDate = (d: Date | string , formatDate = 'dd/MM/yyyy') => {
     if (!d) {
         return d
     }
@@ -51,7 +51,7 @@ export const formatDate = (d: Date | string | any, formatDate = 'dd/MM/yyyy') =>
 
 
 
-export const changeTimeZone = (date: Date | string | any, timeZone: string) => {
+export const changeTimeZone = (date: Date | string, timeZone: string) => {
     return utcToZonedTime(date, timeZone)
 }
 
@@ -65,4 +65,27 @@ export const convertLocalDatetimeToTZ = (d: Date | string) => {
     const offset = localDate.getTime() - tzDate.getTime()
     date.setTime(date.getTime() - offset)
     return date
+}
+
+export const convertDatetimeTZV2 = (d: Date | string, timezone = 'UTC') => {
+    const date = typeof d === 'string' ? parseISO(d) : d;
+
+    const utcDate = utcToZonedTime(date, 'UTC');
+    const tzDate = utcToZonedTime(date, timezone);
+
+    const offset = utcDate.getTime() - tzDate.getTime();
+    date.setTime(date.getTime() - offset);
+
+    return date;
+};
+
+export const convertFormatDate = (d: Date | string, format_date = 'yyyy/MM/dd') => {
+    if (!d) {
+        return null
+    }
+    // d = replaceDashesToSlashes(d)
+    const date = convertDatetimeTZV2(d)
+
+    //@ts-ignore
+    return format(new Date(date), format_date)
 }

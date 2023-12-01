@@ -35,9 +35,6 @@ function TimePicker<T>({
   } = useController({ name, control, defaultValue })
   const { systemSetting } = useAuth()
 
-  const handleChange = (newValue: unknown) => {
-    onChange(formatDateTime(newValue as Date))
-  }
   const setTimeInit = (value: any) => {
     return new Date('2020-01-01 ' + value)
   }
