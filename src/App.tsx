@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { QueryClientProvider } from 'react-query'
 import { Suspense, useEffect, useState } from 'react'
@@ -9,6 +10,7 @@ import { defaultTheme } from './styles/theme'
 import { useAuth } from 'lib/hook/useAth'
 import { enUS, vi } from 'date-fns/locale'
 import { LocalizationProvider } from '@mui/x-date-pickers'
+import CustomDateAdapter from 'components/CustomDateAdapter'
 
 const locale: any = {
   en: enUS,
@@ -37,8 +39,8 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <CssBaseline />
         <LocalizationProvider
-          // locale={locale[language || 'en']}
-          // dateAdapter={CustomDateAdapter as any}
+          locale={locale[language || 'en']}
+          dateAdapter={CustomDateAdapter as any}
         >
           <Suspense fallback="Loading...">
             <ToastContainer />

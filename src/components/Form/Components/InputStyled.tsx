@@ -7,7 +7,7 @@ const InputStyled = styled(OutlinedInput)(({ theme }) => ({
   '& input:focus': {
     fontSize: '16px'
   },
-  height: 46
+  height: 40
 }))
 
 export { InputStyled }

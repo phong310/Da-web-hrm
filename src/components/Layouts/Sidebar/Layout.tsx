@@ -5,13 +5,14 @@ import { Box, Hidden, styled, Tab, Tabs, Theme, Toolbar, useMediaQuery } from '@
 // import { MessageAlert } from 'components/MessageAlert'
 // import { Permissions } from '../../constants/permissions'
 // import { useAuth, useHistory } from 'lib/hooks'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Outlet, useNavigate } from 'react-router-dom'
 // import { ModalTimekeepingReminderV2 } from 'screen/application/v2/ModalTimekeepingReminderV2'
 import { blue } from '../../../styles/colors'
 import { Header } from '../Header/Header'
 import { Route } from './Sidebar'
+import * as _ from 'lodash'
 // import {
 //   sidebarApp,
 //   sidebarAppManager,
@@ -28,11 +29,11 @@ import Manage_application from 'assets/svgs/sidebar-icons/manage_application.svg
 import Manage_timeKeeping from 'assets/svgs/sidebar-icons/manage_timeKeeping.svg'
 import TimeKeeping from 'assets/svgs/sidebar-icons/TimeKeeping.svg'
 import { Sidebar } from './Sidebar'
+import { useAuth } from 'lib/hook/useAth'
 
 const Layout: React.VFC = () => {
   // const { push, history } = useHistory()
   const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up('md'), { noSsr: true })
-  // const { fetchUserInfo } = useAuth();
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(isDesktop)
   const [sidebar, setSidebar] = useState<Route[]>([])
   const triggerSidebar = () => {
@@ -44,13 +45,10 @@ const Layout: React.VFC = () => {
   // const [searchParams] = useSearchParams()
   const { t } = useTranslation()
 
-  // const { permissions } = useAuth()
-  // const hasManagePermission = _.values(Permissions).every((value) => {
-  //   return permissions?.includes(value)
-  // })
-  // useEffect(() => {
-  //   fetchUserInfo();
-  // }, [])
+  const { permissions } = useAuth()
+  const hasManagePermission = _.values(Permissions).every((value:any) => {
+    return permissions?.includes(value)
+  })
   const navigate = useNavigate()
 
   const [value, setValue] = React.useState(0)
@@ -72,15 +70,15 @@ const Layout: React.VFC = () => {
     },
     {
       label: t('menu.abbreviation.management_timekeeping'),
-      // display: hasManagePermission,
+      display: hasManagePermission,
       path: '/time-keeping/manager/timesheet',
-      Icon: <Manage_timeKeeping />
+      Icon:<img src={Manage_timeKeeping} />,
     },
     {
       label: t('menu.abbreviation.management'),
-      // display: hasManagePermission,
+      display: hasManagePermission,
       path: '/applications/manager/leave-form',
-      Icon: <Manage_application />
+      Icon: <img src={Manage_application} />
     }
   ]
   // const [setSearchParams] = useAtom(searchParamsAtom)
@@ -93,12 +91,6 @@ const Layout: React.VFC = () => {
       <Box sx={{ display: 'flex' }} bgcolor="background.default">
         <Header triggerSidebar={triggerSidebar} />
 
-        {/* {location.pathname === '/applications/overtimes' ||
-        location.pathname === '/applications/leave-form' ||
-        location.pathname === '/applications/request-change-timesheets' ||
-        location.pathname === '/applications/compensatory-leaves' ? (
-          <></>
-        ) : ( */}
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           triggerSidebar={triggerSidebar}

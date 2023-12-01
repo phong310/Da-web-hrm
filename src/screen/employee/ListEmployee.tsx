@@ -94,7 +94,7 @@ const ListEmployee: React.VFC = () => {
         display: true
       },
       {
-        Header: t('employee.status'),
+        Header: t('status'),
         accessor: 'status',
         Cell: ({ row }: any) => <StatusEmployee value={row?.original?.status} />,
         display: true

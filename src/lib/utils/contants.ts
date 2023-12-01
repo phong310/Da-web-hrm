@@ -67,3 +67,59 @@ export const STATUS_EMPLOYEE_OPTIONS = [
     { value: STATUS_EMPLOYEE['WORKING'], label: i18n.t('working') },
     { value: STATUS_EMPLOYEE['QUIT_WORK'], label: i18n.t('quit_work') }
 ]
+
+export const ADDRESS_TYPE = {
+    RESIDENT: 0,
+    DOMICILE: 1
+}
+
+export const MARITAL_STATUS = {
+    MARRIED: 0,
+    SINGLE: 1
+}
+export const SEX = {
+    FEMALE: 0,
+    MALE: 1
+}
+
+export const SEX_OPTIONS = [
+    {
+        label: i18n.t('sex.male'),
+        value: SEX['MALE']
+    },
+    {
+        label: i18n.t('sex.female'),
+        value: SEX['FEMALE']
+    }
+]
+
+
+export const ADDRESS_TYPE_OPTIONS = [
+    { label: i18n.t('address.resident'), value: ADDRESS_TYPE['RESIDENT'] },
+    { label: i18n.t('address.domicile'), value: ADDRESS_TYPE['DOMICILE'] }
+]
+
+export const IDENTITY_TYPE = {
+    CMT: 0,
+    TCC: 1
+}
+
+export const IDENTITY_TYPE_OPTIONS = [
+    { label: 'CCCD', value: IDENTITY_TYPE['CMT'] }
+    // { label: 'TCC', value: IDENTITY_TYPE['TCC'] }
+]
+
+export const MARITAL_STATUS_OPTIONS = [
+    { label: i18n.t('marital_status.single'), value: MARITAL_STATUS['SINGLE'] },
+    {
+        label: i18n.t('marital_status.married'),
+        value: MARITAL_STATUS['MARRIED']
+    }
+]
+
+export const TYPE_OPTIONS_ADMIN = {
+    BRANCH: 'Branch',
+    DEPARTMENT: 'Department',
+    POSITION: 'Position',
+    TITLES: 'Titles'
+}

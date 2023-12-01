@@ -1,9 +1,12 @@
-import { format, Locale, parse } from 'date-fns'
+import { format } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
 
 export const formatNormalDate = (d: Date | string) => {
     return format(new Date(d), 'dd/MM/yyyy')
 }
+export const formatISODate = (date: Date | string) => format(new Date(date), 'yyyy/MM/dd')
+
+export const formatISODateToDashes = (date: Date | string) => format(new Date(date), 'yyyy-MM-dd')
 
 export const formatDateTime = (date: Date | string) => {
     const parsedDate = typeof date === 'string' ? new Date(date) : date;
@@ -34,7 +37,7 @@ export const replaceDashesToSlashes = (d: any) => {
     return d
 }
 
-export const formatTime = (d: Date | string) => {
+export const formatTime = (d: Date | string | any) => {
   d = replaceDashesToSlashes(d)
   return format(new Date(d), 'HH:mm')
 }
