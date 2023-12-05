@@ -26,6 +26,7 @@ import Divider from '@mui/material/Divider'
 import LockIcon from '@mui/icons-material/Lock'
 import { AvatarCustom } from '../../Form/Components/AvatarCustom'
 import { AVATAR_SIZE } from 'lib/utils/contants'
+import { Setting } from 'screen/profile/Setting'
 
 export const avatarProfile = atom<File | null>(null)
 export const updateName = atom('')
@@ -164,7 +165,7 @@ export const ProfileHeader = () => {
         onClose={handleCloseDialog}
         maxWidth="sm"
       >
-        {/* <Setting /> */}
+        <Setting />
       </DialogBase>
     </Box>
   )
