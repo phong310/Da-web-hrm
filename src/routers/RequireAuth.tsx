@@ -1,4 +1,4 @@
-import { useAuth } from 'lib/hook/useAth'
+import { useAuth } from 'lib/hook/useAuth'
 import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 

@@ -81,7 +81,7 @@ const WorkingDayForm: React.VFC<WorkingDayFormProps> = ({
           return {
             value: diw.id,
             label: t(`working_day.day_in_week_name.${diw.name.toLowerCase()}`),
-            isChecked: (watch('day_in_week_id') as number[]).includes(diw.id)
+            isChecked: (watch('day_in_week_id') as number[])?.includes(diw.id)
           }
         })
         .reverse()

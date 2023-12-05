@@ -149,3 +149,20 @@ export const CHECK_NUMBER_PHONE = (phone?: string) => {
     if (phone && phone.slice(0, 1) !== '0') return '0' + phone
     return phone
 }
+
+export const COMPENSATORY_WD_TYPE = {
+    ANNUAL: 1,
+    SINGLE_USE: 2
+}
+
+export const HOLIDAY_TYPE = {
+    ANNUAL: 1,
+    SINGLE_USE: 2
+}
+
+export const FORM_STATUS = {
+    AWAIT_CONFIRM: 0,
+    APPROVED: 1,
+    REJECTED: 2,
+    CANCEL: 3
+}

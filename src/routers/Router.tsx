@@ -3,10 +3,9 @@ import { Route, Routes } from 'react-router-dom'
 import { Login } from '../screen/auth'
 import Dashboard from '../screen/dashboard/Dashboard'
 import { Layout } from '../components/Layouts/Sidebar/Layout'
-import TimeKeeping from '../screen/timekeeping/TimeKeeping'
 import { allPermissions } from '../constants/permissions'
 import { RequireAuth } from './RequireAuth'
-import { useAuth } from 'lib/hook/useAth'
+import { useAuth } from 'lib/hook/useAuth'
 import { FullScreenLoading } from 'components/Loader'
 import i18n from 'lib/lang/translations/i18n'
 import { CompanyForm } from 'screen/Company/CompanyForm'
@@ -19,9 +18,11 @@ import { EmployeeIdenCard } from 'screen/employee/EmployeeIdenCard'
 import { EmployeeAddress } from 'screen/employee/EmployeeAddress'
 import { EmployeeEducation } from 'screen/employee/EmployeeEducation'
 import { EmployeeAccountInformation } from 'screen/employee/EmployeeAccountInformation'
-import { NewEmployeeEducation } from 'screen/employee/NewEmployeeEducation'
+// import { NewEmployeeEducation } from 'screen/employee/NewEmployeeEducation'
 import { EmployeeNumberTimeOff } from 'screen/employee/EmployeeNumberTimeOff'
 import EmployeeRelatives from 'screen/employee/EmployeeRelatives'
+import { TimeKeeping } from 'screen/timekeeping/TimeKeeping'
+import { Forbidden } from 'screen/forbidden/Forbidden'
 
 interface RouterItem {
   path: string
@@ -297,9 +298,12 @@ const Router: React.VFC = () => {
                 element={React.cloneElement(router.element, { breadCrumb: router.breadCrumb })}
               />
             )
+          } else {
+            return <Route key={index} path={router.path} element={<Forbidden />} />
           }
         })}
         <Route index element={<Dashboard />} />
+        <Route path="/forbidden" element={<Forbidden />} />
       </Route>
     </Routes>
   )

@@ -15,12 +15,13 @@ import { ButtonCommon } from 'components/Form/Components/ButtonCommon'
 import { FormModal } from 'components/Form/Components/FormModal'
 import { Permissions } from 'constants/permissions'
 import { exportApi } from 'lib/api/exportApi'
-import { useAuth } from 'lib/hook/useAth'
+import { useAuth } from 'lib/hook/useAuth'
 import { UnknownObj } from 'lib/types/utils'
 import { useSearchParams } from 'react-router-dom'
 import add from "../../assets/svgs/add.svg"
 import stroke from '../../assets/svgs/stroke.svg'
 import { SettingFieldsDisplay } from './Components/SettingFieldsDisplay'
+import { FilterBar } from './FilterBar'
 type ToolbarProps<T extends object> = {
   onActionCreate?: () => void
   loading: boolean
@@ -324,7 +325,7 @@ export default function Toolbar<T extends object>({
         title={t('salary.confirm_salary')}
         content={t('salary.sure_finalize_payroll')}
       />
-      {/* {expandedFilter ? (
+      {expandedFilter ? (
         <Box sx={{ ...styleBoxFilter }}>
           <FilterBar
             searchColumns={searchColumns}
@@ -337,13 +338,9 @@ export default function Toolbar<T extends object>({
             isUrlMonth={isUrlMonth}
           />
         </Box>
-      ) : null} */}
+      ) : null}
     </Grid>
   )
-}
-
-const styleBg = {
-  backgroundColor: '#fff'
 }
 
 const styleWidthBoxImg = {

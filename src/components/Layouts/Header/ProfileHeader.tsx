@@ -17,7 +17,7 @@ import {
 // import AvtDefault from 'assets/images/no-image.jpg'
 import { DialogBase } from '../../Dialog/DialogBase'
 import { useAtom } from 'jotai'
-import { useAuth } from 'lib/hook/useAth'
+import { useAuth } from 'lib/hook/useAuth'
 import { MouseEvent, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'

@@ -29,7 +29,7 @@ import Manage_application from 'assets/svgs/sidebar-icons/manage_application.svg
 import Manage_timeKeeping from 'assets/svgs/sidebar-icons/manage_timeKeeping.svg'
 import TimeKeeping from 'assets/svgs/sidebar-icons/TimeKeeping.svg'
 import { Sidebar } from './Sidebar'
-import { useAuth } from 'lib/hook/useAth'
+import { useAuth } from 'lib/hook/useAuth'
 
 const Layout: React.VFC = () => {
   // const { push, history } = useHistory()

@@ -1,6 +1,11 @@
 const primaryColor = '#5973FC'
 const secondaryColor = '#59C3FF'
 
+const primary = {
+    500: '#308CFB',
+    600: '#146BD2'
+}
+
 const grey = {
     900: '#333333',
     600: '#4f4f4f',
@@ -151,5 +156,6 @@ export {
     primaryColor,
     secondaryColor,
     grey,
-    blue
+    blue,
+    primary
 }

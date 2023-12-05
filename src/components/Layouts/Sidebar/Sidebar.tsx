@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import NavTree from './NavTree'
 import { DrawerLeft } from '../Drawer'
 import { checkHasRole } from '../../../constants/roles'
-import { useAuth } from '../../../lib/hook/useAth'
+import { useAuth } from '../../../lib/hook/useAuth'
 import { LanguageHeader } from '../Header/LanguageHeader'
 export type Route = {
   label?: string

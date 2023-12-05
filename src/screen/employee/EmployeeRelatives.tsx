@@ -13,8 +13,8 @@ import { EmployeeTabs } from './EmployeeTabs'
 import { PageTable } from 'components/Layouts/Page/PageTable'
 import { Relative, Relatives, RelativesObj } from 'lib/types/relatives'
 import { CHECK_NUMBER_PHONE, RELATIVES_TYPES } from 'lib/utils/contants'
-import { Status } from 'components/Status/status'
-// import NewEmployeeRelatives from './NewEmployeeRelatives'
+import { Status } from 'components/Status/Status'
+import NewEmployeeRelatives from './NewEmployeeRelatives'
 
 const EmployeeRelatives = () => {
   const [reRender, setReRender] = useState(0)
@@ -153,13 +153,13 @@ const EmployeeRelatives = () => {
           titleDelete={t('employee.delete_text_relative')}
           titlePage={t('employee.relatives')}
         />
-        {/* <NewEmployeeRelatives
+        <NewEmployeeRelatives
           forceReRender={forceReRender}
           open={openModalCreate}
           close={handleCloseCreate}
           reload={refetch}
           dataDetail={dataDetail}
-        /> */}
+        />
       </Box>
     </PageTable>
   )

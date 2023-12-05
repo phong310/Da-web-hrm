@@ -38,9 +38,16 @@ export const replaceDashesToSlashes = (d: any) => {
 }
 
 export const formatTime = (d: Date | string) => {
-  d = replaceDashesToSlashes(d)
-  return format(new Date(d), 'HH:mm')
+    d = replaceDashesToSlashes(d);
+
+    // Kiểm tra xem giá trị có thể chuyển đổi thành đối tượng Date hay không
+    if (isNaN(Date.parse(d))) {
+        return ''; // hoặc giá trị mặc định khác
+    }
+
+    return format(new Date(d), 'HH:mm');
 }
+
 
 export const formatDate = (d: Date | string , formatDate = 'dd/MM/yyyy') => {
     if (!d) {
@@ -88,4 +95,41 @@ export const convertFormatDate = (d: Date | string, format_date = 'yyyy/MM/dd') 
 
     //@ts-ignore
     return format(new Date(date), format_date)
+}
+
+
+export const formatFullTime = (d: Date | string) => {
+  return format(new Date(d), 'HH:mm:ss')
+}
+
+export const formatYearMonth = (m: number, y: number) => {
+    let month: number | string = m
+    if (month < 10) {
+        month = '0' + month
+    }
+    return y + '-' + month
+}
+
+export const convertDatetimeTZ = (d: Date | string, timezone = 'UTC') => {
+    let date = new Date(d)
+    if (typeof d === 'string') {
+        date = new Date(d.split(' ').join('T') + 'Z')
+    }
+
+    const utcDate = changeTimeZone(d, 'UTC')
+    //@ts-ignorez
+    const tzDate = changeTimeZone(date, timezone)
+    // alert(tzDate)
+    const offset = utcDate.getTime() - tzDate.getTime()
+    date.setTime(date.getTime() - offset)
+    return tzDate
+}
+
+export const formatNormalTime = (d: Date | string) => {
+    d = replaceDashesToSlashes(d)
+    // Kiểm tra xem giá trị có thể chuyển đổi thành đối tượng Date hay không
+    if (isNaN(Date.parse(d))) {
+        return ''; // hoặc giá trị mặc định khác
+    }
+    return format(new Date(d), 'HH:mm:ss')
 }
