@@ -18,11 +18,15 @@ import { EmployeeIdenCard } from 'screen/employee/EmployeeIdenCard'
 import { EmployeeAddress } from 'screen/employee/EmployeeAddress'
 import { EmployeeEducation } from 'screen/employee/EmployeeEducation'
 import { EmployeeAccountInformation } from 'screen/employee/EmployeeAccountInformation'
-// import { NewEmployeeEducation } from 'screen/employee/NewEmployeeEducation'
 import { EmployeeNumberTimeOff } from 'screen/employee/EmployeeNumberTimeOff'
 import EmployeeRelatives from 'screen/employee/EmployeeRelatives'
 import { TimeKeeping } from 'screen/timekeeping/TimeKeeping'
 import { Forbidden } from 'screen/forbidden/Forbidden'
+import { TableProfileInfo } from 'screen/profile/TableProfileInfo'
+import { ProfileInfo } from 'screen/profile/ProfileInfo'
+import { UserBankAccount } from 'screen/profile/UserBankAccount'
+import { Identification } from 'screen/profile/Identification'
+import AddressProfile from 'screen/profile/AddressProfile'
 
 interface RouterItem {
   path: string
@@ -246,6 +250,76 @@ export const routers: RouterItem[] = [
       ]
     },
     permissions: [allPermissions.employees_manage]
+  },
+  
+  //Labor contract
+  {
+    path: '/employees/labor-contract/list-contract/create',
+    protected: true,
+    element: <Forbidden />,
+    permissions: [allPermissions['labor-contracts_store']],
+    breadCrumb: {
+      name: i18n.t('labor_contract.create_labor_contract_breadcrumb'),
+      parents: [
+        {
+          name: i18n.t('labor_contract.labor_contract_breadcrumb'),
+          link: '/employees/labor-contract/list-contract'
+        },
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/employees/labor-contract/list-contract/edit/:id',
+    protected: true,
+    element: <Forbidden />,
+    permissions: [allPermissions['labor-contracts_manage']],
+    breadCrumb: {
+      name: i18n.t('labor_contract.labor_contract_detail_breadcrumb'),
+      parents: [
+        {
+          name: i18n.t('labor_contract.labor_contract_breadcrumb'),
+          link: '/employees/labor-contract/list-contract'
+        },
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/employees/labor-contract/list-contract',
+    protected: true,
+    element: <Forbidden />,
+    permissions: [allPermissions['labor-contracts_manage']],
+    breadCrumb: {
+      name: i18n.t('labor_contract.labor_contract_breadcrumb'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/employees/labor-contract/list-history',
+    protected: true,
+    element: <Forbidden />,
+    permissions: [allPermissions['labor-contracts_manage']],
+    breadCrumb: {
+      name: i18n.t('labor_contract.labor_contract_history_breadcrumb'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
   }
 ]
 
@@ -303,6 +377,13 @@ const Router: React.VFC = () => {
           }
         })}
         <Route index element={<Dashboard />} />
+        <Route path="/general/profile" element={<ProfileInfo />}>
+          <Route path="/general/profile" element={<TableProfileInfo />} />
+          <Route path="/general/profile/edit" element={<TableProfileInfo />} />
+          <Route path="/general/profile/bank-account" element={<UserBankAccount />} />
+          <Route path="/general/profile/identification" element={<Identification />} />
+          <Route path="/general/profile/address" element={<AddressProfile  />} />
+        </Route>
         <Route path="/forbidden" element={<Forbidden />} />
       </Route>
     </Routes>

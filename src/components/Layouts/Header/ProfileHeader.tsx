@@ -132,15 +132,6 @@ export const ProfileHeader = () => {
           <ListItemText>{t('labor_contract.name')}</ListItemText>
         </MenuItem>
         <Divider />
-        <MenuItem onClick={() => navigate('/salary/list')}>
-          <ListItemIcon>
-            <SvgIcon>
-              <ContactPageIcon sx={{ ...styleIcon }} />
-            </SvgIcon>
-          </ListItemIcon>
-          <ListItemText>{t('salary.salary')}</ListItemText>
-        </MenuItem>
-        <Divider />
         <MenuItem onClick={handleChangePasswod}>
           <ListItemIcon>
             <SvgIcon>
