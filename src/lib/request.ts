@@ -8,14 +8,14 @@ const baseURL = import.meta.env.VITE_API_URL as string
 
 async function authRequestInterceptor(config: AxiosRequestConfig) {
     const _token = await localStorage.getItem('user-token')
-    // const locale = await localStorage.getItem('language')
+    const locale = await localStorage.getItem('language')
     // Fix stupid axios typescript
     if (_token && _token !== 'undefined' && config.headers) {
         const token = JSON.parse(_token) as UserToken
         config.headers.authorization = `Bearer ${token.access_token}`
     }
     //@ts-ignore
-    // config.headers.common['Accept-Language'] = locale
+    config.headers.common['Accept-Language'] = locale
 
     return config
 }
