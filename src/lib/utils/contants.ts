@@ -166,3 +166,62 @@ export const FORM_STATUS = {
     REJECTED: 2,
     CANCEL: 3
 }
+
+export const PERMISSIONS_MANAGE_APPLICATION = [
+    'overtime.manage',
+    'leave-form.manage',
+    'request-change-timesheets.manage',
+    'compensatory_leave.manage'
+]
+
+export const MONTH_NAME: any = {
+    1: i18n.t('month.january'),
+    2: i18n.t('month.february'),
+    3: i18n.t('month.march'),
+    4: i18n.t('month.april'),
+    5: i18n.t('month.may'),
+    6: i18n.t('month.june'),
+    7: i18n.t('month.july'),
+    8: i18n.t('month.august'),
+    9: i18n.t('month.september'),
+    10: i18n.t('month.october'),
+    11: i18n.t('month.november'),
+    12: i18n.t('month.december')
+}
+
+export const KIND_OF_LEAVE_TYPES = {
+    COMPENSATORY_LEAVE: 0,
+    NORMAL_LEAVE: 1
+}
+
+export const KIND_OF_LEAVE_OPTIONS = [
+    {
+        value: KIND_OF_LEAVE_TYPES['COMPENSATORY_LEAVE'],
+        label: i18n.t('kind-of-leave.types.compensatory_leave')
+    },
+    { value: KIND_OF_LEAVE_TYPES['NORMAL_LEAVE'], label: i18n.t('kind-of-leave.types.normal_leave') }
+]
+
+export const tabIndexTileLeaveForm = {
+    LEAVE_FORM: 0,
+    OT_FORM: 1,
+    CHANGE_TIME_FORM: 2,
+    COMPENSATORY_FORM: 3
+}
+
+export const STATUS_FORM_OPTIONS = [
+    { label: i18n.t('approved'), value: 1 },
+    { label: i18n.t('await_confirm'), value: 0 },
+    { label: i18n.t('rejected'), value: 2 },
+    { label: i18n.t('cancel'), value: 3 }
+]
+
+export const IS_PAID_LEAVE = {
+    NO: 0,
+    YES: 1
+}
+
+export const IS_PAID_LEAVE_OPTIONS = [
+    { label: i18n.t('no'), value: IS_PAID_LEAVE['NO'] },
+    { label: i18n.t('yes'), value: IS_PAID_LEAVE['YES'] }
+]

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Login } from '../screen/auth'
-import Dashboard from '../screen/dashboard/Dashboard'
+// import Dashboard from '../screen/dashboard/Dashboard'
 import { Layout } from '../components/Layouts/Sidebar/Layout'
 import { allPermissions } from '../constants/permissions'
 import { RequireAuth } from './RequireAuth'
@@ -27,6 +27,8 @@ import { ProfileInfo } from 'screen/profile/ProfileInfo'
 import { UserBankAccount } from 'screen/profile/UserBankAccount'
 import { Identification } from 'screen/profile/Identification'
 import AddressProfile from 'screen/profile/AddressProfile'
+import { Dashboard } from 'screen/dashboard/Dashboard'
+import { LeaveApplication } from 'screen/leaveForm/LeaveApplication'
 
 interface RouterItem {
   path: string
@@ -251,7 +253,70 @@ export const routers: RouterItem[] = [
     },
     permissions: [allPermissions.employees_manage]
   },
-  
+
+  //my-applications
+  {
+    path: '/applications/leave-form',
+    protected: true,
+    element: <LeaveApplication />,
+    permissions: [],
+    breadCrumb: {
+      name: i18n.t('application_form.leave_application'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/applications/overtimes',
+    protected: true,
+    element: <Forbidden />,
+    permissions: [],
+    breadCrumb: {
+      name: i18n.t('application_form.overtime_application'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  //request-change-timesheet-application
+  {
+    path: '/applications/request-change-timesheets',
+    protected: true,
+    element: <Forbidden />,
+    permissions: [],
+    breadCrumb: {
+      name: i18n.t('application_form.request_change_timesheet_application'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/applications/compensatory-leaves',
+    protected: true,
+    element: <Forbidden />,
+    permissions: [],
+    breadCrumb: {
+      name: i18n.t('application_form.compensatory_leave_application'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+
   //Labor contract
   {
     path: '/employees/labor-contract/list-contract/create',

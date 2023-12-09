@@ -1,5 +1,6 @@
 import { format, parseISO } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
+import i18n from 'lib/lang/translations/i18n'
 
 export const formatNormalDate = (d: Date | string) => {
     return format(new Date(d), 'dd/MM/yyyy')
@@ -132,4 +133,93 @@ export const formatNormalTime = (d: Date | string) => {
         return ''; // hoặc giá trị mặc định khác
     }
     return format(new Date(d), 'HH:mm:ss')
+}
+
+export const getAllDaysInMonth = (month: number, year: number) =>
+    Array.from(
+        { length: new Date(year, month, 0).getDate() }, // get next month, zeroth's (previous) day
+        (_, i) => new Date(year, month - 1, i + 1) // get current month (0 based index)
+    )
+
+const minutesToDays: any = (
+    m: number,
+    fullText?: boolean,
+    t?: any,
+    days?: boolean,
+    hours?: boolean,
+    minutes?: boolean
+) => {
+    m = Math.floor(m)
+    const day = Math.floor(m / 60 / 8)
+    const hour = Math.floor(m / 60) % 8
+    const minute = m % 60
+
+    let res = ''
+
+    if (fullText) {
+        if (day != 0) {
+            res += day + ` ${i18n.t('day')} `
+
+            if (days) {
+                return res
+            }
+        }
+
+        if (hour != 0) {
+            res += hour + ` ${i18n.t('hour')} `
+            if (hours) {
+                return res
+            }
+        }
+
+        if (minute != 0) {
+            res += minute + ` ${i18n.t('minute')} `
+        }
+    } else {
+        if (day != 0) {
+            res += day + 'd '
+
+            if (days) {
+                return res
+            }
+        }
+
+        if (hour != 0) {
+            res += hour + 'h'
+        }
+
+        if (minute != 0) {
+            res += minute + 'm'
+        }
+    }
+
+    return res
+}
+
+export const dateTimeWithoutSecond = (d: Date | string, formatDate = 'dd/MM/yyyy') => {
+    d = replaceDashesToSlashes(d)
+    return format(new Date(d), formatDate + ' HH:mm')
+}
+
+export const convertDatetimeTZWithoutSecond = (
+    d: Date | string | any,
+    timezone = 'UTC',
+    formatDate = 'dd/MM/yyyy'
+) => {
+    if (!d) {
+        return null
+    }
+    d = replaceDashesToSlashes(d)
+    const date = new Date(d)
+    const utcDate = changeTimeZone(d, 'UTC')
+    //@ts-ignorez
+    const tzDate = changeTimeZone(d, timezone)
+    const offset = utcDate.getTime() - tzDate.getTime()
+    date.setTime(date.getTime() - offset)
+    return dateTimeWithoutSecond(date, formatDate)
+}
+
+
+export {
+    minutesToDays,
 }

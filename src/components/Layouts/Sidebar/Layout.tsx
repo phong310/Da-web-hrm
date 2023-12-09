@@ -8,7 +8,6 @@ import { Box, Hidden, styled, Tab, Tabs, Theme, Toolbar, useMediaQuery } from '@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Outlet, useNavigate } from 'react-router-dom'
-// import { ModalTimekeepingReminderV2 } from 'screen/application/v2/ModalTimekeepingReminderV2'
 import { blue } from '../../../styles/colors'
 import { Header } from '../Header/Header'
 import { Route } from './Sidebar'
@@ -30,6 +29,7 @@ import Manage_timeKeeping from 'assets/svgs/sidebar-icons/manage_timeKeeping.svg
 import TimeKeeping from 'assets/svgs/sidebar-icons/TimeKeeping.svg'
 import { Sidebar } from './Sidebar'
 import { useAuth } from 'lib/hook/useAuth'
+import { ModalTimekeepingReminder } from 'screen/application/ModalTimekeepingReminder'
 
 const Layout: React.VFC = () => {
   // const { push, history } = useHistory()
@@ -46,7 +46,7 @@ const Layout: React.VFC = () => {
   const { t } = useTranslation()
 
   const { permissions } = useAuth()
-  const hasManagePermission = _.values(Permissions).every((value:any) => {
+  const hasManagePermission = _.values(Permissions).every((value: any) => {
     return permissions?.includes(value)
   })
   const navigate = useNavigate()
@@ -54,31 +54,31 @@ const Layout: React.VFC = () => {
   const [value, setValue] = React.useState(0)
   const tabItems = [
     {
-      label: 'Thời gian biểu',
+      label: t('menu.timekeeping'),
       display: true,
       path: '/time-keeping/timekeeping',
-      Icon: <img src={TimeKeeping} />,
+      Icon: <TimeKeeping />,
       handleClick: () => {
         navigate('/time-keeping/timekeeping')
       }
     },
     {
-      label: 'Đơn của tôi',
+      label: t('menu.my_application'),
       display: true,
       path: '/applications/leave-form',
-      Icon: <img src={Application} />
+      Icon: <Application />
     },
     {
       label: t('menu.abbreviation.management_timekeeping'),
       display: hasManagePermission,
       path: '/time-keeping/manager/timesheet',
-      Icon:<img src={Manage_timeKeeping} />,
+      Icon: <Manage_timeKeeping />
     },
     {
       label: t('menu.abbreviation.management'),
       display: hasManagePermission,
       path: '/applications/manager/leave-form',
-      Icon: <img src={Manage_application} />
+      Icon: <Manage_application />
     }
   ]
   // const [setSearchParams] = useAtom(searchParamsAtom)
@@ -158,7 +158,7 @@ const Layout: React.VFC = () => {
         </CustomTabs>
       </Hidden>
 
-      {/* <ModalTimekeepingReminderV2 /> */}
+      <ModalTimekeepingReminder />
     </>
   )
 }
