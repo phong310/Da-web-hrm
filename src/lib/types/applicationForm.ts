@@ -5,6 +5,20 @@ export type KindOfLeaveType = {
     symbol: string
 }
 
+export const STATUS_FORM = {
+    APPROVED: 1,
+    UNAPPROVED: 0,
+    REJECTED: 2,
+    CANCEL: 3
+}
+
+export const TYPE_FORM = {
+    LEAVE: 0,
+    OVERTIME: 1,
+    REQUEST_CHANGE_TIMESHEET: 2,
+    COMPENSATORY_LEAVE: 3
+}
+
 export type KolData = {
     id: number
     name: string

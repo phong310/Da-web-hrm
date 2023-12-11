@@ -31,6 +31,8 @@ import { useQuery } from 'react-query'
 import { useSearchParams } from 'react-router-dom'
 import { CellValue, Column, Row } from 'react-table'
 import { toast } from 'react-toastify'
+import { ModalDetailLeaveApplication } from './ModalDetailLeaveApplication'
+import { ModalLeaveForm } from './ModalLeaveForm'
 // import { ModalLeaveForm } from 'screen/application/v2/ModalLeaveForm'
 // import { TypographyFirstCol } from '../../OverTime/ManagerOvertimeApplication'
 // import { Status } from '../../v2/Status'
@@ -326,7 +328,7 @@ const LeaveApplication = () => {
         onRowClick={onRowClick}
         data={[]}
       />
-      {/* <ModalDetailLeaveApplication
+      <ModalDetailLeaveApplication
         open={openDetail}
         handleEditInModalDetai={handleEditInModalDetai}
         idDetail={idDetail}
@@ -338,7 +340,7 @@ const LeaveApplication = () => {
         open={openEdit}
         idEdit={idEdit}
         onSuccess={onSuccess}
-      /> */}
+      />
     </>
   )
 }

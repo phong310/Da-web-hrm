@@ -2,11 +2,20 @@ import { FormControlProps, OutlinedInputProps } from '@mui/material'
 import { FieldValues, useController, UseControllerProps } from 'react-hook-form'
 import { AddControlProps, InputControl } from '../Components/InputControl'
 import { InputStyled } from '../Components/InputStyled'
+
 export type InputProps<T extends FieldValues> = UseControllerProps<T> &
   OutlinedInputProps &
   AddControlProps & {
     controlProps?: FormControlProps
   }
+
+  export const styleInput = {
+    height: {
+      xs: 38,
+      sm: 42
+    }
+  }
+
 
 function Input<T extends FieldValues>({
   name,
@@ -33,7 +42,7 @@ function Input<T extends FieldValues>({
       helperText={helperText}
       {...controlProps}
     >
-      <InputStyled {...inputProps} {...props} inputRef={ref} />
+      <InputStyled sx={{ ...styleInput }} {...inputProps} {...props} inputRef={ref} />
     </InputControl>
   )
 }

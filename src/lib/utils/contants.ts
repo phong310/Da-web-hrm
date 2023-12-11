@@ -225,3 +225,11 @@ export const IS_PAID_LEAVE_OPTIONS = [
     { label: i18n.t('no'), value: IS_PAID_LEAVE['NO'] },
     { label: i18n.t('yes'), value: IS_PAID_LEAVE['YES'] }
 ]
+
+export const STATUSCHECK = {
+    LENGHT: 1,
+    APPROVALREQUIREMENTS: 0,
+    APPROVED: 1,
+    REFUSE: 2,
+    CANCEL: 3
+}

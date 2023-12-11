@@ -1,6 +1,26 @@
+//@ts-nocheck
 import { format, parseISO } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
+import { enUS, vi } from 'date-fns/locale'
 import i18n from 'lib/lang/translations/i18n'
+import { SystemSetting } from 'lib/types/system_setting'
+
+
+const language = localStorage.getItem('language') || 'vi'
+const system_setting: SystemSetting = JSON.parse(
+    localStorage.getItem('system-setting') == 'undefined'
+        ? '{}'
+        : localStorage.getItem('system-setting') || '{}'
+)
+
+type localeType = {
+    [key: string]: Locale
+}
+
+const locale: localeType = {
+    vi: vi,
+    en: enUS,
+}
 
 export const formatNormalDate = (d: Date | string) => {
     return format(new Date(d), 'dd/MM/yyyy')
@@ -195,10 +215,35 @@ const minutesToDays: any = (
 
     return res
 }
+export const replaceSlashesToDashes = (d: any) => {
+    if (typeof d === 'string') {
+        d = d.replace(/\//g, '-')
+        return d
+    }
+    return d
+}
 
 export const dateTimeWithoutSecond = (d: Date | string, formatDate = 'dd/MM/yyyy') => {
     d = replaceDashesToSlashes(d)
     return format(new Date(d), formatDate + ' HH:mm')
+}
+
+export const convertDatetimeUTC = (d: Date | string) => {
+    // d = replaceDashesToSlashes(d)
+    let date = new Date(d)
+    d = formatDateTime(d)
+    if (typeof d === 'string') {
+        d = replaceSlashesToDashes(d) as string
+        date = new Date(d.split(' ').join('T') + 'Z')
+    }
+
+    const utcDate = changeTimeZone(d, 'UTC')
+    //@ts-ignore
+    const tzDate = changeTimeZone(date, system_setting?.time_zone)
+    const offset = utcDate.getTime() - tzDate.getTime()
+
+    date.setTime(date.getTime() + offset)
+    return date
 }
 
 export const convertDatetimeTZWithoutSecond = (

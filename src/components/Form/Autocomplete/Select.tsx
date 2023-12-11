@@ -235,14 +235,14 @@ function Select<T extends UnknownObj, F extends FieldValues = any>({
           }
         />
       </InputControl>
-      {isAddOption && checkHasRole('admin', role) && (
+      {/* {isAddOption && checkHasRole('admin', role) && (
         <IconButton
           className={classes.customIconButton}
           onClick={() => onAddOptions && onAddOptions('default')}
         >
           <AddCircleOutlineIcon sx={{ color: '#c4c4c4', mt: 3 }} />
         </IconButton>
-      )}
+      )} */}
     </Stack>
   )
 }
