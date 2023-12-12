@@ -28,6 +28,7 @@ import { Identification } from 'screen/profile/Identification'
 import AddressProfile from 'screen/profile/AddressProfile'
 import { Dashboard } from 'screen/dashboard/Dashboard'
 import { LeaveApplication } from 'screen/leaveForm/LeaveApplication'
+import { OvertimeApplication } from 'screen/OverTime/OvertimeApplication'
 
 interface RouterItem {
   path: string
@@ -272,7 +273,7 @@ export const routers: RouterItem[] = [
   {
     path: '/applications/overtimes',
     protected: true,
-    element: <Forbidden />,
+    element: <OvertimeApplication />,
     permissions: [],
     breadCrumb: {
       name: i18n.t('application_form.overtime_application'),

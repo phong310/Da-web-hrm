@@ -233,6 +233,11 @@ export const STATUSCHECK = {
     REFUSE: 2,
     CANCEL: 3
 }
+export const TYPE_SETTING_TYPES_OT = {
+    AFTER_OFFICE_HOURS: 1,
+    WEEKEND: 2,
+    HOLIDAY: 3
+}
 
 export const ACTION_FORM = [
     'created',

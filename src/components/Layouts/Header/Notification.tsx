@@ -40,6 +40,7 @@ import { ModalUpdateStatusLeave } from 'screen/leaveForm/ModalUpdateStatus'
 import { formatTimeDiff } from 'lib/utils/misc'
 import { createContentNoti } from 'lib/utils/notification'
 import { markAllAsReadApi, markAsSeenApi, markAsRead as markAsReadApi } from 'lib/api/notification'
+import { ModalUpdateStatusOvertime } from 'screen/OverTime/ModalUpdateStatusOvertime'
 type markAsReadType = {
   id: string | number
   model_id: number
@@ -204,15 +205,15 @@ const Notification: React.VFC = () => {
             onSuccess={onSuccess}
           />
         )
-      // case MODEL_TYPE['OVERTIME']:
-      //   return (
-      //     <ModalUpdateStatusOvertime
-      //       closeModalEdit={closeModal}
-      //       open={openModalUpdate}
-      //       idEdit={idUpdate}
-      //       onSuccess={onSuccess}
-      //     />
-      //   )
+      case MODEL_TYPE['OVERTIME']:
+        return (
+          <ModalUpdateStatusOvertime
+            closeModalEdit={closeModal}
+            open={openModalUpdate}
+            idEdit={idUpdate}
+            onSuccess={onSuccess}
+          />
+        )
       // case MODEL_TYPE['REQUEST_CHANGE_TIMESHEET']:
       //   return (
       //     <ModalUpdateStatusRequestTime
