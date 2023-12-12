@@ -1,21 +1,14 @@
 import { useAtom, useSetAtom, useAtomValue } from 'jotai'
 import { useAtomCallback } from 'jotai/utils'
-import { formatNormalDate } from '../utils/format'
+import { loginApi, logoutApi, userApi } from 'lib/api/auth'
+import { checkHasTimekeepingYesterday } from 'lib/api/timekeeping'
+import { fetchAuthAtom, loadAuthAtom, permissionsAtom, roleAtom, systemSettingAtom, tokenAtom, userAtom } from 'lib/atom/authAtom'
+import { timekeepingAtom, timekeepingReminderFirstInDateAtom } from 'lib/atom/timekeepingAtom'
+import { UserLoginArgs } from 'lib/types/auth'
+import { formatNormalDate } from 'lib/utils/format'
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { loginApi, logoutApi, userApi } from '../api/auth'
-import {
-    fetchAuthAtom,
-    loadAuthAtom,
-    permissionsAtom,
-    roleAtom,
-    systemSettingAtom,
-    tokenAtom,
-    userAtom
-} from '../atom/authAtom'
-import { UserLoginArgs } from '../types/auth'
-import { timekeepingAtom, timekeepingReminderFirstInDateAtom } from 'lib/atom/timekeepingAtom'
-import { checkHasTimekeepingYesterday } from 'lib/api/timekeeping'
+
 const useAuth = () => {
     const [user] = useAtom(userAtom)
     const [systemSetting] = useAtom(systemSettingAtom)
@@ -35,7 +28,7 @@ const useAuth = () => {
     const [timekeepingReminderFirstInDate, setTimekeepingReminderFirstInDate] = useAtom(
         timekeepingReminderFirstInDateAtom
     )
-    
+
     const auth = !!user
 
     const login = async (args: UserLoginArgs) => {
@@ -80,21 +73,21 @@ const useAuth = () => {
                         setUser(res?.data)
                         setSystemSetting(res?.data?.setting)
                         localStorage.setItem('system-setting', JSON.stringify(res?.data?.setting))
-                        if (res.data.is_first_time_login) {
-                            navigate('/time-keeping/timekeeping', {
-                                replace: true
-                            })
-                        }
+                        // if (res.data.is_first_time_login) {
+                        //     navigate('/time-keeping/timekeeping', {
+                        //         replace: true
+                        //     })
+                        // }
 
-                        const hasTimekeepingYesterday = await checkHasTimekeepingYesterday()
-                        setTimekeeping(hasTimekeepingYesterday.data)
+                        // const hasTimekeepingYesterday = await checkHasTimekeepingYesterday()
+                        // setTimekeeping(hasTimekeepingYesterday.data)
 
-                        setTimekeepingReminderFirstInDate({
-                            date: hasTimekeepingYesterday.data.date,
-                            is_first:
-                                formatNormalDate(timekeepingReminderFirstInDate.date) !==
-                                formatNormalDate(hasTimekeepingYesterday.data.date)
-                        })
+                        // setTimekeepingReminderFirstInDate({
+                        //     date: hasTimekeepingYesterday.data.date,
+                        //     is_first:
+                        //         formatNormalDate(timekeepingReminderFirstInDate.date) !==
+                        //         formatNormalDate(hasTimekeepingYesterday.data.date)
+                        // })
                     }
                     setFetching(false)
                 } catch (error) {

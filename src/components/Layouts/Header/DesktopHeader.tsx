@@ -8,9 +8,6 @@ import { Link } from 'react-router-dom'
 import { drawerWidth } from '../Drawer'
 import { PropsType } from './Header'
 import { LanguageHeader } from './LanguageHeader'
-// import { NavLinkHeader } from './NavLinkHeader'
-// import { Notification } from './v2/Notification'
-// import ProfileHeader from './v2/ProfileHeader'
 import { CustomBreadCrumbs } from '../../BreadCrumbs/CustomBreadCrumbs'
 import { allPermissions, Permissions } from '../../../constants/permissions'
 import { Notification } from './Notification'
@@ -129,30 +126,6 @@ const DesktopHeader: React.VFC<PropsType> = ({ triggerSidebar }) => {
                 <CustomBreadCrumbs />
               </Stack>
             </Grid>
-
-            {/* <Grid item md={7.5} lg={8}>
-              <Stack
-                direction="row"
-                spacing={5}
-                ml={8}
-                sx={{
-                  ml: {
-                    md: 10,
-                    lg: 8
-                  }
-                }}
-              >
-                {navLinks.map((navLink) => (
-                  <NavLinkHeader
-                    key={navLink.matchRoute}
-                    childRoutes={navLink.childRoutes}
-                    matchRoute={navLink.matchRoute}
-                  >
-                    {navLink.title}
-                  </NavLinkHeader>
-                ))}
-              </Stack>
-            </Grid> */}
             <Grid item sm={4} lg={3.5}>
               <Stack direction="row" justifyContent="flex-end" alignItems="center" spacing={1}>
                 <LanguageHeader />

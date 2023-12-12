@@ -46,4 +46,3 @@ const EmployeeSummaryInfo = ({
 }
 
 export { EmployeeSummaryInfo }
-

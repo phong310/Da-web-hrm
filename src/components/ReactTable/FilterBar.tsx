@@ -349,7 +349,8 @@ const styleBgField = {
   backgroundColor: '#fff',
   fontSize: '16px',
   boxShadow: '0px 1px 2px 0px rgba(16, 24, 40, 0.05)',
-  borderRadius: '10px'
+  borderRadius: '10px',
+  height: 40
 }
 
 const styleBoxAction = {

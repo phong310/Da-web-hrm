@@ -233,3 +233,14 @@ export const STATUSCHECK = {
     REFUSE: 2,
     CANCEL: 3
 }
+
+export const ACTION_FORM = [
+    'created',
+    'updated',
+    'accepted',
+    'rejected',
+    'request_approval',
+    'review',
+    'public',
+    'extend'
+]

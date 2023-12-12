@@ -241,3 +241,34 @@ export type ModelHasApproversType = {
     employee_code: string
     position: position
 }
+
+
+export const TYPE_NOTIFICATION = {
+    CREATE: 0,
+    UPDATE: 1,
+    ACCEPT: 2,
+    REJECT: 3,
+    REQUEST_APPROVAL: 4,
+    PUBLIC: 6,
+    EXTEND: 7
+}
+
+export const MODEL_TYPE = {
+    REQUEST_CHANGE_TIMESHEET: 'RequestChangeTimesheet',
+    OVERTIME: 'OverTime',
+    LEAVE: 'LeaveForm',
+    COMPENSATORY_LEAVE: 'CompensatoryLeave',
+    SALARY_SHEET: 'SalarySheet',
+    EXTEND_CONTRACT: 'LaborContract'
+}
+
+export const KEY_SCREEN = {
+    AWAITING_CONFIRM: 0,
+    PROCESSED: 1
+}
+
+export const STATUS_NOTIFICATION = {
+    UNREAD: 0,
+    READ: 1,
+    NEW: 2
+}

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { Login } from '../screen/auth'
-// import Dashboard from '../screen/dashboard/Dashboard'
 import { Layout } from '../components/Layouts/Sidebar/Layout'
 import { allPermissions } from '../constants/permissions'
 import { RequireAuth } from './RequireAuth'
@@ -441,7 +440,10 @@ const Router: React.VFC = () => {
             return <Route key={index} path={router.path} element={<Forbidden />} />
           }
         })}
+
         <Route index element={<Dashboard />} />
+
+
         <Route path="/general/profile" element={<ProfileInfo />}>
           <Route path="/general/profile" element={<TableProfileInfo />} />
           <Route path="/general/profile/edit" element={<TableProfileInfo />} />

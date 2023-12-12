@@ -1,27 +1,29 @@
 import { CssBaseline, ThemeProvider } from '@mui/material'
-import { QueryClientProvider } from 'react-query'
-import { Suspense, useEffect, useState } from 'react'
-import { queryClient } from 'lib/react-query'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import { Router } from './routers'
-import { defaultTheme } from './styles/theme'
-import { useAuth } from 'lib/hook/useAuth'
-import { enUS, vi } from 'date-fns/locale'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import CustomDateAdapter from 'components/CustomDateAdapter'
+import { enUS, ja, vi } from 'date-fns/locale'
+import { useAuth } from 'lib/hook/useAuth'
+import { queryClient } from 'lib/react-query'
+import { Suspense, useEffect, useState } from 'react'
+import { QueryClientProvider } from 'react-query'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { Router } from 'routers'
+import { defaultTheme } from 'styles/theme'
 
 const locale: any = {
   en: enUS,
-  vi: vi
+  vi: vi,
+  ja: ja
 }
 
 function App() {
-  const [language, setLanguage] = useState<string>()
   const { fetchUser } = useAuth()
   useEffect(() => {
     fetchUser()
   }, [fetchUser])
+
+  const [language, setLanguage] = useState<string>()
 
   useEffect(() => {
     const l = localStorage.getItem('language')
@@ -38,7 +40,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <CssBaseline />
         <LocalizationProvider
-          adapterLocale={locale[language || 'en']}
+          locale={locale[language || 'en']}
           dateAdapter={CustomDateAdapter as any}
         >
           <Suspense fallback="Loading...">
