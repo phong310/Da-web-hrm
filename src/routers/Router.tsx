@@ -30,6 +30,8 @@ import { Dashboard } from 'screen/dashboard/Dashboard'
 import { LeaveApplication } from 'screen/leaveForm/LeaveApplication'
 import { OvertimeApplication } from 'screen/OverTime/OvertimeApplication'
 import { RequestChangeTimesheetApplication } from 'screen/RequestChangeTimesheet/RequestChangeTimesheetApplication'
+import { CompensatoryLeaveApplication } from 'screen/compensatoryLeave/CompensatoryLeaveApplication'
+import { ListEmployeeLeaveApplication } from 'screen/leaveForm/ListEmployeeLeaveApplication'
 
 interface RouterItem {
   path: string
@@ -255,6 +257,23 @@ export const routers: RouterItem[] = [
     permissions: [allPermissions.employees_manage]
   },
 
+  //all-employee-leave-application
+  {
+    path: '/applications/leave-form/all',
+    protected: true,
+    element: <ListEmployeeLeaveApplication />,
+    permissions: [],
+    breadCrumb: {
+      name: i18n.t('menu.employee_application'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+
   //my-applications
   {
     path: '/applications/leave-form',
@@ -305,7 +324,7 @@ export const routers: RouterItem[] = [
   {
     path: '/applications/compensatory-leaves',
     protected: true,
-    element: <Forbidden />,
+    element: <CompensatoryLeaveApplication />,
     permissions: [],
     breadCrumb: {
       name: i18n.t('application_form.compensatory_leave_application'),

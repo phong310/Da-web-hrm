@@ -38,6 +38,8 @@ import BellIcon from '../../../assets/svgs/navbar-icons/bell.svg'
 import { ModalUpdateStatusRequestTime } from 'screen/RequestChangeTimesheet/ModalUpdateStatusRequestTime'
 import { ModalDetailOverTimeApplication } from 'screen/OverTime/ModalDetailOverTimeApplication'
 import ModalDetailRequestChangeTimesheetApplication from 'screen/RequestChangeTimesheet/ModalDetailRequestChangeTimesheetApplication'
+import { ModalDetailCompensatoryApplication } from 'screen/compensatoryLeave/ModalDetailCompensatoryApplication'
+import { ModalUpdateStatusCompenSatory } from 'screen/compensatoryLeave/ModalUpdateStatusCompenSatory'
 type markAsReadType = {
   id: string | number
   model_id: number
@@ -132,14 +134,14 @@ const Notification: React.VFC = () => {
             handleClose={closeModal}
           />
         )
-      // case MODEL_TYPE['COMPENSATORY_LEAVE']:
-      //   return (
-      //     <ModalDetailCompensatoryApplication
-      //       open={openModal}
-      //       idDetail={idDetail}
-      //       closeModalDetail={closeModal}
-      //     />
-      //   )
+      case MODEL_TYPE['COMPENSATORY_LEAVE']:
+        return (
+          <ModalDetailCompensatoryApplication
+            open={openModal}
+            idDetail={idDetail}
+            closeModalDetail={closeModal}
+          />
+        )
       default:
         return null
     }
@@ -166,12 +168,12 @@ const Notification: React.VFC = () => {
         })
         break
       }
-      // case MODEL_TYPE['COMPENSATORY_LEAVE']: {
-      //   navigate('/applications/manager/compensatory-leaves', {
-      //     state: { tabIndex: KEY_SCREEN.PROCESSED }
-      //   })
-      //   break
-      // }
+      case MODEL_TYPE['COMPENSATORY_LEAVE']: {
+        navigate('/applications/manager/compensatory-leaves', {
+          state: { tabIndex: KEY_SCREEN.PROCESSED }
+        })
+        break
+      }
 
       // case MODEL_TYPE['SALARY_SHEET']: {
       //   navigate('/salary-managerment/salaries', {
@@ -220,15 +222,15 @@ const Notification: React.VFC = () => {
             onSuccessEdit={onSuccess}
           />
         )
-      // case MODEL_TYPE['COMPENSATORY_LEAVE']:
-      //   return (
-      //     <ModalUpdateStatusCompenSatory
-      //       closeModalEdit={closeModal}
-      //       open={openModalUpdate}
-      //       idEdit={idUpdate}
-      //       handleEditSuccess={onSuccess}
-      //     />
-      //   )
+      case MODEL_TYPE['COMPENSATORY_LEAVE']:
+        return (
+          <ModalUpdateStatusCompenSatory
+            closeModalEdit={closeModal}
+            open={openModalUpdate}
+            idEdit={idUpdate}
+            handleEditSuccess={onSuccess}
+          />
+        )
       default:
         return null
     }
