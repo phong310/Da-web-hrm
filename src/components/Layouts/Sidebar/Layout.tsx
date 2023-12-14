@@ -1,35 +1,18 @@
 import { Box, Hidden, styled, Tab, Tabs, Theme, Toolbar, useMediaQuery } from '@mui/material'
-// import LeaveApplicationIcon from 'assets/svgs/sidebar-icons/application/leave_icon.svg?component'
-// import OvertimeIcon from 'assets/svgs/sidebar-icons/application/overtime_icon.svg?component'
-// import RequestChangeTimesheetIcon from 'assets/svgs/sidebar-icons/timekeeping/request_update_timekeeping_icon.svg?component'
-// import { MessageAlert } from 'components/MessageAlert'
-// import { Permissions } from '../../constants/permissions'
-// import { useAuth, useHistory } from 'lib/hooks'
-import React, { useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Outlet, useNavigate } from 'react-router-dom'
-import { blue } from '../../../styles/colors'
-import { Header } from '../Header/Header'
-import { Route } from './Sidebar'
-import * as _ from 'lodash'
-// import {
-//   sidebarApp,
-//   sidebarAppManager,
-//   sidebarEmployeeManagement,
-//   sidebarList,
-//   sidebarTimekeepingManager
-// } from '../Sidebar/v2/SidebarList'
-
-import { sidebarList } from './SidebarList'
-// import { initialSearchParams, searchParamsAtom } from 'lib/atom'
-// import { useAtom } from 'jotai'
 import Application from 'assets/svgs/sidebar-icons/application.svg'
 import Manage_application from 'assets/svgs/sidebar-icons/manage_application.svg'
 import Manage_timeKeeping from 'assets/svgs/sidebar-icons/manage_timeKeeping.svg'
 import TimeKeeping from 'assets/svgs/sidebar-icons/TimeKeeping.svg'
-import { Sidebar } from './Sidebar'
 import { useAuth } from 'lib/hook/useAuth'
+import * as _ from 'lodash'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Outlet, useNavigate } from 'react-router-dom'
 import { ModalTimekeepingReminder } from 'screen/application/ModalTimekeepingReminder'
+import { blue } from '../../../styles/colors'
+import { Header } from '../Header/Header'
+import { Route, Sidebar } from './Sidebar'
+import { sidebarList } from './SidebarList'
 
 const Layout: React.VFC = () => {
   // const { push, history } = useHistory()
@@ -209,3 +192,4 @@ const BoxWrapIcon = styled(Box, { shouldForwardProp: (prop) => prop !== 'active'
   justifyContent: 'center'
 }))
 export { Layout }
+

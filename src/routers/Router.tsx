@@ -29,6 +29,7 @@ import AddressProfile from 'screen/profile/AddressProfile'
 import { Dashboard } from 'screen/dashboard/Dashboard'
 import { LeaveApplication } from 'screen/leaveForm/LeaveApplication'
 import { OvertimeApplication } from 'screen/OverTime/OvertimeApplication'
+import { RequestChangeTimesheetApplication } from 'screen/RequestChangeTimesheet/RequestChangeTimesheetApplication'
 
 interface RouterItem {
   path: string
@@ -289,7 +290,7 @@ export const routers: RouterItem[] = [
   {
     path: '/applications/request-change-timesheets',
     protected: true,
-    element: <Forbidden />,
+    element: <RequestChangeTimesheetApplication />,
     permissions: [],
     breadCrumb: {
       name: i18n.t('application_form.request_change_timesheet_application'),

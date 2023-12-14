@@ -73,11 +73,11 @@ const useAuth = () => {
                         setUser(res?.data)
                         setSystemSetting(res?.data?.setting)
                         localStorage.setItem('system-setting', JSON.stringify(res?.data?.setting))
-                        // if (res.data.is_first_time_login) {
-                        //     navigate('/time-keeping/timekeeping', {
-                        //         replace: true
-                        //     })
-                        // }
+                        if (res.data.is_first_time_login) {
+                            navigate('/time-keeping/timekeeping', {
+                                replace: true
+                            })
+                        }
 
                         // const hasTimekeepingYesterday = await checkHasTimekeepingYesterday()
                         // setTimekeeping(hasTimekeepingYesterday.data)

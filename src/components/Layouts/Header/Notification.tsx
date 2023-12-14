@@ -8,39 +8,36 @@ import {
   Popover,
   Stack,
   styled,
-  SvgIcon,
   ToggleButton,
   ToggleButtonGroup,
   Typography
 } from '@mui/material'
 import { SxProps, Theme } from '@mui/system'
-import BellIcon from '../../../assets/svgs/navbar-icons/bell.svg'
-// import { KEY_SCREEN, MODEL_TYPE, STATUS_NOTIFICATION, TYPE_NOTIFICATION } from 'constants'
 import { V1 } from 'constants/apiVersion'
-// import { markAllAsReadApi, markAsRead as markAsReadApi, markAsSeenApi } from 'lib/api'
-// import { useAuth, usePaginationQuery } from 'lib/hooks'
-// import { NotificationType } from 'lib/types'
-// import { createContentNoti, formatTimeDiff } from 'lib/utils'
+import { markAllAsReadApi, markAsRead as markAsReadApi, markAsSeenApi } from 'lib/api/notification'
 import { useAuth } from 'lib/hook/useAuth'
 import { usePaginationQuery } from 'lib/hook/usePaginationQuery'
-import React, { MouseEvent, useCallback, useEffect, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { InView } from 'react-intersection-observer'
-import { useQuery } from 'react-query'
-import { useNavigate } from 'react-router-dom'
-import { NotificationType } from 'lib/types/notification'
 import {
   KEY_SCREEN,
   MODEL_TYPE,
   STATUS_NOTIFICATION,
   TYPE_NOTIFICATION
 } from 'lib/types/applicationForm'
-import { ModalDetailLeaveApplication } from 'screen/leaveForm/ModalDetailLeaveApplication'
-import { ModalUpdateStatusLeave } from 'screen/leaveForm/ModalUpdateStatus'
+import { NotificationType } from 'lib/types/notification'
 import { formatTimeDiff } from 'lib/utils/misc'
 import { createContentNoti } from 'lib/utils/notification'
-import { markAllAsReadApi, markAsSeenApi, markAsRead as markAsReadApi } from 'lib/api/notification'
+import React, { MouseEvent, useCallback, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { InView } from 'react-intersection-observer'
+import { useQuery } from 'react-query'
+import { useNavigate } from 'react-router-dom'
+import { ModalDetailLeaveApplication } from 'screen/leaveForm/ModalDetailLeaveApplication'
+import { ModalUpdateStatusLeave } from 'screen/leaveForm/ModalUpdateStatus'
 import { ModalUpdateStatusOvertime } from 'screen/OverTime/ModalUpdateStatusOvertime'
+import BellIcon from '../../../assets/svgs/navbar-icons/bell.svg'
+import { ModalUpdateStatusRequestTime } from 'screen/RequestChangeTimesheet/ModalUpdateStatusRequestTime'
+import { ModalDetailOverTimeApplication } from 'screen/OverTime/ModalDetailOverTimeApplication'
+import ModalDetailRequestChangeTimesheetApplication from 'screen/RequestChangeTimesheet/ModalDetailRequestChangeTimesheetApplication'
 type markAsReadType = {
   id: string | number
   model_id: number
@@ -119,22 +116,22 @@ const Notification: React.VFC = () => {
             idDetail={idDetail}
           />
         )
-      // case MODEL_TYPE['OVERTIME']:
-      //   return (
-      //     <ModalDetailOverTimeApplication
-      //       open={openModal}
-      //       idDetail={idDetail}
-      //       closeModalDetail={closeModal}
-      //     />
-      //   )
-      // case MODEL_TYPE['REQUEST_CHANGE_TIMESHEET']:
-      //   return (
-      //     <ModalDetailRequestChangeTimesheetApplication
-      //       open={openModal}
-      //       idDetail={idDetail}
-      //       handleClose={closeModal}
-      //     />
-      //   )
+      case MODEL_TYPE['OVERTIME']:
+        return (
+          <ModalDetailOverTimeApplication
+            open={openModal}
+            idDetail={idDetail}
+            closeModalDetail={closeModal}
+          />
+        )
+      case MODEL_TYPE['REQUEST_CHANGE_TIMESHEET']:
+        return (
+          <ModalDetailRequestChangeTimesheetApplication
+            open={openModal}
+            idDetail={idDetail}
+            handleClose={closeModal}
+          />
+        )
       // case MODEL_TYPE['COMPENSATORY_LEAVE']:
       //   return (
       //     <ModalDetailCompensatoryApplication
@@ -157,18 +154,18 @@ const Notification: React.VFC = () => {
         })
         break
       }
-      // case MODEL_TYPE['OVERTIME']: {
-      //   navigate('/applications/manager/overtimes', {
-      //     state: { tabIndex: KEY_SCREEN.PROCESSED }
-      //   })
-      //   break
-      // }
-      // case MODEL_TYPE['REQUEST_CHANGE_TIMESHEET']: {
-      //   navigate('/applications/manager/request-change-timesheets', {
-      //     state: { tabIndex: KEY_SCREEN.PROCESSED }
-      //   })
-      //   break
-      // }
+      case MODEL_TYPE['OVERTIME']: {
+        navigate('/applications/manager/overtimes', {
+          state: { tabIndex: KEY_SCREEN.PROCESSED }
+        })
+        break
+      }
+      case MODEL_TYPE['REQUEST_CHANGE_TIMESHEET']: {
+        navigate('/applications/manager/request-change-timesheets', {
+          state: { tabIndex: KEY_SCREEN.PROCESSED }
+        })
+        break
+      }
       // case MODEL_TYPE['COMPENSATORY_LEAVE']: {
       //   navigate('/applications/manager/compensatory-leaves', {
       //     state: { tabIndex: KEY_SCREEN.PROCESSED }
@@ -214,15 +211,15 @@ const Notification: React.VFC = () => {
             onSuccess={onSuccess}
           />
         )
-      // case MODEL_TYPE['REQUEST_CHANGE_TIMESHEET']:
-      //   return (
-      //     <ModalUpdateStatusRequestTime
-      //       open={openModalUpdate}
-      //       idEdit={idUpdate}
-      //       handleCloseModal={closeModal}
-      //       onSuccessEdit={onSuccess}
-      //     />
-      //   )
+      case MODEL_TYPE['REQUEST_CHANGE_TIMESHEET']:
+        return (
+          <ModalUpdateStatusRequestTime
+            open={openModalUpdate}
+            idEdit={idUpdate}
+            handleCloseModal={closeModal}
+            onSuccessEdit={onSuccess}
+          />
+        )
       // case MODEL_TYPE['COMPENSATORY_LEAVE']:
       //   return (
       //     <ModalUpdateStatusCompenSatory
@@ -649,3 +646,4 @@ const styleFormatTimeDiff = {
 }
 
 export { Notification }
+

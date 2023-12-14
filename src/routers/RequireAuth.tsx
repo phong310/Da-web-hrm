@@ -9,6 +9,7 @@ type RequireAuthProps = {
 const RequireAuth: React.VFC<RequireAuthProps> = ({ children }) => {
   const { auth } = useAuth()
   const location = useLocation()
+
   if (!auth) {
     return <Navigate to="/login" state={{ from: location }} />
   }

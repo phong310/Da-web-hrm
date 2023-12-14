@@ -12,45 +12,15 @@ import {
     Typography,
     styled
 } from '@mui/material'
-// import { Permissions, STATUS_FORM, TYPE_FORM } from 'constants'
 import { V1 } from 'constants/apiVersion'
 import { useAtomValue } from 'jotai'
-// import { systemSettingAtom } from 'lib/atom'
-// import { useAuth } from 'lib/hooks'
 import { request } from 'lib/request'
-// import {
-//   CompensatoryWorkingDayData,
-//   EmployeeType,
-//   KindOfLeaveType,
-//   LeaveFormType,
-//   LeaveFormTypeV2,
-//   ModelHasApproversType,
-//   WorkingDayData
-// } from 'lib/types'
-// import {
-//   KIND_OF_LEAVE_TYPES,
-//   checkFormIsDisableEdit,
-//   convertDatetimeTZ,
-//   convertLocalDatetimeToTZ,
-//   formatDateTime,
-//   getLastDateinMonth,
-//   minutesToDays,
-//   numberLeaveDay
-// } from 'lib/utils'
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
 import { toast } from 'react-toastify'
 import { Approvers } from 'screen/application/Atoms/Approvers'
-// import { EmployeeSummaryInfo } from 'screen/application/v2/EmployeeSummaryInfo'
-// import { FooterApplication } from 'screen/application/v2/FooterApplication'
-// import ItemTimeDetail from 'screen/application/v2/ItemTimeDetail'
-// import {
-//   styleBoxNote,
-//   styleNote
-// } from 'screen/application/RequestChangeTimesheet/v2/ModalDetailRequestChangeTimesheetApplication'
-// import { Status } from 'screen/application/v2/Status'
 import { ModalSkeleton } from 'components/Skeleton/ModalSkeleton'
 import { Status } from 'components/Status/Status'
 import { KindOfLeaveType, LeaveFormType, LeaveFormTypeV2, ModelHasApproversType, STATUS_FORM, TYPE_FORM } from 'lib/types/applicationForm'
