@@ -32,6 +32,7 @@ import { OvertimeApplication } from 'screen/OverTime/OvertimeApplication'
 import { RequestChangeTimesheetApplication } from 'screen/RequestChangeTimesheet/RequestChangeTimesheetApplication'
 import { CompensatoryLeaveApplication } from 'screen/compensatoryLeave/CompensatoryLeaveApplication'
 import { ListEmployeeLeaveApplication } from 'screen/leaveForm/ListEmployeeLeaveApplication'
+import { TimeSheet } from 'screen/timesheet/TimeSheet'
 
 interface RouterItem {
   path: string
@@ -68,6 +69,24 @@ export const routers: RouterItem[] = [
       ]
     }
   },
+
+  //timesheet
+  {
+    path: '/time-keeping/timesheet',
+    protected: true,
+    element: <TimeSheet />,
+    permissions: [allPermissions.timekeeping_list],
+    breadCrumb: {
+      name: i18n.t('timesheet.title'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+
   // Employee
   {
     path: '/employees/manager',

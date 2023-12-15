@@ -51,7 +51,6 @@ const ListEmployeeLeaveApplication = () => {
       })
     }
   }
-console.log(watch('month'))
 
   useEffect(() => {
     setMonthAtom(watch('month') as string)

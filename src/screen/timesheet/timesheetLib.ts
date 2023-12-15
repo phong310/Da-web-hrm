@@ -1,15 +1,16 @@
 import { styled } from '@mui/material'
-import { green } from '@mui/material/colors'
+import { green, red } from '@mui/material/colors'
 import { DOT_TIMESHEET_TYPE, MANAGEMENT_TIMESHEET_TYPE, TIMESHEET_TYPE_TIME } from 'constants/timeSheetType'
 import { isWeekend } from 'date-fns'
-import { TimeSheetData } from 'lib/types/timeSheet'
-import { Orange, Red, Yellow, grey } from 'styles/colors'
+import { TimeSheetData, WorkingDayData } from 'lib/types/timeSheet'
+import { isDayOff } from 'lib/utils/datetime'
+import { Base, Orange, Red, Yellow, blueV2, greenV2, grey, orangeV2, violetV2 } from 'styles/colors'
 
-export const bgColorMonth = (index: number) => {
-    if (index % 2 !== 0) {
-        return grey[200]
+export const bgColorMonth = (date: string | Date, workingDays: WorkingDayData[] | undefined) => {
+    if (!isDayOff(date, workingDays)) {
+        return blueV2[100]
     } else {
-        return grey[400]
+        return blueV2[20]
     }
 }
 
@@ -43,19 +44,22 @@ export const rowIndex = (t: any) => [
     }
 ]
 
-export const colorDayName = (date: string | Date | any) => {
-    if (isWeekend(date)) {
-        return Red[200]
+export const colorDayName = (date: string | Date, workingDays: WorkingDayData[] | undefined) => {
+    if (!isDayOff(date, workingDays)) {
+        return red[200]
     } else {
-        return undefined
+        return 'undefined'
     }
 }
 
-export const bgColorDay = (isFuture: boolean) => {
-    if (isFuture) {
+export const bgColorDay = (isFuture: boolean, isNotOnDay: boolean) => {
+    if (isFuture && isNotOnDay == false) {
         return grey[200]
+    }
+    if (isFuture && isNotOnDay) {
+        return grey[400]
     } else {
-        return undefined
+        return 'undefined'
     }
 }
 
@@ -68,19 +72,36 @@ export const bgColorDayName = (dayName: string, hasEvent: boolean) => {
     }
 }
 
+// V2-bg
 export const bgColorTimelineTypeTime = (event: TimeSheetData) => {
     if (event.type_time === TIMESHEET_TYPE_TIME['WORKING_TIME']) {
         if (event.type) {
-            return '#fff'
+            return 'undefined'
         }
 
         if (event?.leave_form?.is_salary || event?.compensatory_leave) {
-            return green[50]
+            return greenV2[20]
         } else {
-            return Orange[200]
+            return orangeV2[20]
         }
     } else {
-        return Red[200]
+        return violetV2[20]
+    }
+}
+
+// V2-color
+export const colorTimeLineTypeTime = (event: TimeSheetData) => {
+    if (event.type_time === TIMESHEET_TYPE_TIME['WORKING_TIME']) {
+        if (event.type) {
+            return Base.black
+        }
+        if (event?.leave_form?.is_salary || event?.compensatory_leave) {
+            return greenV2[50]
+        } else {
+            return orangeV2[50]
+        }
+    } else {
+        return violetV2[50]
     }
 }
 

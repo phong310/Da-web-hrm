@@ -264,6 +264,56 @@ export const convertDatetimeTZWithoutSecond = (
     return dateTimeWithoutSecond(date, formatDate)
 }
 
+export const formatNormalDateV2 = (d: Date | string) => {
+    return format(new Date(d), 'yyyy/MM/dd')
+}
+
+
+export const getAllDaysInWeeks = (startDate: Date | string, endDate: Date | string) => {
+    const days = []
+    const currentDate = new Date(startDate)
+    const currentEnd = new Date(endDate)
+    while (currentDate <= currentEnd) {
+        days.push(new Date(currentDate))
+        currentDate.setDate(currentDate.getDate() + 1)
+    }
+    return days
+}
+
+export const formatDayV2 = (date: Date | string) => {
+    const formattedDate = format(new Date(date), 'EEE', {
+        locale: locale[language]
+    })
+
+    const dayOfWeek = formattedDate.slice(4) // Lấy phần chỉ chứa ngày trong chuỗi
+
+    if (dayOfWeek === '2') {
+        return 'T2'
+    } else if (dayOfWeek === '3') {
+        return 'T3'
+    } else if (dayOfWeek === '4') {
+        return 'T4'
+    } else if (dayOfWeek === '5') {
+        return 'T5'
+    } else if (dayOfWeek === '6') {
+        return 'T6'
+    } else if (dayOfWeek === '7') {
+        return 'T7'
+    } else if (dayOfWeek === 'CN') {
+        return 'CN'
+    }
+
+    return formattedDate // Trả về giá trị gốc nếu không phải ngày trong tuần
+}
+
+export const convertTime = (d: Date | string) => {
+    if (!d) {
+        return null
+    }
+    d = replaceDashesToSlashes(d)
+    return format(new Date(d), 'HH:mm')
+}
+
 
 export {
     minutesToDays,

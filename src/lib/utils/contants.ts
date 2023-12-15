@@ -238,6 +238,10 @@ export const TYPE_SETTING_TYPES_OT = {
     WEEKEND: 2,
     HOLIDAY: 3
 }
+export const TYPE_TIME = {
+    MONTH: 'month',
+    WEEK: 'week'
+}
 
 export const ACTION_FORM = [
     'created',
