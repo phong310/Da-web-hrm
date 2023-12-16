@@ -17,29 +17,31 @@ import { useAtom, useAtomValue } from 'jotai'
 // import { useAuth } from 'lib/hooks'
 // import { TimeSheetProps } from 'screen/timesheet'
 import { useForm } from 'react-hook-form'
-// import { V1 } from 'constants'
-// import Overview from 'components/v2/dashboard/Overview'
-// import ReportDashboard from 'components/v2/dashboard/ReportDashboard'
-import {
-  reportAllTotalAmountArr,
-  reportAmountArr,
-  reportTotalAmountArr,
-  reportTotalLaborContractArr
-} from 'lib/utils/v2'
-// import { Base, Green, Orange, PrimaryColors, Yellow } from 'styles/v2'
-// import Page from 'components/v2/common/Page'
-import { formatYearMonth, getAllDaysInMonth, minutesToDays } from 'lib/utils/format'
-import { PERMISSIONS_MANAGE_APPLICATION } from 'lib/utils/contants'
 import { systemSettingAtom } from 'lib/atom/authAtom'
 import { monthCalendarAtom } from 'lib/atom/calendarAtom'
 import { useAuth } from 'lib/hook/useAuth'
 import { TimeSheetProps } from 'screen/timesheet/TimeSheet'
 import { V1 } from 'constants/apiVersion'
+import { formatYearMonth, getAllDaysInMonth } from 'lib/utils/format'
+import { PERMISSIONS_MANAGE_APPLICATION } from 'lib/utils/contants'
+import { minutesToDays } from 'lib/utils/datetime'
 import { Page } from 'components/Layouts/Page/Page'
-import { PageTable } from 'components/Layouts/Page/PageTable'
-import { Pagev2 } from 'components/Layouts/Page/Pagev2'
-import { Base } from 'styles/colors'
 import Overview from 'components/dashborad/Overview'
+import { Base, Orange, PrimaryColors, Yellow } from 'styles/colors'
+import { DatePicker } from 'components/Form/Input/DatePicker'
+import ReportDashboard from './ReportDashboard'
+import { reportAllTotalAmountArr, reportAmountArr, reportTotalAmountArr } from 'lib/utils'
+// import { V1 } from 'constants'
+// import Overview from 'components/v2/dashboard/Overview'
+// import ReportDashboard from 'components/v2/dashboard/ReportDashboard'
+// import {
+//   reportAllTotalAmountArr,
+//   reportAmountArr,
+//   reportTotalAmountArr,
+//   reportTotalLaborContractArr
+// } from 'lib/utils/v2'
+// import { Base, Green, Orange, PrimaryColors, Yellow } from 'styles/v2'
+// import Page from 'components/v2/common/Page'
 
 const Dashboard: React.VFC = () => {
   const { t } = useTranslation()
@@ -119,9 +121,82 @@ const Dashboard: React.VFC = () => {
   }, [watch('month'), setMonthAtom])
 
   return (
-    <Pagev2 title={t('dashboard.overview')}>
+    <Page title={t('dashboard.overview')}>
       <Overview systemSetting={systemSetting} remainingDayOff={displayMinutesRemains} />
-    </Pagev2>
+
+      <Box>
+        <Box sx={{ ...styleBoxConainer }}>
+          <Typography color={PrimaryColors['600']} fontWeight={600} sx={{ ...styleTitle }}>
+            {t('timesheet.statistic_title')}
+          </Typography>
+          <Box sx={{ ...styleBoxInner }}>
+            {!isMobile && <TextRemainingStyle>{displayDate}</TextRemainingStyle>}
+            <DatePicker
+              name="month"
+              views={['year', 'month']}
+              maxDate={new Date()}
+              control={control}
+              defaultValue={monthAtom}
+              size="small"
+            />
+          </Box>
+        </Box>
+
+        <Grid container spacing={{ xs: 0 }} sx={{ ...styleGrid }}>
+          <ReportDashboard
+            titleReport={t('timesheet.statistic')}
+            titleList={reportAmountArr}
+            data={amount}
+            isTimeStatisticBox={true}
+            month={formatYearMonth(
+              new Date(watch('month')).getMonth() + 1,
+              new Date(watch('month')).getFullYear()
+            )}
+            colorText={PrimaryColors['500']}
+            background={PrimaryColors['000']}
+          />
+          {/* {hasManagePermission() ? (
+            <ReportDashboard
+              titleReport={t('labor_contract.contract_managerment')}
+              titleList={reportTotalLaborContractArr}
+              data={amount}
+              isPermisstion={true}
+              colorText={Orange['600']}
+              background={Orange['000']}
+            />
+          ) : (
+            ''
+          )} */}
+          <ReportDashboard
+            titleReport={t('application_form.all_application')}
+            titleList={reportTotalAmountArr}
+            data={amount}
+            month={formatYearMonth(
+              new Date(watch('month')).getMonth() + 1,
+              new Date(watch('month')).getFullYear()
+            )}
+            colorText={Yellow['600']}
+            background={Yellow['000']}
+          />
+          {hasManagePermission() ? (
+            <ReportDashboard
+              titleReport={t('menu.management')}
+              titleList={reportAllTotalAmountArr}
+              data={amount}
+              isPermisstion={true}
+              month={formatYearMonth(
+                new Date(watch('month')).getMonth() + 1,
+                new Date(watch('month')).getFullYear()
+              )}
+              colorText={Orange['400']}
+              background={Orange['000']}
+            />
+          ) : (
+            ''
+          )}
+        </Grid>
+      </Box>
+    </Page>
   )
 }
 
