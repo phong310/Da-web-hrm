@@ -280,6 +280,12 @@ export const getAllDaysInWeeks = (startDate: Date | string, endDate: Date | stri
     return days
 }
 
+export const formatDay = (date: Date | string) => {
+    return format(new Date(date), 'EEE', {
+        locale: locale[language]
+    })
+}
+
 export const formatDayV2 = (date: Date | string) => {
     const formattedDate = format(new Date(date), 'EEE', {
         locale: locale[language]

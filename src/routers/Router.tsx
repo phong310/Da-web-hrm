@@ -33,6 +33,8 @@ import { RequestChangeTimesheetApplication } from 'screen/RequestChangeTimesheet
 import { CompensatoryLeaveApplication } from 'screen/compensatoryLeave/CompensatoryLeaveApplication'
 import { ListEmployeeLeaveApplication } from 'screen/leaveForm/ListEmployeeLeaveApplication'
 import { TimeSheet } from 'screen/timesheet/TimeSheet'
+import { ManagementTimesheet } from 'screen/timesheet/ManagerTimeSheet/ManagementTimeshee'
+import { ManagementTimesheetLog } from 'screen/timesheet-log/ManagementTimesheetLog'
 
 interface RouterItem {
   path: string
@@ -64,6 +66,40 @@ export const routers: RouterItem[] = [
       parents: [
         {
           name: i18n.t('menu.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+
+  //timekeep-manager
+  {
+    path: '/time-keeping/manager/timesheet',
+    protected: true,
+    element: <ManagementTimesheet />,
+    permissions: [allPermissions.timekeeping_manage],
+    breadCrumb: {
+      name: i18n.t('menu.management_timekeeping'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+
+  // timesheet-log manager
+  {
+    path: '/time-keeping/manager/timesheet-log',
+    protected: true,
+    element: <ManagementTimesheetLog />,
+    permissions: [allPermissions.timekeeping_manage], //
+    breadCrumb: {
+      name: i18n.t('timesheet-log.management'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
           link: '/'
         }
       ]

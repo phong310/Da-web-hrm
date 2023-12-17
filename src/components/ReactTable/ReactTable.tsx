@@ -2,6 +2,7 @@ import {
   Box,
   ClickAwayListener,
   PaginationProps,
+  Paper,
   Stack,
   StackProps,
   Table,
@@ -11,33 +12,33 @@ import {
   TableHead,
   TableProps,
   TableRow,
-  Tooltip,
   Typography
 } from '@mui/material'
-import TableCell, { tableCellClasses } from '@mui/material/TableCell'
-import { styled } from '@mui/material/styles'
 import { SxProps } from '@mui/system'
+import { TableSkeleton, TableSkeletonType } from 'components/Skeleton/TableSkeleton'
+import { UnknownObj } from 'lib/types/utils'
+// import { TableSkeleton, TableSkeletonType } from 'components/Skeleton'
+// import { RoundPaperv2 } from 'components/v2/RoundPaperv2'
+// import { UnknownObj } from 'lib/types'
 import { ReactElement, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CellProps, Column, Row as RowProps, TableOptions, useTable } from 'react-table'
-// import { actionHook, hooks, selectionHook } from '../tableHooks'
-import { UnknownObj } from 'lib/types/utils'
-import { TableSkeleton, TableSkeletonType } from 'components/Skeleton/TableSkeleton'
-import { bgColorMonth } from 'screen/timesheet/timesheetLib'
-import { grey } from 'styles/colors'
-import { EmptyTable } from './EmptyTable'
-import { Pagination } from './Pagination/Pagination'
-import { CalendarCell, Cell, Row, SortLabel } from './StyledComponent'
 import { actionHook, hooks, selectionHook } from './tableHooks'
+import { RoundPaper } from 'components/Layouts/Page/RoundPaper'
+import { FilterBar } from './FilterBar'
+import { EmptyTable } from './EmptyTable'
+import { CalendarCell, Cell, Row, SortLabel } from './StyledComponent'
+import { blueV2 } from 'styles/colors'
+import { Pagination } from './Pagination/Pagination'
+// import { blueV2 } from 'styles/v2/colors'
+// import { EmptyTable } from '../EmptyTable'
+// import { Pagination } from '../Pagination'
+// import { CalendarCell, Cell, FilterBar, Row, SortLabel } from '../components'
+// import { actionHook, hooks, selectionHook } from '../tableHooks'
 
 export type PaginationMeta = {
   page: number
   per_page: number
-}
-
-export const styleHeaderTable = {
-  fontSize: { xs: '14px', sm: '16px' },
-  fontWeight: 'bold'
 }
 
 export type ActionColumnConfig = {
@@ -113,7 +114,6 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
       autoResetPage: false,
       autoResetSortBy: false,
       pageCount,
-      total,
       ...useTableOptions
     },
     ...hooks,
@@ -140,48 +140,24 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
     }
   }, [handleChangePagination, pageIndex, pageSize])
 
-  const StyledTableCell = styled(TableCell, {
-    shouldForwardProp: (prop) => prop !== 'hasCellClick'
-  })<{ hasCellClick?: boolean }>(({ theme, hasCellClick }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14
-    }
-  }))
+  // if (loading && !data.length) {
+  //   return <TableSkeleton {...skeletonConfig} />
+  // }
 
-  //@ts-ignore
-  const StyledTableRow = styled(TableRow, {
-    shouldForwardProp: (prop) => prop !== 'hasRowClick'
-  })<{ hasRowClick?: boolean }>(({}) => ({
-    // '&:nth-of-type(even)': {
-    //   backgroundColor: '#F0F0F0'
-    // },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 0
-    },
-    cursor: 'pointer',
-    '& tr': {
-      border: '1px solid #f0f0f0'
-    },
-    '&:hover': {
-      backgroundColor: '#F0F0F0'
-    }
-  }))
+  // if (!loading && !data.length) {
+  //   return <EmptyTable />
+  // }
 
   return (
-    <Box component={'div'}>
-      {/* {handleChangeParams && (
+    <RoundPaper elevation={0}>
+      {handleChangeParams && (
         <FilterBar
           searchColumns={columns as Column<UnknownObj>[]}
           watchMode={true}
           handleChangeParams={handleChangeParams}
           mb={2}
         />
-      )} */}
+      )}
 
       {loading && !data.length ? (
         <TableSkeleton {...skeletonConfig} />
@@ -189,7 +165,7 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
         <EmptyTable />
       ) : (
         <ClickAwayListener onClickAway={onClickAway}>
-          <TableContainer {...tableContainerProps}>
+          <TableContainer component={Paper} sx={sx} elevation={0} {...tableContainerProps}>
             <Table {...tableProps} {...getTableProps()}>
               <TableHead>
                 {headerGroups.map((headerGroup) => {
@@ -217,10 +193,10 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                               paddingY: '16px',
                               backgroundColor: selection
                                 ? index != 0
-                                  ? bgColorMonth(index)
-                                  : grey[200]
-                                : bgColorMonth(index),
-                              minWidth: 60,
+                                  ? blueV2[20]
+                                  : blueV2[20]
+                                : blueV2[20],
+                              minWidth: 200,
                               paddingX: index == 0 ? '16px' : '8px',
                               ...stickyFirstCol(index, TypeCell.Header, selection)
                             }}
@@ -240,7 +216,7 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                                 sx={{
                                   fontSize: {
                                     xs: '12px',
-                                    sm: '16px'
+                                    sm: '14px'
                                   }
                                 }}
                               >
@@ -255,32 +231,21 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                             key={key}
                             {...cellHeaderProps}
                             sx={{
-                              minWidth: 0,
                               width: column.id === '__action' ? 50 : 'auto',
-                              padding: index === 0 ? '16px 8px' : '16px 8px'
+                              padding: index === 0 ? '16px 16px' : '16px 8px'
                             }}
                           >
                             <SortLabel
-                              title={t('sort')}
                               active={column.isSorted}
                               // react-table has a unsorted state which is not treated here
                               direction={column.isSortedDesc ? 'desc' : 'asc'}
-                              hideSortIcon={
-                                column.id === '_selector' ||
-                                column.id === '__action' ||
-                                column.id === 'selection'
-                              }
+                              hideSortIcon={column.id === '_selector' || column.id === '__action'}
                               sx={{
                                 width: '100%',
-                                justifyContent: column.id === 'selection' ? 'right' : 'left',
                                 ...cellHeaderProps?.style
                               }}
                             >
-                              <Box>
-                                <Stack direction="row" sx={{ ...styleHeaderTable }}>
-                                  {column.render('Header')}
-                                </Stack>
-                              </Box>
+                              <Stack direction="row">{column.render('Header')}</Stack>
                             </SortLabel>
                           </Cell>
                         )
@@ -289,15 +254,16 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                   )
                 })}
               </TableHead>
+
               <TableBody {...getTableBodyProps()}>
                 {rows.map((row) => {
                   prepareRow(row)
                   const { key, ...getRowProps } = row.getRowProps()
                   return (
-                    <StyledTableRow
+                    <Row
                       onClick={() => hasRowClick && onRowClick(row)}
                       hasRowClick={hasRowClick}
-                      // hover
+                      hover
                       key={key}
                       {...getRowProps}
                     >
@@ -310,96 +276,54 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                           }
                         ])
                         return (
-                          <StyledTableCell
+                          <Cell
                             hasCellClick={hasCellClick}
                             onClick={() => onCellClick?.(cell as any)}
                             key={index}
                             variant="body"
                             {...getCellProps}
                             sx={{
-                              paddingX: 1,
-                              minWidth:
-                                cell.column.id === '__action' ||
-                                cell.column.id === 'selection' ||
-                                cell.column.id === 'STT' ||
-                                cell.column.id === 'No'
-                                  ? 'fit-content'
-                                  : 200,
+                              padding: 1,
+                              minWidth: cell.column.id === '__action' ? 50 : 200,
+                              backgroundColor: 'white',
+                              borderRight: 1,
                               ...stickyFirstCol(index, TypeCell.Body, selection, isTableCalendar)
                             }}
                           >
-                            <Tooltip
-                              arrow
-                              PopperProps={{
-                                sx: {
-                                  ...stylePaperPropTooltip
-                                }
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                ...getCellProps?.style
                               }}
-                              placement="top"
-                              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                              //@ts-ignore
-                              title={cell.column?.is_tooltip ? cell.render('Cell') : ''}
                             >
-                              {
-                                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                //@ts-ignore
-                                cell.column?.is_long_text ? (
-                                  <Box
-                                    sx={{
-                                      ...styleCellTableToolTip,
-                                      float: cell.column.id === 'selection' ? 'right' : 'left'
-                                    }}
-                                    justifyContent={
-                                      cell.column.id === 'selection' ? 'right' : 'left'
-                                    }
-                                  >
-                                    {cell.render('Cell')}
-                                  </Box>
-                                ) : (
-                                  <Box
-                                    sx={{
-                                      ...styleWidthCellTableTooltip,
-                                      float: cell.column.id === 'selection' ? 'right' : 'left',
-                                      ml:
-                                        cell.column.id === 'STT' || cell.column.id === 'No'
-                                          ? 1.5
-                                          : 0
-                                    }}
-                                    justifyContent={
-                                      cell.column.id === 'selection' ? 'right' : 'left'
-                                    }
-                                  >
-                                    {cell.render('Cell')}
-                                  </Box>
-                                )
-                              }
-                            </Tooltip>
-                          </StyledTableCell>
+                              {cell.render('Cell')}
+                            </Box>
+                          </Cell>
                         )
                       })}
-                    </StyledTableRow>
+                    </Row>
                   )
                 })}
               </TableBody>
 
               {/* {paginationType === 'table' && (
-                    <TableFooter>
-                      <TableRow>
-                        <Pagination<T> instance={instance} />
-                      </TableRow>
-                    </TableFooter>
-                  )} */}
+                  <TableFooter>
+                    <TableRow>
+                      <Pagination<T> instance={instance} />
+                    </TableRow>
+                  </TableFooter>
+                )} */}
             </Table>
 
             {/* {paginati onType === 'normal' && (
-                  <Stack direction="row" my={3} {...nPaginationContainerProps} justifyContent="center">
-                    <Pagination<T>
-                      type={paginationType}
-                      instance={instance}
-                      nPaginationProps={nPaginationProps}
-                    />
-                  </Stack>
-                )} */}
+                <Stack direction="row" my={3} {...nPaginationContainerProps} justifyContent="center">
+                  <Pagination<T>
+                    type={paginationType}
+                    instance={instance}
+                    nPaginationProps={nPaginationProps}
+                  />
+                </Stack>
+              )} */}
           </TableContainer>
         </ClickAwayListener>
       )}
@@ -409,25 +333,27 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
             <TableRow>
               <Cell
                 sx={{
-                  ...styleTableRowCell
+                  fontWeight: 500,
+                  minWidth: { xs: 150, sm: 200 },
+                  lineHeight: '22px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  overflow: 'auto'
                 }}
               >
-                <Box
+                <Typography
                   sx={{
-                    ...styleBoxPanigation
+                    fontSize: {
+                      xs: 12,
+                      sm: 14
+                    },
+                    minWidth: 100
                   }}
                 >
-                  <Typography
-                    sx={{
-                      ...styleTypographyTotal
-                    }}
-                  >
-                    {t('table.total_records')}: {total}
-                  </Typography>
-                  <Box>
-                    <Pagination<T> instance={instance} />
-                  </Box>
-                </Box>
+                  {t('table.total_records')}: {total}
+                </Typography>
+                <Pagination<T> instance={instance} />
               </Cell>
             </TableRow>
           </TableBody>
@@ -442,7 +368,7 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
           />
         </Stack>
       )}
-    </Box>
+    </RoundPaper>
   )
 }
 
@@ -473,56 +399,3 @@ const stickyFirstCol = (
 
 export { ReactTable }
 
-const styleTypographyTotal = {
-  fontSize: {
-    xs: 14,
-    sm: 16
-  },
-  minWidth: 100
-}
-
-const styleTableRowCell = {
-  fontWeight: 500,
-  minWidth: 60,
-  lineHeight: '22px',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  overflow: 'auto'
-}
-
-const styleCellTableToolTip = {
-  width: 'fit-content',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  maxWidth: '150px',
-  fontSize: '16px'
-}
-
-const stylePaperPropTooltip = {
-  '& .MuiTooltip-tooltip': {
-    backgroundColor: '#243041',
-    color: '#fff',
-    borderRadius: '4px',
-    fontSize: '16px',
-    padding: '8px',
-    maxWidth: '200px'
-  },
-  '& .MuiTooltip-arrow': {
-    color: '#243041'
-  }
-}
-
-const styleWidthCellTableTooltip = {
-  width: 'fit-content',
-  fontSize: { xs: '14px', md: '16px' }
-}
-
-const styleBoxPanigation = {
-  display: 'flex',
-  alignItems: { xs: 'flex-start', md: 'center' },
-  justifyContent: 'space-between',
-  flexDirection: { xs: 'column', md: 'inherit' },
-  width: '100%'
-}

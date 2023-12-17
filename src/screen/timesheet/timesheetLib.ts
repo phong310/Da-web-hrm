@@ -52,6 +52,14 @@ export const colorDayName = (date: string | Date, workingDays: WorkingDayData[] 
     }
 }
 
+export const colorDayName1 = (date: string | Date | any) => {
+    if (isWeekend(date)) {
+        return red[200]
+    } else {
+        return undefined
+    }
+}
+
 export const bgColorDay = (isFuture: boolean, isNotOnDay: boolean) => {
     if (isFuture && isNotOnDay == false) {
         return grey[200]
@@ -104,6 +112,7 @@ export const colorTimeLineTypeTime = (event: TimeSheetData) => {
         return violetV2[50]
     }
 }
+
 
 export const bgColorTimeline = (type: number) => {
     if (type === DOT_TIMESHEET_TYPE.NORMAL) {

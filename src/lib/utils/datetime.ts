@@ -95,6 +95,11 @@ const minutesToDays: any = (
     return res
 }
 
+const isPast = (date: Date | string) => {
+    const d = new Date(date)
+    return d < new Date()
+}
+
 const minutesToHours = (m: number) => {
     m = Math.floor(m)
     const hour = Math.floor(m / 60)
@@ -130,10 +135,6 @@ const isFuture = (date: Date | string) => {
     return d > new Date()
 }
 
-const isPast = (date: Date | string) => {
-    const d = new Date(date)
-    return d < new Date()
-}
 
 const isWeekend = (date: Date | string) => {
     const d = new Date(date)
