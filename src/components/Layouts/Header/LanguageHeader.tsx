@@ -3,7 +3,6 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import MenuItem from '@mui/material/MenuItem'
 import MenuList from '@mui/material/MenuList'
 import FlagEn from 'assets/svgs/en.svg'
-import FlagJp from 'assets/svgs/jp.svg'
 import FlagVn from 'assets/svgs/vn.svg'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -135,17 +134,8 @@ const LanguageButton = styled(Button)(({ theme }) => ({
     paddingBottom: '4px'
   }
 }))
-const MenuFlagItem = styled(MenuItem)(({ theme }) => ({
+const MenuFlagItem = styled(MenuItem)(({  }) => ({
   '&:hover': {
     background: 'rgba(89, 195, 255, 0.1)'
   }
-}))
-
-const Overlay = styled('div')(() => ({
-  position: 'absolute',
-  width: '100%',
-  height: '100vh',
-  background: '#0000',
-  left: '0',
-  margin: '0px 20px'
 }))

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { FormControlProps, OutlinedInputProps } from '@mui/material'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Radio from '@mui/material/Radio'

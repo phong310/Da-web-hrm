@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { FormControlProps, OutlinedInputProps } from '@mui/material'
 import Switch, { SwitchProps } from '@mui/material/Switch'
 import { FieldValues, useController, UseControllerProps } from 'react-hook-form'

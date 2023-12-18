@@ -1,3 +1,5 @@
+import i18n from 'lib/lang/translations/i18n'
+
 export type KindOfLeaveType = {
     id: number
     name: string
@@ -18,6 +20,11 @@ export const TYPE_FORM = {
     REQUEST_CHANGE_TIMESHEET: 2,
     COMPENSATORY_LEAVE: 3
 }
+
+export const STATUS_MANAGE_FORM_OPTIONS = [
+    { label: i18n.t('approved'), value: 1 },
+    { label: i18n.t('rejected'), value: 2 }
+]
 
 export type KolData = {
     id: number

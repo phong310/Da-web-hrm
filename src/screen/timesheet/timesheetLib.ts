@@ -14,6 +14,14 @@ export const bgColorMonth = (date: string | Date, workingDays: WorkingDayData[] 
     }
 }
 
+export const bgColorMonth2 = (index: number) => {
+    if (index % 2 !== 0) {
+        return grey[200]
+    } else {
+        return grey[400]
+    }
+}
+
 export const bgColorRowIndex = (index: number) => {
     if (index === 0) {
         return grey[200]

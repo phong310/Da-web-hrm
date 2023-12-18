@@ -2,7 +2,7 @@ import { Link, styled } from '@mui/material'
 import Breadcrumbs, { BreadcrumbsProps } from '@mui/material/Breadcrumbs'
 
 import React, { useEffect, useState } from 'react'
-import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 
 import { useHistory } from '../../lib/hook/useHistory'
 import { routers } from '../../routers'
@@ -21,7 +21,6 @@ const CustomBreadCrumbs: React.VFC<CustomBreadCrumbProps> = ({
 }: CustomBreadCrumbProps) => {
   const location = useLocation()
   const { history } = useHistory()
-  const navigate = useNavigate()
   const [routeMatch, setRouteMatch] = useState<any>([])
   const [currName, setCurrName] = useState<string | undefined>('')
 
@@ -105,3 +104,4 @@ const CustomLink = styled(Link)({
 })
 
 export { CustomBreadCrumbs }
+

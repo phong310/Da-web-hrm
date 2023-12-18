@@ -2,23 +2,18 @@ import {
   Autocomplete,
   CircularProgress,
   FormControlProps,
-  IconButton,
   InputAdornment,
   OutlinedInputProps,
   Stack
 } from '@mui/material'
-import React, { SyntheticEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FieldValues, useController, UseControllerProps } from 'react-hook-form'
 import { makeStyles } from '@mui/styles'
-// import { styleInput } from '../Input/v2/common'
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline'
-import { checkHasRole } from 'constants/roles'
-import { useAuth } from 'lib/hook/useAuth'
-import { UnknownObj } from 'lib/types/utils'
 import { useSelectQuery } from 'lib/hook/useSelectQuery'
+import { UnknownObj } from 'lib/types/utils'
+import React, { SyntheticEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { FieldValues, UseControllerProps, useController } from 'react-hook-form'
 import { AddControlProps, InputControl } from '../Components/InputControl'
-import { Tag } from '../Components/Tag'
 import { InputStyled } from '../Components/InputStyled'
+import { Tag } from '../Components/Tag'
 export type SelectOption = {
   label: string
   value: unknown
@@ -88,12 +83,11 @@ function Select<T extends UnknownObj, F extends FieldValues = any>({
   ...props
 }: SelectProps<T, F>) {
   const {
-    field: { ref, onChange, onBlur, value: rawValue },
+    field: {  onChange, onBlur, value: rawValue },
     fieldState: { error }
   } = useController({ name, control, defaultValue })
 
   const [inputValue, setInputValue] = useState('')
-  const { role } = useAuth()
 
   const queryParams = useMemo(() => {
     if (!queryFilter && !addQueryFilter) return { per_page: -1 }
@@ -138,7 +132,7 @@ function Select<T extends UnknownObj, F extends FieldValues = any>({
   }, [rawValue, filterValue, multiple])
 
   const handleChangeValue = (
-    e: SyntheticEvent<Element, Event>,
+    _e: SyntheticEvent<Element, Event>,
     newValue: SelectOption | SelectOption[] | null
   ) => {
     if (!newValue) {
@@ -157,7 +151,7 @@ function Select<T extends UnknownObj, F extends FieldValues = any>({
     setValue(newValue)
   }
 
-  const handleChangeInputValue = (e: SyntheticEvent<Element, Event>, newValue: string) => {
+  const handleChangeInputValue = (_e: SyntheticEvent<Element, Event>, newValue: string) => {
     setInputValue(newValue)
     setInputState && setInputState(newValue)
     if (!newValue) {
@@ -248,3 +242,4 @@ function Select<T extends UnknownObj, F extends FieldValues = any>({
 }
 
 export { Select }
+

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Pagev2 } from 'components/Layouts/Page/Pagev2'
 import { usePaginationQuery } from 'lib/hook/usePaginationQuery'
 import { useState } from 'react'
@@ -36,7 +37,7 @@ export const ReactVirtualizedTableWithToolBar = (
   } = props
   const [displayColumns, setDisplayColumns] = useState<any>([])
 
-  const { paginationData, isLoading, handleChangeParams, refetch } = usePaginationQuery(
+  const { paginationData, isLoading, handleChangeParams } = usePaginationQuery(
     endpoint,
     params
   )

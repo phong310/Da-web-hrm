@@ -20,17 +20,17 @@ import { SxProps } from '@mui/system'
 import { ReactElement, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { CellProps, Column, Row as RowProps, TableOptions, useTable } from 'react-table'
-import { styleHeaderTable } from './ReactTableManager'
+import { actionHook } from './tableHooks'
+import { hooks } from './tableHooks'
+import { selectionHook } from './tableHooks'
 import { TableSkeleton, TableSkeletonType } from 'components/Skeleton/TableSkeleton'
 import { UnknownObj } from 'lib/types/utils'
-import { actionHook, hooks, selectionHook } from './tableHooks'
 import { FilterBar } from './FilterBar'
 import { EmptyTable } from './EmptyTable'
 import { CalendarCell, Cell, Row, SortLabel } from './StyledComponent'
-import { bgColorMonth2 } from 'screen/timesheet/timesheetLib'
-import { grey } from 'styles/colors'
 import { Pagination } from './Pagination/Pagination'
-
+import { grey } from 'styles/colors'
+import { bgColorMonth2 } from 'screen/timesheet/timesheetLib'
 export type PaginationMeta = {
   page: number
   per_page: number
@@ -71,7 +71,7 @@ interface TableProperties<T extends object> extends TableOptions<T> {
   tableContainerProps?: TableContainerProps
 }
 
-function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
+function ReactTableManager<T extends object>(props: TableProperties<T>): ReactElement {
   const {
     columns,
     data,
@@ -136,6 +136,13 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
     }
   }, [handleChangePagination, pageIndex, pageSize])
 
+  // if (loading && !data.length) {
+  //   return <TableSkeleton {...skeletonConfig} />
+  // }
+
+  // if (!loading && !data.length) {
+  //   return <EmptyTable />
+  // }
 
   const StyledTableCell = styled(TableCell, {
     shouldForwardProp: (prop) => prop !== 'hasCellClick'
@@ -151,7 +158,7 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
 
   const StyledTableRow = styled(TableRow, {
     shouldForwardProp: (prop) => prop !== 'hasRowClick'
-  })<{ hasRowClick?: boolean }>(({ theme, hasRowClick }) => ({
+  })<{ hasRowClick?: boolean }>(({  }) => ({
     // '&:nth-of-type(even)': {
     //   backgroundColor: '#F0F0F0'
     // },
@@ -216,7 +223,7 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                                   ? bgColorMonth2(index)
                                   : grey[200]
                                 : bgColorMonth2(index),
-                              minWidth: 60,
+                              minWidth: 125,
                               paddingX: index == 0 ? '16px' : '8px',
                               ...stickyFirstCol(index, TypeCell.Header, selection)
                             }}
@@ -231,15 +238,7 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                                 ...cellHeaderProps?.style
                               }}
                             >
-                              <Stack
-                                direction="row"
-                                sx={{
-                                  fontSize: {
-                                    xs: '12px',
-                                    sm: '16px'
-                                  }
-                                }}
-                              >
+                              <Stack direction="row" sx={{ ...styleHeaderTable }}>
                                 {column.render('Header')}
                               </Stack>
                             </SortLabel>
@@ -251,9 +250,8 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                             key={key}
                             {...cellHeaderProps}
                             sx={{
-                              minWidth: 0,
                               width: column.id === '__action' ? 50 : 'auto',
-                              padding: index === 0 ? '16px 8px' : '16px 8px'
+                              padding: index === 0 ? '16px 16px' : '16px 8px'
                             }}
                           >
                             <SortLabel
@@ -261,22 +259,15 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                               active={column.isSorted}
                               // react-table has a unsorted state which is not treated here
                               direction={column.isSortedDesc ? 'desc' : 'asc'}
-                              hideSortIcon={
-                                column.id === '_selector' ||
-                                column.id === '__action' ||
-                                column.id === 'selection'
-                              }
+                              hideSortIcon={column.id === '_selector' || column.id === '__action'}
                               sx={{
-                                width: '100%',
-                                justifyContent: column.id === 'selection' ? 'right' : 'left',
+                                minWidth: column.id === '__action' ? '50px' : '0px',
                                 ...cellHeaderProps?.style
                               }}
                             >
-                              <Box>
-                                <Stack direction="row" sx={{ ...styleHeaderTable }}>
-                                  {column.render('Header')}
-                                </Stack>
-                              </Box>
+                              <Stack direction="row" sx={{ ...styleHeaderTable }}>
+                                {column.render('Header')}
+                              </Stack>
                             </SortLabel>
                           </Cell>
                         )
@@ -342,12 +333,8 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                                 cell.column?.is_long_text ? (
                                   <Box
                                     sx={{
-                                      ...styleCellTableToolTip,
-                                      float: cell.column.id === 'selection' ? 'right' : 'left'
+                                      ...styleCellTableToolTip
                                     }}
-                                    justifyContent={
-                                      cell.column.id === 'selection' ? 'right' : 'left'
-                                    }
                                   >
                                     {cell.render('Cell')}
                                   </Box>
@@ -355,15 +342,11 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
                                   <Box
                                     sx={{
                                       ...styleWidthCellTableTooltip,
-                                      float: cell.column.id === 'selection' ? 'right' : 'left',
                                       ml:
                                         cell.column.id === 'STT' || cell.column.id === 'No'
                                           ? 1.5
                                           : 0
                                     }}
-                                    justifyContent={
-                                      cell.column.id === 'selection' ? 'right' : 'left'
-                                    }
                                   >
                                     {cell.render('Cell')}
                                   </Box>
@@ -379,23 +362,23 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
               </TableBody>
 
               {/* {paginationType === 'table' && (
-                    <TableFooter>
-                      <TableRow>
-                        <Pagination<T> instance={instance} />
-                      </TableRow>
-                    </TableFooter>
-                  )} */}
+                      <TableFooter>
+                        <TableRow>
+                          <Pagination<T> instance={instance} />
+                        </TableRow>
+                      </TableFooter>
+                    )} */}
             </Table>
 
             {/* {paginati onType === 'normal' && (
-                  <Stack direction="row" my={3} {...nPaginationContainerProps} justifyContent="center">
-                    <Pagination<T>
-                      type={paginationType}
-                      instance={instance}
-                      nPaginationProps={nPaginationProps}
-                    />
-                  </Stack>
-                )} */}
+                    <Stack direction="row" my={3} {...nPaginationContainerProps} justifyContent="center">
+                      <Pagination<T>
+                        type={paginationType}
+                        instance={instance}
+                        nPaginationProps={nPaginationProps}
+                      />
+                    </Stack>
+                  )} */}
           </TableContainer>
         </ClickAwayListener>
       )}
@@ -467,11 +450,11 @@ const stickyFirstCol = (
   }
 }
 
-export { ReactTable }
+export { ReactTableManager }
 
 const styleTypographyTotal = {
   fontSize: {
-    xs: 14,
+    xs: 12,
     sm: 16
   },
   minWidth: 100
@@ -479,7 +462,7 @@ const styleTypographyTotal = {
 
 const styleTableRowCell = {
   fontWeight: 500,
-  minWidth: 60,
+  minWidth: 125,
   lineHeight: '22px',
   display: 'flex',
   justifyContent: 'space-between',
@@ -493,7 +476,12 @@ const styleCellTableToolTip = {
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   maxWidth: '150px',
-  fontSize: '16px'
+  fontSize: { xs: '14px', md: '16px' }
+}
+
+export const styleHeaderTable = {
+  fontSize: { xs: '14px', sm: '16px' },
+  fontWeight: 'bold'
 }
 
 const stylePaperPropTooltip = {
@@ -501,7 +489,7 @@ const stylePaperPropTooltip = {
     backgroundColor: '#243041',
     color: '#fff',
     borderRadius: '4px',
-    fontSize: '16px',
+    fontSize: '14px',
     padding: '8px',
     maxWidth: '200px'
   },

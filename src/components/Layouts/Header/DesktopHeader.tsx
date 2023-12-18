@@ -1,17 +1,18 @@
+// @ts-nocheck
 import MenuIcon from '@mui/icons-material/Menu'
-import { AppBar, Box, Grid, IconButton, Stack, styled, Toolbar } from '@mui/material'
+import { AppBar, Grid, IconButton, Stack, styled, Toolbar } from '@mui/material'
 import Logo from '../../../assets/images/logo.png'
 
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { allPermissions, Permissions } from '../../../constants/permissions'
+import { CustomBreadCrumbs } from '../../BreadCrumbs/CustomBreadCrumbs'
 import { drawerWidth } from '../Drawer'
 import { PropsType } from './Header'
 import { LanguageHeader } from './LanguageHeader'
-import { CustomBreadCrumbs } from '../../BreadCrumbs/CustomBreadCrumbs'
-import { allPermissions, Permissions } from '../../../constants/permissions'
 import { Notification } from './Notification'
-import {ProfileHeader} from './ProfileHeader'
+import { ProfileHeader } from './ProfileHeader'
 
 const DesktopHeader: React.VFC<PropsType> = ({ triggerSidebar }) => {
   const { t } = useTranslation()

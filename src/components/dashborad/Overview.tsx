@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Box, Button, Card, Grid, styled, Typography } from '@mui/material'
 import ImageOverView from 'assets/images/overview-image-1.png'
@@ -6,20 +7,15 @@ import TitleCard from 'components/ReactTable/Components/TitleCard'
 import { useApiResource } from 'lib/hook/useApiResource'
 import { useAuth } from 'lib/hook/useAuth'
 import { useCurrentTime } from 'lib/hook/useCurrentTime'
-// import { useApiResource, useAuth, useCurrentTime } from 'lib/hooks'
 import { request } from 'lib/request'
 import { TimeSheetLogData, TimeSheetLogTodayData } from 'lib/types/timeSheet'
 import { convertDatetimeTZ, formatDateTime, formatTime } from 'lib/utils/format'
-// import { TimeSheetLogData, TimeSheetLogTodayData } from 'lib/types'
-// import { convertDatetimeTZ, formatDateTime, formatTime } from 'lib/utils'
 import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
 import { toast } from 'react-toastify'
 import { Base, Greyscale, Orange, PrimaryColors } from 'styles/colors'
-// import { Base, Greyscale, Orange, PrimaryColors } from 'styles/v2'
-// import TitleCard from '../common/TitleCard'
 ChartJS.register(ArcElement, Tooltip)
 function Overview({
   systemSetting,

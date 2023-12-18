@@ -1,5 +1,6 @@
 import { Box, styled, Typography } from '@mui/material'
 import ReactTableWithToolBar from 'components/ReactTable/ReactTableWithToolBar/ReactTableWithToolBar'
+import ReactTableWithToolBarv2 from 'components/ReactTable/ReactTableWithToolBar/ReactTableWithToolBarv2'
 import { V1 } from 'constants/apiVersion'
 import { TIMESHEET_TYPE, TIMESHEET_TYPE_TIME } from 'constants/timeSheetType'
 import { HolidayType } from 'lib/types/applicationForm'
@@ -152,7 +153,7 @@ const ManagementTimesheetLog =  () => {
 
   return (
     <Box sx={{ ...styleTable }}>
-      <ReactTableWithToolBar
+      <ReactTableWithToolBarv2
         endpoint={`${V1}/user/timesheet-log/${params.month}`}
         columns={columns}
         // params={params}

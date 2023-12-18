@@ -8,7 +8,7 @@ type UploadFilesProps = {
   props?: any
 }
 
-export const UploadFiles = ({ files, setFiles, acceptedFiles, ...props }: UploadFilesProps) => {
+export const UploadFiles = ({ files, setFiles, acceptedFiles }: UploadFilesProps) => {
   const handleChange = (file: any) => {
     setFiles(file)
   }

@@ -35,6 +35,10 @@ import { ListEmployeeLeaveApplication } from 'screen/leaveForm/ListEmployeeLeave
 import { TimeSheet } from 'screen/timesheet/TimeSheet'
 import { ManagementTimesheet } from 'screen/timesheet/ManagerTimeSheet/ManagementTimeshee'
 import { ManagementTimesheetLog } from 'screen/timesheet-log/ManagementTimesheetLog'
+import { ManagerLeaveApplication } from 'screen/leaveForm/Managerment/ManagerLeaveApplication'
+import { ManagerOvertimeApplication } from 'screen/OverTime/Managerment/ManagerOvertimeApplication'
+import { ManagerRequestChangeTimesheetApplication } from 'screen/RequestChangeTimesheet/Managerment/ManagerRequestChangeTimesheetApplication'
+import { ManagerCompensatoryLeaveApplication } from 'screen/compensatoryLeave/Managerment/ManagerCompensatoryLeaveApplication'
 
 interface RouterItem {
   path: string
@@ -114,6 +118,68 @@ export const routers: RouterItem[] = [
     permissions: [allPermissions.timekeeping_list],
     breadCrumb: {
       name: i18n.t('timesheet.title'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+
+  //manager-application
+  {
+    path: '/applications/manager/leave-form',
+    protected: true,
+    element: <ManagerLeaveApplication />,
+    permissions: [allPermissions['leave-form_manage']],
+    breadCrumb: {
+      name: i18n.t('application_management.leave_management_breadcrumb'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/applications/manager/overtimes',
+    protected: true,
+    element: <ManagerOvertimeApplication />,
+    permissions: [allPermissions.overtime_manage],
+    breadCrumb: {
+      name: i18n.t('application_management.overtime_management_breadcrumb'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/applications/manager/request-change-timesheets',
+    protected: true,
+    element: <ManagerRequestChangeTimesheetApplication />,
+    permissions: [allPermissions['request-change-timesheets_manage']],
+    breadCrumb: {
+      name: i18n.t('application_management.request_change_timesheet_management_breadcrumb'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/applications/manager/compensatory-leaves',
+    protected: true,
+    element: <ManagerCompensatoryLeaveApplication />,
+    permissions: [allPermissions.compensatory_leave_manage],
+    breadCrumb: {
+      name: i18n.t('application_management.compensatory_leave_management_breadcrumb'),
       parents: [
         {
           name: i18n.t('dashboard.overview'),
