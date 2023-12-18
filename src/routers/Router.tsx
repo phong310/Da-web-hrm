@@ -9,7 +9,7 @@ import { FullScreenLoading } from 'components/Loader'
 import i18n from 'lib/lang/translations/i18n'
 import { CompanyForm } from 'screen/Company/CompanyForm'
 import { ListEmployee } from 'screen/employee/ListEmployee'
-import { checkHasRole } from 'constants/roles'
+import { allRoles, checkHasRole } from 'constants/roles'
 import { NewEmployeeForm } from 'screen/employee/NewEmployeeForm'
 import { EmployeeEditForm } from 'screen/employee/EmployeeEditForm'
 import { EmployeeBankAccount } from 'screen/employee/EmployeeBankAccount'
@@ -39,6 +39,11 @@ import { ManagerLeaveApplication } from 'screen/leaveForm/Managerment/ManagerLea
 import { ManagerOvertimeApplication } from 'screen/OverTime/Managerment/ManagerOvertimeApplication'
 import { ManagerRequestChangeTimesheetApplication } from 'screen/RequestChangeTimesheet/Managerment/ManagerRequestChangeTimesheetApplication'
 import { ManagerCompensatoryLeaveApplication } from 'screen/compensatoryLeave/Managerment/ManagerCompensatoryLeaveApplication'
+import ListPositions from 'screen/CategoryManagement/Positions/ListPositions'
+import ListDepartment from 'screen/CategoryManagement/Department/ListDepartment'
+import ListTitles from 'screen/CategoryManagement/Titles/ListTitles'
+import ListBranch from 'screen/CategoryManagement/Branch/ListBranch'
+import { TabSetting } from 'screen/CategoryManagement/SettingsCompany'
 
 interface RouterItem {
   path: string
@@ -519,6 +524,130 @@ export const routers: RouterItem[] = [
     permissions: [allPermissions['labor-contracts_manage']],
     breadCrumb: {
       name: i18n.t('labor_contract.labor_contract_history_breadcrumb'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+
+  // Quản trị danh mục
+  {
+    path: '/setting/positions',
+    protected: true,
+    element: <ListPositions />,
+    role: allRoles.admin,
+    breadCrumb: {
+      name: i18n.t('Category_management.location'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/setting/departments',
+    protected: true,
+    element: <ListDepartment />,
+    role: allRoles.admin,
+    breadCrumb: {
+      name: i18n.t('Category_management.part'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/setting/titles',
+    protected: true,
+    element: <ListTitles />,
+    role: allRoles.admin,
+    breadCrumb: {
+      name: i18n.t('Category_management.titles'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/setting/branch',
+    protected: true,
+    element: <ListBranch />,
+    role: allRoles.admin,
+    breadCrumb: {
+      name: i18n.t('Category_management.branch'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/general/companies-setting',
+    protected: true,
+    element: <TabSetting />,
+    role: allRoles.admin,
+    breadCrumb: {
+      name: i18n.t('Category_management.setting_company'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+
+  // System Management
+  {
+    path: '/settings/holiday',
+    protected: true,
+    element: <Forbidden />,
+    role: allRoles.admin,
+    breadCrumb: {
+      name: i18n.t('System_Management.list_holiday'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/setting/working-day',
+    protected: true,
+    element: <Forbidden />,
+    role: allRoles.admin,
+    breadCrumb: {
+      name: i18n.t('System_Management.list_working_days'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/setting/setting-personal-income-tax',
+    protected: true,
+    element: <Forbidden />,
+    role: allRoles.admin,
+    breadCrumb: {
+      name: i18n.t('System_Management.setting_personal_income_tax'),
       parents: [
         {
           name: i18n.t('dashboard.overview'),

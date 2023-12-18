@@ -18,11 +18,6 @@ const LANGUAGES = [
     symbol: 'en',
     flag: FlagEn
   }
-  // {
-  //   name: 'Japanese',
-  //   symbol: 'ja',
-  //   flag: FlagJp
-  // }
 ]
 
 export const LanguageHeader = () => {

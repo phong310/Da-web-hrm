@@ -1,7 +1,5 @@
 import { Grid } from '@mui/material'
 import { Pagev2 } from 'components/Layouts/Page/Pagev2'
-// import { Pagev2 } from 'components/Layouts/v2'
-// import { TabPanel } from 'components/Tab'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'

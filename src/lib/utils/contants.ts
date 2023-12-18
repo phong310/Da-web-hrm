@@ -1,4 +1,5 @@
 import i18n from "lib/lang/translations/i18n"
+import TimezoneCountries from 'countries-and-timezones'
 
 export const TYPE_OF_BUSSINESS_OPTIONS = [
     { value: 1, label: "Doanh nghiệp tư nhân" },
@@ -242,7 +243,43 @@ export const TYPE_TIME = {
     MONTH: 'month',
     WEEK: 'week'
 }
+export const parseFormatDate = [
+    {
+        label: 'yyyy-MM-dd',
+        value: 'yyyy-MM-dd'
+    },
+    {
+        label: 'dd-MM-yyyy',
+        value: 'dd-MM-yyyy'
+    },
+    {
+        label: 'MM-dd-yyyy',
+        value: 'MM-dd-yyyy'
+    }
+]
+export const parseLocale = [
+    {
+        label: 'english',
+        value: 'en'
+    },
+    {
+        label: 'vietnamese',
+        value: 'vi'
+    },
 
+]
+
+function getAllTimezones() {
+    const allTimezones = Object.values(TimezoneCountries.getAllTimezones({ deprecated: true })).map(
+        (list) => ({
+            value: list.name,
+            label: `${list.name}`
+        })
+    )
+    return allTimezones
+}
+
+export const parseTimeZone = getAllTimezones()
 export const ACTION_FORM = [
     'created',
     'updated',
