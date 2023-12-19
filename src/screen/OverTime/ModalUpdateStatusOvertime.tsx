@@ -1,3 +1,4 @@
+// @ts-nocheck
 import CloseIcon from '@mui/icons-material/Close'
 import {
     AppBar,
@@ -38,9 +39,6 @@ import { EmployeeSummaryInfov2 } from 'screen/leaveForm/EmployeeSummaryInfov2'
 import { FooterApplication } from 'screen/leaveForm/FooterApplication'
 import { minutesToHours } from '../../lib/utils/datetime'
 
-type DataResponse<T> = {
-  data: T[]
-}
 
 type PropType = DialogProps & {
   onSuccess: () => void
@@ -199,7 +197,7 @@ const ModalUpdateStatusOvertime: React.VFC<PropType> = ({
     }
     setIsCancel(false)
   }
-
+console.log(dataDetail)
   return (
     <Dialog open={open} sx={{ ...stylePopUp }}>
       <AppBar
@@ -264,14 +262,14 @@ const ModalUpdateStatusOvertime: React.VFC<PropType> = ({
                   {t('application_form.reason')}
                 </Typography>
                 <Box sx={{ ...styleBoxNote }}>
-                  <Typography sx={{ ...styleNote }} variant="body1" component="div">
+                  <Typography sx={{ ...styleNote }}  variant="body1" component="div">
                     {dataDetail?.reason}
                   </Typography>
                 </Box>
               </BoxItem>
               <BoxItem>
                 <Typography variant="body1" component="div" sx={{ flex: 1, ...styleBelow }}>
-                  {t('note')}
+                  {t('note')} 
                 </Typography>
                 <Box sx={{ ...styleBoxNote }}>
                   <Typography sx={{ ...styleNote }} variant="body1" component="div">
@@ -352,7 +350,7 @@ const styleNote = {
 const styleBoxNote = {
   justifyContent: 'flex-end',
   textAlign: 'justify',
-  display: { xs: 'flex', sm: 'none' }
+  display: { xs: 'flex', sm: 'unset' }
 }
 
 export const styleBelow = {

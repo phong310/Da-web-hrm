@@ -1,23 +1,25 @@
+// @ts-nocheck
 import { styled, Typography } from '@mui/material'
 import { DatePickerManager } from 'components/Form/Input/DatePickerManager'
 import ReactTableWithTooBarManager, { TabTitle } from 'components/ReactTable/ManageReactTableWithToolbar/ReactTableWithTooBarManager'
 import { Status } from 'components/Status/Status'
-import { TabBase, TabElement } from 'components/Tab/TabBase'
+import { TabElement } from 'components/Tab/TabBase'
+import { TabBaseManager } from 'components/Tab/TabBaseManager'
 import { useAtom } from 'jotai'
 import { monthCalendarAtom } from 'lib/atom/calendarAtom'
 import { searchParamsAtom } from 'lib/atom/searchAtom'
 import { useAuth } from 'lib/hook/useAuth'
 import { KEY_SCREEN, OvertimeFormType, STATUS_MANAGE_FORM_OPTIONS, TYPE_FORM } from 'lib/types/applicationForm'
+import { minutesToHours } from 'lib/utils/datetime'
 import { convertDatetimeTZ, convertDatetimeTZWithoutSecond, convertFormatDate, formatDateTime, formatTime, formatYearMonth } from 'lib/utils/format'
 import { useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { CellValue, Column, Row } from 'react-table'
-import { TimeSheetProps } from 'screen/timesheet/TimeSheet'
 import { TimesheetEmployee } from 'screen/timesheet/components/TimesheetEmployee'
+import { TimeSheetProps } from 'screen/timesheet/TimeSheet'
 import { ModalUpdateStatusOvertime } from '../ModalUpdateStatusOvertime'
-import { minutesToHours } from 'lib/utils/datetime'
 const ManagerOvertimeApplication = () => {
   const navigate = useNavigate()
   const { t } = useTranslation()
@@ -290,7 +292,7 @@ const ManagerOvertimeApplication = () => {
 
   return (
     <>
-      <TabBase tabElement={tabElement} tabValue={tabIndex} />
+      <TabBaseManager tabElement={tabElement} tabValue={tabIndex} />
       <ModalUpdateStatusOvertime
         closeModalEdit={closeModal}
         open={openEdit}

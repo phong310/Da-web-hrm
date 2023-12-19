@@ -44,6 +44,10 @@ import ListDepartment from 'screen/CategoryManagement/Department/ListDepartment'
 import ListTitles from 'screen/CategoryManagement/Titles/ListTitles'
 import ListBranch from 'screen/CategoryManagement/Branch/ListBranch'
 import { TabSetting } from 'screen/CategoryManagement/SettingsCompany'
+import ListHoliday from 'screen/SystemManagement/Holiday/ListHoliday'
+import ListCompenSatoryWorkingDay from 'screen/SystemManagement/CompenSatoryWorkingDay/ListCompenSatoryWorkingDay'
+import ListKindOfLeave from 'screen/SystemManagement/ListOnLeave/ListKindOfLeave'
+import { SettingTypesOvertime } from 'screen/SystemManagement/SettingsTypeOvertime/SettingTypesOvertime'
 
 interface RouterItem {
   path: string
@@ -614,7 +618,7 @@ export const routers: RouterItem[] = [
   {
     path: '/settings/holiday',
     protected: true,
-    element: <Forbidden />,
+    element: <ListHoliday />,
     role: allRoles.admin,
     breadCrumb: {
       name: i18n.t('System_Management.list_holiday'),
@@ -629,7 +633,7 @@ export const routers: RouterItem[] = [
   {
     path: '/setting/working-day',
     protected: true,
-    element: <Forbidden />,
+    element: <ListCompenSatoryWorkingDay />,
     role: allRoles.admin,
     breadCrumb: {
       name: i18n.t('System_Management.list_working_days'),
@@ -642,12 +646,27 @@ export const routers: RouterItem[] = [
     }
   },
   {
-    path: '/setting/setting-personal-income-tax',
+    path: '/setting/kind-of-leave',
     protected: true,
-    element: <Forbidden />,
+    element: <ListKindOfLeave />,
     role: allRoles.admin,
     breadCrumb: {
-      name: i18n.t('System_Management.setting_personal_income_tax'),
+      name: i18n.t('System_Management.on_leave'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/setting/setting-types-overtime',
+    protected: true,
+    element: <SettingTypesOvertime />,
+    role: allRoles.admin,
+    breadCrumb: {
+      name: i18n.t('System_Management.set_overtime_type'),
       parents: [
         {
           name: i18n.t('dashboard.overview'),

@@ -1,8 +1,10 @@
+// @ts-nocheck
 import { Typography } from '@mui/material'
 import { DatePickerManager } from 'components/Form/Input/DatePickerManager'
 import ReactTableWithTooBarManager, { TabTitle } from 'components/ReactTable/ManageReactTableWithToolbar/ReactTableWithTooBarManager'
 import { Status } from 'components/Status/Status'
-import { TabBase, TabElement } from 'components/Tab/TabBase'
+import { TabElement } from 'components/Tab/TabBase'
+import { TabBaseManager } from 'components/Tab/TabBaseManager'
 import { useAtom, useAtomValue } from 'jotai'
 import { systemSettingAtom } from 'lib/atom/authAtom'
 import { monthCalendarAtom } from 'lib/atom/calendarAtom'
@@ -287,7 +289,7 @@ const ManagerRequestChangeTimesheetApplication = () => {
 
   return (
     <>
-      <TabBase tabElement={tabElement} tabValue={tabIndex} />
+      <TabBaseManager tabElement={tabElement} tabValue={tabIndex} />
       <ModalUpdateStatusRequestTime
         open={openEdit}
         key={idEdit}

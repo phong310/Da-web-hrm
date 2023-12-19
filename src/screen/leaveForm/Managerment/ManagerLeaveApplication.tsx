@@ -3,7 +3,8 @@ import { SelectOption } from 'components/Form/Autocomplete/Select'
 import { DatePickerManager } from 'components/Form/Input/DatePickerManager'
 import ReactTableWithTooBarManager, { TabTitle } from 'components/ReactTable/ManageReactTableWithToolbar/ReactTableWithTooBarManager'
 import { Status } from 'components/Status/Status'
-import { TabBase, TabElement } from 'components/Tab/TabBase'
+import { TabElement } from 'components/Tab/TabBase'
+import { TabBaseManager } from 'components/Tab/TabBaseManager'
 import { V1 } from 'constants/apiVersion'
 import { useAtom, useAtomValue } from 'jotai'
 import { systemSettingAtom } from 'lib/atom/authAtom'
@@ -352,7 +353,7 @@ const ManagerLeaveApplication = () => {
 
   return (
     <>
-      <TabBase tabElement={tabElement} tabValue={tabIndex} />
+      <TabBaseManager tabElement={tabElement} tabValue={tabIndex} />
       <ModalUpdateStatusLeave
         closeModalEdit={closeModal}
         open={openEdit}

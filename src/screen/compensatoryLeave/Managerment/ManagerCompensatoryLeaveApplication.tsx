@@ -1,6 +1,11 @@
 import { Typography } from '@mui/material'
 import { SelectOption } from 'components/Form/Autocomplete/Select'
+import { DatePickerManager } from 'components/Form/Input/DatePickerManager'
 import ReactTableWithTooBarManager, { TabTitle } from 'components/ReactTable/ManageReactTableWithToolbar/ReactTableWithTooBarManager'
+import { Status } from 'components/Status/Status'
+import { TabElement } from 'components/Tab/TabBase'
+import { TabBaseManager } from 'components/Tab/TabBaseManager'
+import { V1 } from 'constants/apiVersion'
 import { useAtom, useAtomValue } from 'jotai'
 import { systemSettingAtom } from 'lib/atom/authAtom'
 import { monthCalendarAtom } from 'lib/atom/calendarAtom'
@@ -17,11 +22,7 @@ import { CellValue, Column, Row } from 'react-table'
 import { TimeSheetProps } from 'screen/timesheet/TimeSheet'
 import { TimesheetEmployee } from 'screen/timesheet/components/TimesheetEmployee'
 import { ElipsisBox } from '../CompensatoryLeaveApplication'
-import { Status } from 'components/Status/Status'
-import { TabBase, TabElement } from 'components/Tab/TabBase'
-import { DatePickerManager } from 'components/Form/Input/DatePickerManager'
 import { ModalUpdateStatusCompenSatory } from '../ModalUpdateStatusCompenSatory'
-import { V1 } from 'constants/apiVersion'
 
 
 const ManagerCompensatoryLeaveApplication = () => {
@@ -333,7 +334,7 @@ const ManagerCompensatoryLeaveApplication = () => {
   }
   return (
     <>
-      <TabBase tabElement={tabElement} tabValue={tabIndex} />
+      <TabBaseManager tabElement={tabElement} tabValue={tabIndex} />
       <ModalUpdateStatusCompenSatory
         closeModalEdit={closeModal}
         open={openEdit}

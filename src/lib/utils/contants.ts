@@ -64,6 +64,12 @@ export const STATUS_EMPLOYEE = {
     WORKING: 1
 }
 
+export const SETTING_TYPES_OVERTIME = {
+    AFTER_OFFICE_HOUR: 1,
+    WEEKEND: 2,
+    HOLIDAY: 3
+}
+
 export const STATUS_EMPLOYEE_OPTIONS = [
     { value: STATUS_EMPLOYEE['WORKING'], label: i18n.t('working') },
     { value: STATUS_EMPLOYEE['QUIT_WORK'], label: i18n.t('quit_work') }

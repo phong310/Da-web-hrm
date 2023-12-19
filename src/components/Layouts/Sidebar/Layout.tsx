@@ -40,7 +40,7 @@ const Layout: React.VFC = () => {
       label: t('menu.timekeeping'),
       display: true,
       path: '/time-keeping/timekeeping',
-      Icon: <TimeKeeping />,
+      Icon: <img src={TimeKeeping} />,
       handleClick: () => {
         navigate('/time-keeping/timekeeping')
       }
@@ -49,19 +49,19 @@ const Layout: React.VFC = () => {
       label: t('menu.my_application'),
       display: true,
       path: '/applications/leave-form',
-      Icon: <Application />
+      Icon: <img src={Application} />
     },
     {
       label: t('menu.abbreviation.management_timekeeping'),
       display: hasManagePermission,
       path: '/time-keeping/manager/timesheet',
-      Icon: <Manage_timeKeeping />
+      Icon: <img src={Manage_timeKeeping} />
     },
     {
       label: t('menu.abbreviation.management'),
       display: hasManagePermission,
       path: '/applications/manager/leave-form',
-      Icon: <Manage_application />
+      Icon: <img src={Manage_application} />
     }
   ]
   // const [setSearchParams] = useAtom(searchParamsAtom)
