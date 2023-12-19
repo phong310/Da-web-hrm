@@ -20,6 +20,7 @@ import { UnknownObj } from 'lib/types/utils'
 import { dayAfterOneYear } from 'lib/utils/datetime'
 import { formatYearMonth } from 'lib/utils/format'
 import { snakeToCamel } from 'lib/utils/misc'
+import { SwitchLabel } from 'components/Form/Input/SwitchLabel'
 
 export type FilterBarColumn = {
   regex?: '_like' | '_equal' | '_between' | '_notEqual' | '_isnull' | 'has_' | 'none'
@@ -270,18 +271,18 @@ function FilterBarComponent<T extends UnknownObj>({
                     />
                   </Grid>
                 )
-            //   case 'switch':
-            //     return (
-            //       <Grid item xs={12} {...grid} key={index}>
-            //         <SwitchLabel
-            //           label={t('labor_contract.contract_expiring_10_day')}
-            //           name="is_expiring"
-            //           control={control}
-            //           //@ts-ignore
-            //           checked={watch('is_expiring')}
-            //         />
-            //       </Grid>
-            //     )
+              case 'switch':
+                return (
+                  <Grid item xs={12} {...grid} key={index}>
+                    <SwitchLabel
+                      label={t('labor_contract.contract_expiring_10_day')}
+                      name="is_expiring"
+                      control={control}
+                      //@ts-ignore
+                      checked={watch('is_expiring')}
+                    />
+                  </Grid>
+                )
               default:
                 return (
                   <Grid item xs={12} {...grid} key={index}>

@@ -48,6 +48,10 @@ import ListHoliday from 'screen/SystemManagement/Holiday/ListHoliday'
 import ListCompenSatoryWorkingDay from 'screen/SystemManagement/CompenSatoryWorkingDay/ListCompenSatoryWorkingDay'
 import ListKindOfLeave from 'screen/SystemManagement/ListOnLeave/ListKindOfLeave'
 import { SettingTypesOvertime } from 'screen/SystemManagement/SettingsTypeOvertime/SettingTypesOvertime'
+import { LaborContract } from 'screen/labor-contract/LaborContract'
+import { ListLaborContract } from 'screen/labor-contract/list/ListLaborContract'
+import { ListLaborContractHistory } from 'screen/labor-contract/list/ListLaborContractHistory'
+import { ListContractEmployees } from 'screen/labor-contract-employees/List/ListContractEmployees'
 
 interface RouterItem {
   path: string
@@ -471,7 +475,7 @@ export const routers: RouterItem[] = [
   {
     path: '/employees/labor-contract/list-contract/create',
     protected: true,
-    element: <Forbidden />,
+    element: <LaborContract />,
     permissions: [allPermissions['labor-contracts_store']],
     breadCrumb: {
       name: i18n.t('labor_contract.create_labor_contract_breadcrumb'),
@@ -490,7 +494,7 @@ export const routers: RouterItem[] = [
   {
     path: '/employees/labor-contract/list-contract/edit/:id',
     protected: true,
-    element: <Forbidden />,
+    element: <LaborContract />,
     permissions: [allPermissions['labor-contracts_manage']],
     breadCrumb: {
       name: i18n.t('labor_contract.labor_contract_detail_breadcrumb'),
@@ -509,7 +513,7 @@ export const routers: RouterItem[] = [
   {
     path: '/employees/labor-contract/list-contract',
     protected: true,
-    element: <Forbidden />,
+    element: <ListLaborContract />,
     permissions: [allPermissions['labor-contracts_manage']],
     breadCrumb: {
       name: i18n.t('labor_contract.labor_contract_breadcrumb'),
@@ -524,7 +528,7 @@ export const routers: RouterItem[] = [
   {
     path: '/employees/labor-contract/list-history',
     protected: true,
-    element: <Forbidden />,
+    element: <ListLaborContractHistory />,
     permissions: [allPermissions['labor-contracts_manage']],
     breadCrumb: {
       name: i18n.t('labor_contract.labor_contract_history_breadcrumb'),
@@ -733,14 +737,14 @@ const Router: React.VFC = () => {
 
         <Route index element={<Dashboard />} />
 
-
         <Route path="/general/profile" element={<ProfileInfo />}>
           <Route path="/general/profile" element={<TableProfileInfo />} />
           <Route path="/general/profile/edit" element={<TableProfileInfo />} />
           <Route path="/general/profile/bank-account" element={<UserBankAccount />} />
           <Route path="/general/profile/identification" element={<Identification />} />
-          <Route path="/general/profile/address" element={<AddressProfile  />} />
+          <Route path="/general/profile/address" element={<AddressProfile />} />
         </Route>
+        <Route path="/individual-contract/list" element={<ListContractEmployees />} />
         <Route path="/forbidden" element={<Forbidden />} />
       </Route>
     </Routes>

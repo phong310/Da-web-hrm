@@ -1,21 +1,9 @@
 import { Box, Grid, styled, Typography, useMediaQuery, Theme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-
 import { useTranslation } from 'react-i18next'
-
-// import {
-//   formatYearMonth,
-//   getAllDaysInMonth,
-//   minutesToDays,
-//   PERMISSIONS_MANAGE_APPLICATION
-// } from 'lib/utils'
 import { format } from 'date-fns'
 import { useQuery } from 'react-query'
 import { useAtom, useAtomValue } from 'jotai'
-// import { DatePicker } from 'components/v2/common/Input'
-// import { monthCalendarAtom, systemSettingAtom } from 'lib/atom'
-// import { useAuth } from 'lib/hooks'
-// import { TimeSheetProps } from 'screen/timesheet'
 import { useForm } from 'react-hook-form'
 import { systemSettingAtom } from 'lib/atom/authAtom'
 import { monthCalendarAtom } from 'lib/atom/calendarAtom'
@@ -30,18 +18,7 @@ import Overview from 'components/dashborad/Overview'
 import { Base, Orange, PrimaryColors, Yellow } from 'styles/colors'
 import { DatePicker } from 'components/Form/Input/DatePicker'
 import ReportDashboard from './ReportDashboard'
-import { reportAllTotalAmountArr, reportAmountArr, reportTotalAmountArr } from 'lib/utils'
-// import { V1 } from 'constants'
-// import Overview from 'components/v2/dashboard/Overview'
-// import ReportDashboard from 'components/v2/dashboard/ReportDashboard'
-// import {
-//   reportAllTotalAmountArr,
-//   reportAmountArr,
-//   reportTotalAmountArr,
-//   reportTotalLaborContractArr
-// } from 'lib/utils/v2'
-// import { Base, Green, Orange, PrimaryColors, Yellow } from 'styles/v2'
-// import Page from 'components/v2/common/Page'
+import { reportAllTotalAmountArr, reportAmountArr, reportTotalAmountArr, reportTotalLaborContractArr } from 'lib/utils'
 
 const Dashboard: React.VFC = () => {
   const { t } = useTranslation()
@@ -155,7 +132,7 @@ const Dashboard: React.VFC = () => {
             colorText={PrimaryColors['500']}
             background={PrimaryColors['000']}
           />
-          {/* {hasManagePermission() ? (
+          {hasManagePermission() ? (
             <ReportDashboard
               titleReport={t('labor_contract.contract_managerment')}
               titleList={reportTotalLaborContractArr}
@@ -166,7 +143,7 @@ const Dashboard: React.VFC = () => {
             />
           ) : (
             ''
-          )} */}
+          )}
           <ReportDashboard
             titleReport={t('application_form.all_application')}
             titleList={reportTotalAmountArr}

@@ -68,3 +68,4 @@ export const reportTotalLaborContractArr = [
         adminApiPrefix: 'employees/labor-contract/list-contract?is_expiring=true',
     },
 ]
+

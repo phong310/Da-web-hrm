@@ -70,6 +70,51 @@ export const SETTING_TYPES_OVERTIME = {
     HOLIDAY: 3
 }
 
+export const HOULR_SALARY_STATUS = {
+    TYPE_ZERO: 0,
+    TYPE_ONE: 1
+}
+export const STATUS_ALLOWANCE = {
+    INACTIVE: 0,
+    ACTIVE: 1
+}
+
+export const STATUS_ALLOWANCE_OPTIONS = [
+    { label: i18n.t('allowances.inactive'), value: STATUS_ALLOWANCE['INACTIVE'] },
+    { label: i18n.t('allowances.active'), value: STATUS_ALLOWANCE['ACTIVE'] }
+]
+
+export const STATUS_LABOR_CONTRACT = {
+    POSTPONE: 0,
+    ACTIVE: 1,
+    TERMINATE: 2,
+    EXTEND: 3,
+    EXPIRTION: 4,
+    CANCEL: 5
+}
+
+export const STATUS_INSURANCE = {
+    unemployment_insurance: 0,
+    insurance: 1,
+    terminate: 2,
+    extend: 3
+}
+
+
+export const STATUS_LABOR_CONTRACT_OPTIONS = [
+    { label: i18n.t('labor_contract.status.postpone'), value: STATUS_LABOR_CONTRACT['POSTPONE'] },
+    { label: i18n.t('labor_contract.status.active'), value: STATUS_LABOR_CONTRACT['ACTIVE'] },
+    { label: i18n.t('labor_contract.status.terminate'), value: STATUS_LABOR_CONTRACT['TERMINATE'] },
+    // { label: i18n.t('labor_contract.status.extend'), value: STATUS_LABOR_CONTRACT['EXTEND'] },
+    // { label: i18n.t('labor_contract.status.expiretion'), value: STATUS_LABOR_CONTRACT['EXPIRTION'] }
+    // { label: i18n.t('labor_contract.status.cancel'), value: STATUS_LABOR_CONTRACT['CANCEL'] }
+]
+
+export const STATUS_LABOR_CONTRACT_HISTORY = [
+    { label: i18n.t('labor_contract.status.terminate'), value: STATUS_LABOR_CONTRACT['TERMINATE'] },
+    { label: i18n.t('labor_contract.status.expiretion'), value: STATUS_LABOR_CONTRACT['EXPIRTION'] }
+]
+
 export const STATUS_EMPLOYEE_OPTIONS = [
     { value: STATUS_EMPLOYEE['WORKING'], label: i18n.t('working') },
     { value: STATUS_EMPLOYEE['QUIT_WORK'], label: i18n.t('quit_work') }
