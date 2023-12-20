@@ -52,6 +52,7 @@ import { LaborContract } from 'screen/labor-contract/LaborContract'
 import { ListLaborContract } from 'screen/labor-contract/list/ListLaborContract'
 import { ListLaborContractHistory } from 'screen/labor-contract/list/ListLaborContractHistory'
 import { ListContractEmployees } from 'screen/labor-contract-employees/List/ListContractEmployees'
+import ListLaborContractType from 'screen/SystemManagement/LaborContractType/ListLaborContractType'
 
 interface RouterItem {
   path: string
@@ -641,6 +642,21 @@ export const routers: RouterItem[] = [
     role: allRoles.admin,
     breadCrumb: {
       name: i18n.t('System_Management.list_working_days'),
+      parents: [
+        {
+          name: i18n.t('dashboard.overview'),
+          link: '/'
+        }
+      ]
+    }
+  },
+  {
+    path: '/setting/labor-contract-types',
+    protected: true,
+    element: <ListLaborContractType />,
+    role: allRoles.admin,
+    breadCrumb: {
+      name: i18n.t('System_Management.labor_contract_types'),
       parents: [
         {
           name: i18n.t('dashboard.overview'),

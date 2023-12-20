@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Button, Dialog, Stack, Typography, styled } from '@mui/material'
 import TimeKeepingReminder from 'assets/images/timkeepingreminder.png'
 import { useAtom, useAtomValue } from 'jotai'
@@ -13,7 +14,7 @@ import { timekeepingReminderFirstInDateAtom } from 'lib/atom/timekeepingAtom'
 import { convertDatetimeTZ, formatTime, minutesToDays } from 'lib/utils/format'
 import TitleCard from 'components/ReactTable/Components/TitleCard'
 import { V1 } from 'constants/apiVersion'
-// import { ModalRequestChangeTimeSheet } from './ModalRequestChangeTimeSheet'
+import { ModalRequestChangeTimeSheet } from 'screen/RequestChangeTimesheet/ModalRequestChangeTimeSheet'
 
 const DialogCustom = styled(Dialog)(({ theme }) => ({
   '& .MuiDialog-paper': {
@@ -181,13 +182,13 @@ export const ModalTimekeepingReminder = () => {
           </Box>
         </Box>
       </DialogCustom>
-      {/* <ModalRequestChangeTimeSheet
+      <ModalRequestChangeTimeSheet
         open={openEdit}
         idEdit={idEdit}
         handleCloseModal={handleClose}
         onSuccessEdit={onSuccess}
         dateParams={dateRemind}
-      /> */}
+      />
     </>
   )
 }

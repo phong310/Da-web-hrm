@@ -1,9 +1,7 @@
 import { Box, Typography, Grid } from '@mui/material'
 import { LaborContractType } from 'lib/types/labor-contract'
 import { formatMoney } from 'lib/utils/formatMoney'
-// import { LaborContractType } from 'lib/types'
 import React from 'react'
-// import { formatMoney } from '../../../lib/utils/v2/formatMoney'
 import { useTranslation } from 'react-i18next'
 
 type PropType = {

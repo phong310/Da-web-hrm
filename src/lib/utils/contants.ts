@@ -184,6 +184,11 @@ export const NUMBER_OF_DAY_TYPES = {
     2: i18n.t('number_of_days.types.leave_form')
 }
 
+export type OtherAllowanceData = {
+    id: number
+    name: string
+    company_id: number
+}
 
 export const RELATIVES_TYPES = (type?: number | null) => {
     if (type == 0) return i18n.t('relatives.dad')
