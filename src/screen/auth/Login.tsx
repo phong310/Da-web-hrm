@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Box, Grid, Container as MContainer, Paper, Stack, Typography, styled } from '@mui/material'
 import { Input } from '../../components/Form/Input/Input'

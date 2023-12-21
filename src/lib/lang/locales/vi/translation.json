@@ -754,6 +754,9 @@
         "child": "Con"
     },
     "validate": {
+        "email_valid":"Email không được bỏ trống",
+        "password_valid":"Mật khẩu không được bỏ trống",
+        "invalid_email":"Email sai định dạng",
         "is_card": "Số thẻ phải được điền",
         "is_phone": "Số điện thoại phải được điền",
         "limit_number_phone": "Độ dài không phù hợp",

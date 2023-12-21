@@ -391,7 +391,7 @@
     "finish": "Finish",
     "all": "All",
     "title_delete": "Delete",
-    "create_account":"Create a new account",
+    "create_account": "Create a new account",
     "overview": {
         "check_item_noti": "Please check the item below",
         "clock_error": "Clock in/out errror",
@@ -679,6 +679,9 @@
         "japanese": "Japanese"
     },
     "validate": {
+        "email_valid": "Email must be filled out",
+        "password_valid": "Password must be filled out",
+        "invalid_email": "Email format is wrong",
         "is_card": "Card number must be filled",
         "is_phone": "Phone number must be filled",
         "limit_number_phone": "phone number length not avaiable",

@@ -28,6 +28,7 @@ const useAuth = () => {
     const [timekeepingReminderFirstInDate, setTimekeepingReminderFirstInDate] = useAtom(
         timekeepingReminderFirstInDateAtom
     )
+    
 
     const auth = !!user
 
@@ -90,6 +91,7 @@ const useAuth = () => {
                         // })
                     }
                     setFetching(false)
+                    
                 } catch (error) {
                     setFetching(false)
                     setUser(null)

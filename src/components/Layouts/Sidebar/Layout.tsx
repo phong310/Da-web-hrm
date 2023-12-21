@@ -13,19 +13,16 @@ import { blue } from '../../../styles/colors'
 import { Header } from '../Header/Header'
 import { Route, Sidebar } from './Sidebar'
 import { sidebarList } from './SidebarList'
+import { MessageAlert } from 'components/Skeleton/MessageAlert'
 
 const Layout: React.VFC = () => {
-  // const { push, history } = useHistory()
   const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up('md'), { noSsr: true })
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(isDesktop)
   const [sidebar, setSidebar] = useState<Route[]>([])
   const triggerSidebar = () => {
     setSidebarOpen(!isSidebarOpen)
   }
-  // const location = useLocation()
-  // console.log(location)
 
-  // const [searchParams] = useSearchParams()
   const { t } = useTranslation()
 
   const { permissions } = useAuth()
@@ -85,7 +82,7 @@ const Layout: React.VFC = () => {
           <Outlet />
         </Main>
 
-        {/* <MessageAlert /> */}
+        <MessageAlert />
       </Box>
       <Hidden mdUp>
         <CustomTabs
