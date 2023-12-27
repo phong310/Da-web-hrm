@@ -13,6 +13,7 @@ import { useAuth } from 'lib/hook/useAuth'
 import { UserLoginError } from 'lib/types/auth'
 import { handleValidateErrors } from 'lib/utils/form'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify'
 
 export type UserLoginArgs = {
   email: string
@@ -63,6 +64,7 @@ export const Login = () => {
     } catch (error: any) {
       if (error.message) {
         setError((error as UserLoginError).message)
+        toast.error(error.message);
       } else if (error.errors) {
         handleValidateErrors(error, setFormError)
       }

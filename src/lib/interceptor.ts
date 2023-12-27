@@ -80,7 +80,6 @@ const interceptor = (axiosInstance: any) => (error: any) => {
                     } else {
                         localStorage.removeItem('user-token')
                         window.location.replace('/login')
-                        console.log("here");
                     }
                 }
 
