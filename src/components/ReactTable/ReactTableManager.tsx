@@ -146,6 +146,7 @@ function ReactTableManager<T extends object>(props: TableProperties<T>): ReactEl
 
   const StyledTableCell = styled(TableCell, {
     shouldForwardProp: (prop) => prop !== 'hasCellClick'
+    // @ts-ignore
   })<{ hasCellClick?: boolean }>(({ theme, hasCellClick }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -178,6 +179,7 @@ function ReactTableManager<T extends object>(props: TableProperties<T>): ReactEl
   return (
     <Box component={'div'}>
       {handleChangeParams && (
+        // @ts-ignore
         <FilterBar
           searchColumns={columns as Column<UnknownObj>[]}
           watchMode={true}

@@ -2,7 +2,6 @@ import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import SearchSharpIcon from '@mui/icons-material/SearchSharp'
 import {
   Box,
-  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -19,6 +18,7 @@ import adjust from '../../../assets/svgs/adjust.svg'
 import check from '../../../assets/svgs/check.svg'
 import { ButtonCommon } from '../../Form/Components/ButtonCommon'
 
+// @ts-ignore
 type SettingFieldsDisplayPros<T extends object> = {
   columns: any
   disabled?: boolean
@@ -205,6 +205,7 @@ function SettingFieldsDisplayComponent<T extends object>({
 
 const SettingFieldsDisplay = memo(SettingFieldsDisplayComponent)
 
+// @ts-ignore
 const BoxButton = styled(Box)(({ theme }) => ({
   width: '120px',
   height: '36px'
@@ -228,10 +229,6 @@ const styleIconSvgs = {
   alignItems: 'center'
 }
 
-const styleBoxImg = {
-  xs: '12px',
-  md: '14px'
-}
 const stylecolumnOptionsTyporaphy = {
   cursor: 'pointer',
   fontSize: '16px !important',
@@ -269,13 +266,6 @@ const styleIcon = {
   height: { xs: '12px', md: '16px' }
 }
 
-const styleTyporaphy = {
-  fontSize: { xs: '12px', md: '16px' },
-  color: '#146BD2',
-  fontWeight: 600,
-  lineHeight: '22px'
-}
-
 const styleDialog = {
   borderRadius: '8px',
   width: 'auto',
@@ -310,24 +300,12 @@ const styleButtonReset = {
   padding: 0
 }
 
-const styleTaporafyReset = {
-  fontSize: { xs: '12px', md: '16px' },
-  lineHeight: '20px',
-  fontWeight: 500
-}
-
 const styleButtonSubmit = {
   width: { xs: '120px', md: '120px' },
   height: '36px',
   display: 'flex',
   gap: '3px',
   padding: 0
-}
-
-const styleTaporaphyApply = {
-  fontSize: { xs: '12px', md: '16px' },
-  lineHeight: '20px',
-  fontWeight: 500
 }
 
 const styleDialogContent = {

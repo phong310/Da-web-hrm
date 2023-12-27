@@ -4,7 +4,6 @@ import {
   Paper,
   PaperProps,
   Stack,
-  styled,
   Theme,
   Typography
 } from '@mui/material'
@@ -98,8 +97,5 @@ const Page: React.VFC<PageProps> = ({
   )
 }
 
-const CustomLink = styled(Link)({
-  fontSize: '14px'
-})
 
 export { Page }

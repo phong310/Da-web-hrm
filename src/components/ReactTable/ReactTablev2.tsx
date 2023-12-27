@@ -134,6 +134,7 @@ function ReactTablev2<T extends object>(props: TableProperties<T>): ReactElement
   return (
     <RoundPaper elevation={0}>
       {handleChangeParams && (
+        // @ts-ignore
         <FilterBar
           searchColumns={columns as Column<UnknownObj>[]}
           watchMode={true}

@@ -1,5 +1,5 @@
 import MenuIcon from '@mui/icons-material/Menu'
-import { AppBar, Box, Grid, IconButton, Stack, styled, SvgIcon, Toolbar } from '@mui/material'
+import { AppBar, Box, Grid, IconButton, Stack, styled, Toolbar } from '@mui/material'
 import Logo from 'assets/images/logo.png'
 import React from 'react'
 import { Link } from 'react-router-dom'

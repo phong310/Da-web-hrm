@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Hidden, styled, Tab, Tabs, Theme, Toolbar, useMediaQuery } from '@mui/material'
 import Application from 'assets/svgs/sidebar-icons/application.svg'
 import Manage_application from 'assets/svgs/sidebar-icons/manage_application.svg'

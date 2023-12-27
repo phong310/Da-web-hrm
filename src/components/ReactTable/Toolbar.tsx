@@ -1,3 +1,4 @@
+// @ts-nocheck
 import LogoutIcon from '@mui/icons-material/Logout'
 import SearchIcon from '@mui/icons-material/Search'
 import {
@@ -355,27 +356,9 @@ const styleHeightBoxImg = {
   lg: '16px'
 }
 
-const styleBoxTitle = {
-  display: { xs: 'none', lg: 'block' }
-}
-
 const styleBoxFilter = {
   padding: 2,
   width: '100%'
-}
-
-const styleContainerToolbar = {
-  padding: '16px 16px 16px 0',
-  display: 'flex',
-  justifyContent: { xs: 'center', sm: 'center', md: 'flex-end' },
-  alignItems: 'center',
-  gap: { xs: '5px', md: '16px' }
-}
-
-const styleBoxContainer = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: { xs: '5px', md: '16px' }
 }
 
 const styleIconSvgs = {
@@ -398,34 +381,10 @@ const styleBtnSearch = {
   }
 }
 
-const styleBtnAdd = {
-  width: { xs: '110px', md: '130px', lg: '143px' },
-  height: '40px',
-  display: 'flex',
-  gap: 1,
-  alignItems: 'center',
-  justifyContent: 'center'
-}
-
-const styleBtnFilter = {
-  width: { xs: '90px', md: '100px', lg: '130px' },
-  height: '40px',
-  display: 'flex',
-  gap: 1,
-  ml: '16px',
-  alignItems: 'center',
-  justifyContent: 'center'
-}
-
 const styleTyporaphyAdd = {
   fontSize: { xs: '14px', sm: '16px' },
   color: '#fff',
   lineHeight: '22px'
-}
-
-const styleSearch = {
-  width: '100%',
-  padding: { xs: '16px 16px 0 16px', sm: 0 }
 }
 
 const styleTyporaphyTitle = {

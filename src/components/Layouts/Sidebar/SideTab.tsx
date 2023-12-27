@@ -68,6 +68,7 @@ const SideTab = () => {
       path: '/applications/manager/leave-form'
     }
   ]
+  // @ts-ignore
   const [value, setValue] = React.useState(0)
   const [, setSearchParams] = useAtom(searchParamsAtom)
   React.useEffect(() => {

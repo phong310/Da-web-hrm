@@ -2,7 +2,6 @@ import {
     Box,
     Breadcrumbs,
     PaperProps,
-    styled,
     Theme,
     Typography
 } from '@mui/material'
@@ -91,9 +90,6 @@ const PageTable: React.VFC<PageProps> = ({
   )
 }
 
-const CustomLink = styled(Link)({
-  fontSize: '14px'
-})
 
 const styleTyporaphyTitle = {
   display: { xs: 'block', md: 'none', lg: 'none' },

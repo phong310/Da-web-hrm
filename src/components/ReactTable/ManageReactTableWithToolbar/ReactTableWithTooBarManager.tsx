@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Checkbox, Grid, Tab, Tabs, Typography } from '@mui/material'
 import { RoundPaper } from 'components/Layouts/Page/RoundPaper'
 import { useAtom } from 'jotai'

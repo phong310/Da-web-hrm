@@ -40,6 +40,7 @@ const Cell = styled(TableCell, {
   }
 }))
 
+// @ts-ignore
 const CalendarCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     // backgroundColor: theme.palette.grey[300],

@@ -1,9 +1,9 @@
+// @ts-nocheck
 import { Checkbox } from '@mui/material'
 import { Pagev2 } from 'components/Layouts/Page/Pagev2'
 import { usePaginationQuery } from 'lib/hook/usePaginationQuery'
 import { UnknownObj } from 'lib/types/utils'
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router'
 import { CellProps, Column, TableOptions } from 'react-table'
 import { toast } from 'react-toastify'

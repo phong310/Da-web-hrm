@@ -1,10 +1,7 @@
-import { Pagev2 } from 'components/Layouts/Page/Pagev2'
 import { RoundPaper } from 'components/Layouts/Page/RoundPaper'
 import { usePaginationQuery } from 'lib/hook/usePaginationQuery'
 import { UnknownObj } from 'lib/types/utils'
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useLocation } from 'react-router'
 import { CellProps, Column, TableOptions } from 'react-table'
 import { toast } from 'react-toastify'
 import Toolbar from '../Toolbar'
@@ -65,10 +62,8 @@ function ReactTableWithSideBar<T extends object>(props: ReactTableWithToolBarPro
     titleDelete
   } = props
 
-  const location = useLocation()
   const [displayColumns, setDisplayColumns] = useState<any>([])
   const { paginationData, handleChangeParams, refetch } = usePaginationQuery<any>(endpoint, params)
-  const { t,   } = useTranslation()
 
   const refetchWhenParamsChange = useMemo(() => handleChangeParams(params), [params])
   refetchWhenParamsChange

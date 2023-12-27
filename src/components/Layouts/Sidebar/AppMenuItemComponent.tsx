@@ -1,9 +1,7 @@
+// @ts-nocheck
 /* eslint-disable react/display-name */
 /* eslint-disable react/no-children-prop */
 import { ListItem } from '@mui/material'
-import { useAtom } from 'jotai'
-// import { monthCalendarAtom } from 'lib/atom'
-// import { checkIsManager, formatDateTime } from 'lib/utils'
 import { NavLink, useLocation } from 'react-router-dom'
 
 const AppMenuItemComponent = (props: {

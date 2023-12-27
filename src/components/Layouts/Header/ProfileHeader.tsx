@@ -1,9 +1,9 @@
+//@ts-nocheck
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import LogoutIcon from '@mui/icons-material/Logout'
 import ContactPageIcon from '@mui/icons-material/ContactPage'
 import { atom } from 'jotai'
 import {
-  Avatar,
   Box,
   Hidden,
   IconButton,
@@ -14,14 +14,12 @@ import {
   styled,
   SvgIcon
 } from '@mui/material'
-// import AvtDefault from 'assets/images/no-image.jpg'
 import { DialogBase } from '../../Dialog/DialogBase'
 import { useAtom } from 'jotai'
 import { useAuth } from 'lib/hook/useAuth'
 import { MouseEvent, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-// import { Setting } from 'screen/profile'
 import Divider from '@mui/material/Divider'
 import LockIcon from '@mui/icons-material/Lock'
 import { AvatarCustom } from '../../Form/Components/AvatarCustom'
@@ -54,19 +52,18 @@ export const ProfileHeader = () => {
         navigate('/login')
       }
     } catch (error) {
-      // console.log(error)
     }
   }
 
-  const onProfileClick = () => {
-    navigate('/general/profile')
-    handleClose()
-  }
+  // const onProfileClick = () => {
+  //   navigate('/general/profile')
+  //   handleClose()
+  // }
 
-  const onSettingClick = () => {
-    navigate('/general/setting')
-    handleClose()
-  }
+  // const onSettingClick = () => {
+  //   navigate('/general/setting')
+  //   handleClose()
+  // }
 
   const handleChangePasswod = () => {
     setOpenDialog(true)
@@ -190,12 +187,6 @@ const styleIconButton = {
     boxShadow: 'none',
     backgroundColor: '#ffffff'
   }
-}
-
-const styleListItemText = {
-  fontSize: '30px',
-  lineHeight: '22px',
-  fontWeight: 400
 }
 
 const styleIcon = {

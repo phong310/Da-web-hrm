@@ -1,4 +1,4 @@
-import { Box, Breadcrumbs, PaperProps, styled, Theme, Typography } from '@mui/material'
+import { Box, Breadcrumbs, PaperProps, Theme, Typography } from '@mui/material'
 import Link from '@mui/material/Link'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -80,10 +80,6 @@ const Pagev2: React.VFC<PageProps> = ({
     </Box>
   )
 }
-
-const CustomLink = styled(Link)({
-  fontSize: '14px'
-})
 
 const styleTyporaphyTitle = {
 //   display: { xs: 'block', md: 'none', lg: 'none' },

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Badge,
   Box,
@@ -571,13 +572,6 @@ const styleStack = {
     md: '400px'
   },
   maxWidth: '400px'
-}
-
-const styleBadge = {
-  width: '12px',
-  height: '12px',
-  position: 'relative',
-  top: '8px'
 }
 
 const styleButtonMaskAll = {

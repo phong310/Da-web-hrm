@@ -26,7 +26,7 @@ const AppMenuItem = (props: {
   index: number
   open?: boolean
 }) => {
-  const { label, path, Icon, Icon_active, children = [], expand, setExpand, index, open } = props
+  const { label, path, Icon, Icon_active, children = [], expand, setExpand, index } = props
   const level = props.level || 0
   const indent = (() => {
     switch (level) {

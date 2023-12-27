@@ -1,4 +1,3 @@
-import { Page } from 'components/Layouts/Page/Page'
 import { RoundPaper } from 'components/Layouts/Page/RoundPaper'
 import { usePaginationQuery } from 'lib/hook/usePaginationQuery'
 import { UnknownObj } from 'lib/types/utils'

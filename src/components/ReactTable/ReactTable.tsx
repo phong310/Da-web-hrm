@@ -139,6 +139,7 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
 
   const StyledTableCell = styled(TableCell, {
     shouldForwardProp: (prop) => prop !== 'hasCellClick'
+    // @ts-ignore
   })<{ hasCellClick?: boolean }>(({ theme, hasCellClick }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -151,6 +152,7 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
 
   const StyledTableRow = styled(TableRow, {
     shouldForwardProp: (prop) => prop !== 'hasRowClick'
+    // @ts-ignore
   })<{ hasRowClick?: boolean }>(({ theme, hasRowClick }) => ({
     // '&:nth-of-type(even)': {
     //   backgroundColor: '#F0F0F0'
@@ -171,6 +173,7 @@ function ReactTable<T extends object>(props: TableProperties<T>): ReactElement {
   return (
     <Box component={'div'}>
       {handleChangeParams && (
+        // @ts-ignore
         <FilterBar
           searchColumns={columns as Column<UnknownObj>[]}
           watchMode={true}

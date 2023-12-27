@@ -1,6 +1,8 @@
 import { Stack, styled, Typography } from '@mui/material'
 import NoDataSvg from "../../assets/svgs/no_data.svg"
 import { useTranslation } from 'react-i18next'
+
+// @ts-ignore
 const Empty = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'center',

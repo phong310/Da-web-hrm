@@ -1,11 +1,10 @@
 import { Box, Hidden, Stack, SvgIconProps, Toolbar } from '@mui/material'
 import { DrawerLeft } from 'components/Layouts/Drawer'
-import { LanguageHeader } from 'components/Layouts/Header'
-import { useAuth } from 'lib/hooks'
 import { useEffect, useState } from 'react'
-// import NavTree from './NavTree'
 import NavTree from '../NavTree'
 import { checkHasRole } from 'constants/roles'
+import { useAuth } from 'lib/hook/useAuth'
+import { LanguageHeader } from 'components/Layouts/Header/LanguageHeader'
 export type Route = {
   label?: string
   path?: string

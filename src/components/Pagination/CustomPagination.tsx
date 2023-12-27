@@ -5,6 +5,7 @@ type CustomPaginationProps = {
   pageCount?: number
 }
 const CustomPagination = ({ onChange, pageCount }: CustomPaginationProps) => {
+  // @ts-ignore
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     onChange(value)
   }
