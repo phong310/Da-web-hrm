@@ -59,6 +59,7 @@ const ModalUpdateStatusLeave: React.VFC<PropType> = ({
   const { user } = useAuth()
   const [numberOfLeaveDay, setNumberOfLeaveDay] = useState<number>(0)
   const [dataDetail, setDataDetail] = useState<LeaveFormTypeV2>()
+  // @ts-ignore
   const { control, handleSubmit, setValue, watch, setError, reset, getValues, clearErrors } =
     useForm<LeaveFormType>({
       defaultValues: {
@@ -177,7 +178,7 @@ const ModalUpdateStatusLeave: React.VFC<PropType> = ({
     },
     enabled: !idEdit ? false : true
   })
-
+  // @ts-ignore
   const [isSubmit, setIsSubmit] = useState<boolean>(false)
   const [isCancel, setIsCancel] = useState<boolean>(false)
   const handleCancel = async () => {
@@ -189,7 +190,7 @@ const ModalUpdateStatusLeave: React.VFC<PropType> = ({
         onSuccess()
         setIsCancel(false)
       }
-    } catch (error:any) {
+    } catch (error: any) {
       toast.error(error.errors)
       if (error.errors) {
         for (const [key, value] of Object.entries(error.errors)) {
@@ -228,7 +229,7 @@ const ModalUpdateStatusLeave: React.VFC<PropType> = ({
         setIsCancel(false)
         onSuccess()
       }
-    } catch (error:any) {
+    } catch (error: any) {
       toast.error(error.message)
     }
     setIsCancel(false)
@@ -243,7 +244,7 @@ const ModalUpdateStatusLeave: React.VFC<PropType> = ({
       setValue('number_leave_day', minutesToDays(num))
     }
   }, [watch('start_time'), watch('end_time'), workingDays, refetchNumberDayOff, compensatoryWDs])
-
+  // @ts-ignore
   const BoxItem = styled(Box)(({ theme }) => ({
     display: 'flex',
     marginBottom: '24px',

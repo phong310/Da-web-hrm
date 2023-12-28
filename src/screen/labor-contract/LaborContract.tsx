@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Heading, grid_full, grid_half } from './components'
 import { ButtonCommon } from 'components/Form/Components/ButtonCommon'
@@ -29,7 +29,6 @@ export const LaborContract = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const params = useParams()
-  const location = useLocation()
   const [employeeInfo, setEmployeeInfo] = useState<LaborContract_Employee | undefined>()
   const [isCheckValid, setIsCheckValid] = useState<boolean>(false)
   const [isSuranceSalaryAdmin, setIsSuranceSalary] = useState<number | any>()

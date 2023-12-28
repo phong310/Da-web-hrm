@@ -11,7 +11,6 @@ type EmployeeSummaryInfoProps = {
 
 const EmployeeSummaryInfo = ({
   fullName,
-  employeeId,
   branchName,
   departmentName,
   positionName

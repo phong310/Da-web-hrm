@@ -5,11 +5,6 @@ import { BaseMaster } from 'lib/types/baseMaster'
 import { LaborContractType } from 'lib/types/labor-contract'
 import { EmployeeType } from 'lib/types/user'
 import { STATUS_EMPLOYEE } from 'lib/utils/contants'
-// import { Select, SelectOption } from 'components/Form'
-// import { USER_URL } from 'constants'
-// import { useDebounce } from 'lib/hooks'
-// import { BaseMaster, EmployeeType, LaborContractType } from 'lib/types'
-// import { STATUS_EMPLOYEE } from 'lib/utils'
 import { useEffect, useState } from 'react'
 import {
     Control,
@@ -26,7 +21,8 @@ import { toast } from 'react-toastify'
 import { Heading, grid_full, grid_half } from './components'
 import { EmployeeSummary } from './EmployeeSummary'
 import { useDebounce } from 'lib/hook/useDebounce'
-// import { EmployeeSummary, Heading, grid_full, grid_half } from 'screen/labor-contract'
+
+  // @ts-ignore
 type BaseMasterResponse = {
   data: BaseMaster[]
 }

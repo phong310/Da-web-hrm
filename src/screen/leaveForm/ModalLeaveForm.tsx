@@ -47,7 +47,7 @@ import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { blueV2 } from 'styles/colors'
 import { ApprovalInformation } from './ApprovalInformation'
@@ -73,8 +73,8 @@ const ModalLeaveForm: React.VFC<PropType> = ({
   idEdit,
   closeModalEdit
 }) => {
-  const queryString = window.location.search
-  const urlParams = new URLSearchParams(queryString)
+  // const queryString = window.location.search
+  // const urlParams = new URLSearchParams(queryString)
 
   const { permissions } = useAuth()
   // check if tomorrow is weekend -> default start_time is Monday in next week
@@ -87,11 +87,11 @@ const ModalLeaveForm: React.VFC<PropType> = ({
   const { user } = useAuth()
   const [numberOfLeaveDay, setNumberOfLeaveDay] = useState<number>(0)
   const [minutesRemains, setMinutesRemains] = useState<number>(0)
-  const [isSalary, setIsSalary] = useState<boolean>(true)
-  const navigate = useNavigate()
+  // const [isSalary, setIsSalary] = useState<boolean>(true)
+  // const navigate = useNavigate()
   const { createOrUpdateApi } = useApiResource<LeaveFormType>('1.0/user/leave-form')
   const [openAdminOptions, setAdminOption] = useState<boolean>(false)
-  const { control, handleSubmit, setValue, watch, setError, reset, getValues, clearErrors } =
+  const { control, handleSubmit, setValue, watch, setError, reset, clearErrors } =
     useForm<LeaveFormType>({
       defaultValues: {
         start_time:
@@ -118,7 +118,6 @@ const ModalLeaveForm: React.VFC<PropType> = ({
     })
 
   const [loading, setLoading] = useState<boolean>(true)
-  const [canceling, setCanceling] = useState<boolean>(false)
 
   const [approvers, setApprovers] = useState<SelectOption[]>([])
 
@@ -137,18 +136,18 @@ const ModalLeaveForm: React.VFC<PropType> = ({
     isEdit === false
       ? false
       : checkFormIsDisableEdit(selectedApprovers) || watch('status') === STATUS_FORM['CANCEL']
-    useQuery<EmployeeType[]>([`1.0/user/manager/approvers?type=${TYPE_FORM.LEAVE}`], {
-      onSuccess: (data) => {
-        setApprovers(() =>
-          data.map((item) => {
-            return {
-              label: item.full_name,
-              value: item.id
-            }
-          })
-        )
-      }
-    })
+  useQuery<EmployeeType[]>([`1.0/user/manager/approvers?type=${TYPE_FORM.LEAVE}`], {
+    onSuccess: (data) => {
+      setApprovers(() =>
+        data.map((item) => {
+          return {
+            label: item.full_name,
+            value: item.id
+          }
+        })
+      )
+    }
+  })
 
   useQuery<{ annual_leave: number; leave_form: number }>(
     [`${V1}/user/day-off/remaining-days-off?employee_id=${user?.employee_id}`],
@@ -397,7 +396,7 @@ const ModalLeaveForm: React.VFC<PropType> = ({
     },
     enabled: watch('employee_id') && isManagerEdit ? true : false
   })
-
+  // @ts-ignore
   const [isSubmitAction, setIsSubmitAction] = useState<boolean>(false)
 
   const handleAction = async (action: string) => {
@@ -508,6 +507,7 @@ const ModalLeaveForm: React.VFC<PropType> = ({
   const handleOpenSetOptions = () => {
     setAdminOption(!openAdminOptions)
   }
+  // @ts-ignore
   const onSuccessAddOptions = () => {
     refetch()
     setAdminOption(false)
@@ -759,12 +759,6 @@ const grid_input = {
 
 const grid_title = {
   xs: 12
-}
-
-const grid_button = {
-  sm: 3,
-  xs: 12,
-  marginBottom: '20px'
 }
 
 const styleTitle = {

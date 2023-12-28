@@ -7,7 +7,6 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
 import { toast } from 'react-toastify'
-// import { ResetPassword } from 'screen/reset-password/ResetPassword'
 import TimeCheckingDark from 'assets/images/timechecking-dark.png'
 import TimeCheckingLight from 'assets/images/timechecking-light.png'
 import { Pagev2 } from 'components/Layouts/Page/Pagev2'
@@ -20,7 +19,7 @@ import { SystemSetting } from 'lib/types/system_setting'
 import { TimeSheetLogData, TimeSheetLogTodayData } from 'lib/types/timeSheet'
 import { convertDatetimeTZ, formatDateTime, formatNormalTime, formatTime } from 'lib/utils/format'
 import { primary } from 'styles/colors'
-
+  // @ts-ignore
 const TextTime = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   fontSize: 18,
@@ -41,6 +40,7 @@ const TimeKeeping = () => {
   const [timeCheckingImg, setTimeChekingImg] = useState<string>('')
   const [timekeepingFirst, setTimekeepingFirst] = useState<string>('')
   const [timekeepingLast, setTimekeepingLast] = useState<string>('')
+  // @ts-ignore
   const [isFirstTimeLogin, setIsFirstTimeLogin] = useState<boolean>(false)
 
   const { handleSubmit } = useForm<TimeSheetLogData>({

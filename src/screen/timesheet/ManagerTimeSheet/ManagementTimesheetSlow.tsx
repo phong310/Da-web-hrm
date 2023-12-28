@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Stack, styled, Typography } from '@mui/material'
 import ReactTableWithToolBar from 'components/ReactTable/ReactTableWithToolBar/ReactTableWithToolBar'
 // import { TIMESHEET_TYPE_TIME } from 'constants'

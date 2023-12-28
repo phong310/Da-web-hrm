@@ -42,11 +42,16 @@ export const TableProfileInfo: React.VFC<InfoPropsType> = () => {
   const table = useMediaQuery(theme.breakpoints.down('md'))
   const { user, systemSetting } = useAuth()
   const { t } = useTranslation()
+  // @ts-ignore
   const [tableInfo, setTableInfo] = useState<InfoDataType[]>([])
+  // @ts-ignore
   const [infoDetailEmployee, setInfoDetailEmployee] = useState<InfoDataType[]>([])
   const [update, setUpdate] = useState(false)
+  // @ts-ignore
   const [files, setFiles] = useState<File>()
+  // @ts-ignore
   const [avatar, setAvatar] = useAtom(avatarProfile)
+  // @ts-ignore
   const [name, setName] = useAtom(updateName)
   const navigate = useNavigate()
   const location = useLocation()
@@ -78,6 +83,7 @@ export const TableProfileInfo: React.VFC<InfoPropsType> = () => {
     control,
     reset,
     handleSubmit,
+    // @ts-ignore
     formState: { errors }
   } = useForm<profileType>({
     resolver: yupResolver(profileSchema),

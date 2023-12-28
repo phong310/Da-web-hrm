@@ -9,18 +9,15 @@ import {
   Divider,
   Grid,
   IconButton,
-  Switch,
   Toolbar,
   Typography,
   Tooltip
 } from '@mui/material'
 import { V1 } from 'constants/apiVersion'
-import { useAtomValue } from 'jotai'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
 import EditIcon from '@mui/icons-material/Edit'
 import { KindOfLeaveType, LeaveFormType, LeaveFormTypeV2 } from 'lib/types/applicationForm'
-import { systemSettingAtom } from 'lib/atom/authAtom'
 import { KIND_OF_LEAVE_TYPES, STATUSCHECK } from 'lib/utils/contants'
 import { ModalSkeleton } from 'components/Skeleton/ModalSkeleton'
 import { Status } from 'components/Status/Status'
@@ -65,7 +62,6 @@ export const ModalDetailLeaveApplication: React.FC<PropType> = ({
   const [dataKindOfLeave, setDataKindOfLeave] = useState<KindOfLeaveType[]>()
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [checkStatus, setCheckStatus] = useState<boolean>()
-  const systemSetting: any = useAtomValue(systemSettingAtom)
 
   useQuery<LeaveFormType>([`1.0/user/leave-form/${idDetail}`], {
     onSuccess: (data) => {
@@ -108,6 +104,7 @@ export const ModalDetailLeaveApplication: React.FC<PropType> = ({
       setCheckStatus(false)
     }
   }, [dataDetail])
+  // @ts-ignore
   const BoxItem = styled(Box)(({ theme }) => ({
     display: 'flex',
     marginBottom: '24px',

@@ -23,11 +23,14 @@ export type TypeIndentification = {
 }
 
 export const Identification: React.VFC<InfoPropsType> = () => {
+  // @ts-ignore
   const params = useParams()
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  // @ts-ignore
   const navigate = useNavigate()
 
+  // @ts-ignore
   const [identificationCards, setIdentificationCards] = useState<IdentificationCard[]>([
     {
       id: -1,
@@ -52,7 +55,7 @@ export const Identification: React.VFC<InfoPropsType> = () => {
     `/1.0/user/me/update-identification`
   )
 
-  const { control, handleSubmit, setValue, getValues, setError } = useForm<IdentificationCardsObj>({
+  const { control, handleSubmit, setValue, setError } = useForm<IdentificationCardsObj>({
     defaultValues: {
       CMT: {
         ID_no: '',

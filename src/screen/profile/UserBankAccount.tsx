@@ -36,8 +36,10 @@ export type TypeIBackAccount = {
 export const UserBankAccount: React.VFC<InfoPropsType> = () => {
   const theme = useTheme()
   const table = useMediaQuery(theme.breakpoints.down('md'))
+  // @ts-ignore
   const { user, systemSetting } = useAuth()
   const { t } = useTranslation()
+  // @ts-ignore
   const [tableInfo, setTableInfo] = useState<InfoDataType[]>([])
   const [update, setUpdate] = useState(false)
   const location = useLocation()
@@ -63,6 +65,7 @@ export const UserBankAccount: React.VFC<InfoPropsType> = () => {
     control,
     reset,
     handleSubmit,
+    // @ts-ignore
     formState: { errors }
   } = useForm<IBackAccount>({
     resolver: yupResolver(backAccountSchema),

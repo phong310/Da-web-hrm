@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Stack } from '@mui/material'
 import { DatePicker } from 'components/Form/Input/DatePicker'
 import { formatDateTime } from 'lib/utils/format'

@@ -340,11 +340,6 @@ const styleTextHeading = {
   lineHeight: '28px'
 }
 
-const styleContainer = {
-  justifyContent: 'space-between',
-  mb: '12px'
-}
-
 export const styleTime = {
   display: 'flex',
   width: '100%',

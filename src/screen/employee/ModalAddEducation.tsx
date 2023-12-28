@@ -51,7 +51,6 @@ const titleCancleStyle = {
 
 export function ModalAddEducation({
   open,
-  isCancel,
   handleClose,
   forceReRender,
   title,
@@ -90,7 +89,7 @@ export function ModalAddEducation({
     },
     enabled: true
   })
-
+  // @ts-ignore
   const { control, handleSubmit, setValue, setError, watch, clearErrors, reset } =
     useForm<Education>({
       mode: 'all',

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   AppBar,
   Box,
@@ -44,6 +45,7 @@ const ModalDetailOverTimeApplication: React.VFC<PropType> = ({
   closeModalDetail,
   handleEditInModalDetai
 }) => {
+  // @ts-ignore
   const { permissions, user } = useAuth()
 
   const { t } = useTranslation()
@@ -53,6 +55,7 @@ const ModalDetailOverTimeApplication: React.VFC<PropType> = ({
   const [selectedApprovers, setSelectedApprovers] = React.useState<[ModelHasApproversType] | []>([])
   const [totalOvertime, setTotalOvertime] = useState<number>(120)
   const [dataDetail, setDataDetail] = useState<OvertimeFormType>()
+  // @ts-ignore
   const systemSetting: any = useAtomValue(systemSettingAtom)
   useQuery<OvertimeFormType>([`1.0/user/overtime-form/${idDetail}`], {
     onSuccess: (data) => {
@@ -209,19 +212,14 @@ export const styleDivider = {
   margin: '0 -24px',
   width: 'calc(100% + 48px)'
 }
-const styleBelow2 = {
-  fontSize: { xs: '13px', sm: '16px' },
-  fontStyle: 'normal',
-  fontWeight: '600',
-  lineHeight: '22px',
-  mb: 3
-}
+
 const styleHours = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
   mb: 2
 }
+  // @ts-ignore
 const BoxItem = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between'

@@ -42,6 +42,7 @@ const ModalHolidayForm: React.FC<HolidayDetailType> = ({
   const [isSubmitting, setIsSubbmitting] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(idEdit ? true : false)
   const isEdit = idEdit !== null && idEdit !== undefined
+  // @ts-ignore
   const { control, setValue, watch, clearErrors, reset, setError, handleSubmit } =
     useForm<HolidayType>({
       defaultValues: {

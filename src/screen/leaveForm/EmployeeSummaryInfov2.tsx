@@ -1,8 +1,6 @@
 import { Box, Grid, Typography, styled } from '@mui/material'
 import { AvatarCustom } from 'components/Form/Components/AvatarCustom'
 import { AVATAR_SIZE } from 'lib/utils/contants'
-// import { AvatarCustom } from 'components/Form'
-// import { AVATAR_SIZE } from 'lib/utils'
 import { useTranslation } from 'react-i18next'
 type EmployeeSummaryInfoProps = {
   employeeId: number | string | undefined
@@ -16,7 +14,6 @@ type EmployeeSummaryInfoProps = {
 
 const EmployeeSummaryInfov2 = ({
   fullName,
-  employeeId,
   branchName,
   employee_code,
   avatar,
@@ -116,10 +113,6 @@ const styleContentNomarl = {
   lineHeight: '22px'
 }
 
-const styleAvatar = {
-  width: { xs: '60px', md: '100px' },
-  height: { xs: '60px', md: '100px' }
-}
 const styleGroupInfo = {
   display: 'flex',
   width: '100%',

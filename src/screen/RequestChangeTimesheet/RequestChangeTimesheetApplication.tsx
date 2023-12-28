@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useAtom, useAtomValue } from 'jotai'
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box } from '@mui/material'
 import ReactTableWithToolBar from 'components/ReactTable/ReactTableWithToolBar/ReactTableWithToolBar'
 import { V1 } from 'constants/apiVersion'

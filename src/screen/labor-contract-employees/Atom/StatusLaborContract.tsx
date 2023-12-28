@@ -2,10 +2,7 @@ import { styled, Theme } from '@mui/material'
 import i18n from 'lib/lang/translations/i18n'
 import { STATUS_INSURANCE } from 'lib/utils/contants'
 import React from 'react'
-import { useParams } from 'react-router-dom'
 import { Green, grey, Orange, Red, Yellow } from 'styles/colors'
-// import { Green, Orange, Red, Yellow, grey } from 'styles/v2'
-// import { STATUS_INSURANCE } from 'lib/utils'
 
 type StatusProps = {
   children?: React.ReactDOM
@@ -13,7 +10,7 @@ type StatusProps = {
   isStatusPaidLeave?: boolean
 }
 export const StatusLaborContract: React.VFC<StatusProps> = ({ value, isStatusPaidLeave }) => {
-  const isEdit = useParams()
+
   return (
     <CellStatusStyled status={value} isPaidLeave={isStatusPaidLeave}>
       <StatusText status={value} isPaidLeave={isStatusPaidLeave}>
@@ -65,6 +62,7 @@ export const getStatus = (value: number, isStatusPaidLeave: boolean | undefined)
   if (value === STATUS_INSURANCE.extend) return i18n.t('labor_contract.status.extend')
   return i18n.t('labor_contract.status.expiretion')
 }
+  // @ts-ignore
 const getStatusColor = (status: number, theme: Theme, isPaidLeave: boolean | undefined) => {
   if (isPaidLeave) {
     if (status === STATUS_INSURANCE.unemployment_insurance) return Orange[400]
@@ -74,6 +72,7 @@ const getStatusColor = (status: number, theme: Theme, isPaidLeave: boolean | und
   if (status === STATUS_INSURANCE.terminate) return Red[400]
   return Yellow[600]
 }
+  // @ts-ignore
 const getStatusBgColor = (status: number, theme: Theme, isPaidLeave: boolean | undefined) => {
   if (isPaidLeave) {
     if (status === 0) return Orange[400]

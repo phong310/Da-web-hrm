@@ -130,11 +130,6 @@ export const LaborContractForm: React.FC<LaborContractFormProps> = ({
     }
   }
 
-  const grid_input_labor = {
-    xs: 12,
-    sm: 6,
-    lg: 3
-  }
 
   const grid = { xs: 6, sm: 6, md: 4, lg: 4 }
 

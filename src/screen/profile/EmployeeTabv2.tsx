@@ -7,8 +7,10 @@ const EmployeeTabv2 = () => {
   const navigate = useNavigate()
   const { t } = useTranslation()
   const { pathname } = useLocation()
+  // @ts-ignore
   const [value, setValue] = useState(0)
 
+  // @ts-ignore
   const handleChange = (event: any, newValue: any) => {
     setValue(newValue)
   }

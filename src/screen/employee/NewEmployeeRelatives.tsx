@@ -17,15 +17,9 @@ import { DatePicker } from 'components/Form/Input/DatePicker'
 import { Input } from 'components/Form/Input/Input'
 import { V1 } from 'constants/apiVersion'
 import { useApiResource } from 'lib/hook/useApiResource'
-// import { DatePicker, Input, Select } from 'components/Form'
-// import { ButtonCommon } from 'components/Form/components/ButtonCommon'
-// import { V1 } from 'constants'
-// import { useApiResource } from 'lib/hooks'
 import { request } from 'lib/request'
 import { Relative } from 'lib/types/relatives'
 import { SELECT_RELATIVES, SELECT_SEX_RELATIVES } from 'lib/utils/selectRelatives'
-// import { Relative } from 'lib/types'
-// import { SELECT_RELATIVES, SELECT_SEX_RELATIVES } from 'lib/utils'
 import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -50,11 +44,14 @@ const NewEmployeeRelatives: React.FC<DialogProps> = ({
   forceReRender,
   dataDetail
 }) => {
+  // @ts-ignore
   const [contentModal, setContentModal] = useState<any>(null)
+  // @ts-ignore
   const { t } = useTranslation()
   const params = useParams()
 
   const [isDependent, setIsDependent] = useState<boolean>(false)
+  // @ts-ignore
   const [dateApply, setDateApply] = useState<Date | null>(null)
 
   const { createOrUpdateApi } = useApiResource<Relative>(`${V1}/user/relatives/employee`)
@@ -128,6 +125,7 @@ const NewEmployeeRelatives: React.FC<DialogProps> = ({
     handleSubmit,
     setError,
     clearErrors,
+    // @ts-ignore
     formState: { errors }
   } = useForm<relativesType>({
     resolver: yupResolver(relativeSchema),
@@ -165,7 +163,7 @@ const NewEmployeeRelatives: React.FC<DialogProps> = ({
         reload()
         forceReRender?.(2)
       }
-    } catch (error:any) {
+    } catch (error: any) {
       toast.error(error.error)
       if (error.errors) {
         for (const [key, value] of Object.entries(error.errors)) {
@@ -375,7 +373,5 @@ const NewEmployeeRelatives: React.FC<DialogProps> = ({
     </Dialog>
   )
 }
-const iconButton = {
-  marginLeft: 'auto'
-}
+
 export default NewEmployeeRelatives

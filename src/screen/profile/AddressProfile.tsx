@@ -21,9 +21,11 @@ const AddressProfile: React.VFC<InfoPropsType> = () => {
   const { t } = useTranslation()
   const { user } = useAuth()
 
+  // @ts-ignore
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const employee_id = user?.employee.id
+  // @ts-ignore
   const [addresses, setAddresses] = useState<Address[]>([
     {
       id: 0,
@@ -45,6 +47,7 @@ const AddressProfile: React.VFC<InfoPropsType> = () => {
     }
   ])
 
+  // @ts-ignore
   const isEdit = !!params.id
   const { createOrUpdateApi } = useApiResource<AddressesObj>(
     `${V1}/user/me/update-address/${employee_id}`

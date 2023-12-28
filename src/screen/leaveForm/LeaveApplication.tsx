@@ -3,9 +3,6 @@ import { SelectOption } from 'components/Form/Autocomplete/Select'
 import ReactTableWithSidebar from 'components/ReactTable/ReactTableWithSidebar/ReactTableWithSidebar'
 import { Status } from 'components/Status/Status'
 import { V1 } from 'constants/apiVersion'
-// import { SelectOption } from 'components/Form'
-// import ReactTableWithSidebar from 'components/ReactTable/v2/ReactTableWithSidebar/ReactTableWithSidebar'
-// import { STATUS_FORM_OPTIONS, V1 } from 'constants'
 import { useAtom, useAtomValue } from 'jotai'
 import { systemSettingAtom } from 'lib/atom/authAtom'
 import { searchParamsAtom } from 'lib/atom/searchAtom'
@@ -17,26 +14,13 @@ import {
   STATUS_FORM_OPTIONS
 } from 'lib/utils/contants'
 import { convertDatetimeTZWithoutSecond } from 'lib/utils/format'
-// import { searchParamsAtom, systemSettingAtom } from 'lib/atom'
-// import { KindOfLeaveType, LeaveFormType } from 'lib/types'
-// import {
-//     FORM_STATUS,
-//     IS_PAID_LEAVE_OPTIONS,
-//     KIND_OF_LEAVE_TYPES,
-//     convertDatetimeTZWithoutSecond
-// } from 'lib/utils'
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
-import { useSearchParams } from 'react-router-dom'
 import { CellValue, Column, Row } from 'react-table'
 import { toast } from 'react-toastify'
 import { ModalDetailLeaveApplication } from './ModalDetailLeaveApplication'
 import { ModalLeaveForm } from './ModalLeaveForm'
-// import { ModalLeaveForm } from 'screen/application/v2/ModalLeaveForm'
-// import { TypographyFirstCol } from '../../OverTime/ManagerOvertimeApplication'
-// import { Status } from '../../v2/Status'
-// import { ItemType, ModalDetailLeaveApplication } from './ModalDetailLeaveApplication'
 
 export const TypographyFirstCol = styled(Typography)(({ theme }) => ({
   fontSize: '16px',
@@ -47,7 +31,6 @@ export const TypographyFirstCol = styled(Typography)(({ theme }) => ({
 
 const LeaveApplication = () => {
   const { t } = useTranslation()
-  const [searchParams] = useSearchParams()
 
   const systemSetting: any = useAtomValue(systemSettingAtom)
   const [reasons, setReasons] = useState<SelectOption[]>()
@@ -87,6 +70,7 @@ const LeaveApplication = () => {
     () => [
       {
         Header: t('order_number') as string,
+        // @ts-ignore
         accessor: (original, index) => index + 1,
         display: true,
         Cell: ({ cell }: { cell: CellValue }) => {

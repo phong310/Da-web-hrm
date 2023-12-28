@@ -23,7 +23,6 @@ import { Input } from 'components/Form/Input/Input'
 import { RadioComponent } from 'components/Form/Input/RadioComponent'
 import { PageTable } from 'components/Layouts/Page/PageTable'
 import { RoundPaper } from 'components/Layouts/Page/RoundPaper'
-import { DrawerAdmin } from 'components/Layouts/Drawer/DrawerAdmin'
 import i18n from 'lib/lang/translations/i18n'
 import {
   ADDRESS_TYPE_OPTIONS,
@@ -32,16 +31,12 @@ import {
   SEX_OPTIONS,
   TYPE_OPTIONS_ADMIN
 } from 'lib/utils/contants'
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
-// import Branch from 'screen/AdminAddedOption/Branch'
-// import Department from 'screen/AdminAddedOption/Department'
-// import Position from 'screen/AdminAddedOption/Position'
-// import Titles from 'screen/AdminAddedOption/Titles'
 import * as yup from 'yup'
 import { V1 } from 'constants/apiVersion'
 import { useApiResource } from 'lib/hook/useApiResource'
@@ -51,7 +46,7 @@ import { BaseMaster, RegionData } from 'lib/types/baseMaster'
 type BaseMasterResponse = {
   data: BaseMaster[]
 }
-
+  // @ts-ignore
 type RegionResponse = {
   data: RegionData[]
 }
@@ -274,7 +269,7 @@ const NewEmployeeForm: React.VFC = () => {
         toast.success(message)
         setIsLoading(false)
       }
-    } catch (error:any) {
+    } catch (error: any) {
       // toast.error(error.error)
       setIsLoading(false)
       if (error.errors) {
@@ -305,6 +300,7 @@ const NewEmployeeForm: React.VFC = () => {
       expandIcon={<ArrowForwardIosSharpIcon style={{ color: 'red' }} sx={{ fontSize: '1rem' }} />}
       {...props}
     />
+    // @ts-ignore
   ))(({ theme }) => ({
     flexDirection: 'row-reverse',
     '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
@@ -316,6 +312,7 @@ const NewEmployeeForm: React.VFC = () => {
     setTypeOptions(type)
     setOpenAdminOptions(!openAdminOptions)
   }
+  // @ts-ignore
   const handleChangeOptions = () => {
     setOpenAdminOptions(!openAdminOptions)
     if (typeOptions == TYPE_OPTIONS_ADMIN['DEPARTMENT']) {
@@ -328,7 +325,7 @@ const NewEmployeeForm: React.VFC = () => {
       refetchTitles()
     }
   }
-
+  // @ts-ignore
   const getTitleByTypeOptions = (typeOptions: string) => {
     switch (typeOptions) {
       case TYPE_OPTIONS_ADMIN['DEPARTMENT']:
@@ -342,18 +339,18 @@ const NewEmployeeForm: React.VFC = () => {
     }
   }
 
-//   const renderComponentByTypeOptions = (typeOptions: string, handleChangeOptions: () => void) => {
-//     switch (typeOptions) {
-//       case TYPE_OPTIONS_ADMIN['DEPARTMENT']:
-//         return <Department onSuccessAddOptions={handleChangeOptions} />
-//       case TYPE_OPTIONS_ADMIN['POSITION']:
-//         return <Position onSuccessAddOptions={handleChangeOptions} />
-//       case TYPE_OPTIONS_ADMIN['TITLES']:
-//         return <Titles onSuccessAddOptions={handleChangeOptions} />
-//       default:
-//         return <Branch onSuccessAddOptions={handleChangeOptions} />
-//     }
-//   }
+  //   const renderComponentByTypeOptions = (typeOptions: string, handleChangeOptions: () => void) => {
+  //     switch (typeOptions) {
+  //       case TYPE_OPTIONS_ADMIN['DEPARTMENT']:
+  //         return <Department onSuccessAddOptions={handleChangeOptions} />
+  //       case TYPE_OPTIONS_ADMIN['POSITION']:
+  //         return <Position onSuccessAddOptions={handleChangeOptions} />
+  //       case TYPE_OPTIONS_ADMIN['TITLES']:
+  //         return <Titles onSuccessAddOptions={handleChangeOptions} />
+  //       default:
+  //         return <Branch onSuccessAddOptions={handleChangeOptions} />
+  //     }
+  //   }
 
   return (
     <>
@@ -889,13 +886,6 @@ const NewEmployeeForm: React.VFC = () => {
           </Box>
         </RoundPaper>
       </PageTable>
-      <DrawerAdmin
-        title={getTitleByTypeOptions(typeOptions)}
-        open={openAdminOptions}
-        handleOpen={() => setOpenAdminOptions(!openAdminOptions)}
-      >
-        {/* {renderComponentByTypeOptions(typeOptions, handleChangeOptions)} */}
-      </DrawerAdmin>
     </>
   )
 }

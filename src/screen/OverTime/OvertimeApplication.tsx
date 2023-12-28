@@ -1,23 +1,7 @@
-// import { STATUS_FORM_OPTIONS } from 'constants'
-// import { useAtom, useAtomValue } from 'jotai'
-// import { searchParamsAtom, systemSettingAtom } from 'lib/atom'
-// import { LeaveFormType, OvertimeFormType } from 'lib/types'
-// import {
-//   FORM_STATUS,
-//   convertDatetimeTZ,
-//   convertDatetimeTZWithoutSecond,
-//   convertFormatDate,
-//   formatDateTime,
-//   formatTime
-// } from 'lib/utils'
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { CellValue, Column, Row } from 'react-table'
-// import { ModalOverTimeForm } from 'screen/application/v2/ModalOverTimeForm'
-// import { Status } from 'screen/application/v2/Status'
-// import { TypographyFirstCol } from '../ManagerOvertimeApplication'
-// import { ModalDetailOverTimeApplication } from './ModalDetailOverTimeApplication'
 import { Typography } from '@mui/material'
 import { toast } from 'react-toastify'
 import { useAtom, useAtomValue } from 'jotai'
@@ -31,6 +15,7 @@ import { FORM_STATUS, STATUS_FORM_OPTIONS } from 'lib/utils/contants'
 import ReactTableWithSidebar from 'components/ReactTable/ReactTableWithSidebar/ReactTableWithSidebar'
 import { ModalDetailOverTimeApplication } from './ModalDetailOverTimeApplication'
 import { ModalOverTimeForm } from './ModalOverTimeForm'
+  // @ts-ignore
 type ApplicationType = {
   id: number
   start_time: string
@@ -39,14 +24,17 @@ type ApplicationType = {
 
 const OvertimeApplication = () => {
   const { t } = useTranslation()
+  // @ts-ignore
   const navigate = useNavigate()
   const systemSetting: any = useAtomValue(systemSettingAtom)
+  // @ts-ignore
   const [searchParams] = useSearchParams()
   const [searchAtom] = useAtom(searchParamsAtom)
   const columns = useMemo<Column<OvertimeFormType>[]>(
     () => [
       {
         Header: t('order_number') as string,
+        // @ts-ignore
         accessor: (original, index) => index + 1,
         display: true,
         Cell: ({ cell }: { cell: CellValue }) => {

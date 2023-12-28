@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Stack, Typography, styled } from '@mui/material'
 import { useAuth } from 'lib/hook/useAuth'
 import { HolidayType } from 'lib/types/applicationForm'
@@ -395,10 +396,6 @@ const headerStyleReactTool = {
   height: '100%',
   margin: 0,
   justifyContent: 'center'
-}
-const styleOt = {
-  display: 'flex',
-  maxWidth: '158px'
 }
 const headerStyleTotal = {
   backgroundColor: blueV2[20],

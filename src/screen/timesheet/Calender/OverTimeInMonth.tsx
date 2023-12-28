@@ -1,5 +1,5 @@
 import { Grid, Typography } from '@mui/material'
-import { Box, styled } from '@mui/material'
+import { Box } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import NoData from 'assets/svgs/Frame.svg'
 import { RoundPaper } from 'components/Layouts/Page/RoundPaper'

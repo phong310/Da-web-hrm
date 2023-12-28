@@ -8,7 +8,6 @@ import { useAtomValue } from 'jotai'
 import { systemSettingAtom } from 'lib/atom/authAtom'
 import { useApiResource } from 'lib/hook/useApiResource'
 import { Education, Educations, EducationsObj } from 'lib/types/education'
-import { convertDatetimeTZV2, convertFormatDate } from 'lib/utils/format'
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -22,18 +21,20 @@ import { ModalEditEdcucation } from './ModalEditEducation'
 const ListEmployeeEducation: React.VFC = () => {
   const params = useParams()
   const { deleteApi } = useApiResource<Education>(`${V1}/user/education/employee/${params.id}`)
+  // @ts-ignore
   const navigate = useNavigate()
   const { t } = useTranslation()
 
   const [openModal, setOpenModal] = useState(false)
   const [educationActive, setEducationActive] = useState<number>(-1)
+  // @ts-ignore
   const [educations, setEducations] = useState<Education[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [openAdd, setOpenAdd] = useState<boolean>(false)
   const [reRender, setReRender] = useState(0)
   const [isSubmit, setIsSubmit] = useState<boolean>(false)
   const isEdit = !!params.id
-
+  // @ts-ignore
   const systemSetting: any = useAtomValue(systemSettingAtom)
 
   const { createOrUpdateApi } = useApiResource<EducationsObj>(`${V1}/user/education/employee`)
@@ -140,11 +141,7 @@ const ListEmployeeEducation: React.VFC = () => {
         Header: t('to'),
         accessor: 'to_date',
         Cell: ({ row }: any) => {
-          return (
-            <span>
-              {row.original.to_date}
-            </span>
-          )
+          return <span>{row.original.to_date}</span>
         },
         display: true
       }

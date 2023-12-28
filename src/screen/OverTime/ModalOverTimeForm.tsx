@@ -20,7 +20,7 @@ import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import CloseIcon from '@mui/icons-material/Close'
 import { ModalSkeleton } from 'components/Skeleton/ModalSkeleton'
@@ -89,8 +89,10 @@ const ModalOverTimeForm: React.VFC<PropType> = ({
   closeModalEdit
 }) => {
   const queryString = window.location.search
+  // @ts-ignore
   const urlParams = new URLSearchParams(queryString)
   const { permissions, user } = useAuth()
+  // @ts-ignore
   const navigate = useNavigate()
   const { t } = useTranslation()
   const location: any = useLocation()
@@ -278,6 +280,7 @@ const ModalOverTimeForm: React.VFC<PropType> = ({
     enabled: watch('employee_id') && isManagerEdit ? true : false
   })
 
+  // @ts-ignore
   const [isSubmitAction, setIsSubmitAction] = useState<boolean>(false)
   const handleAction = async (action: string) => {
     setIsCancel(true)

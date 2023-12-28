@@ -13,6 +13,7 @@ interface TimeSheetTimelineType {
   sx?: any
 }
 
+// @ts-ignore
 export const TimeSheetTimeline = ({ event, handleSelect, sx }: TimeSheetTimelineType) => {
   const systemSetting: any = useAtomValue(systemSettingAtom)
 

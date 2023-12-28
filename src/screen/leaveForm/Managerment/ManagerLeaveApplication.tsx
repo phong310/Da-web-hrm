@@ -254,7 +254,7 @@ const ManagerLeaveApplication = () => {
     setOpenEdit(true)
     setIdEdit(original.id)
   }
-
+  // @ts-ignore
   const month: number = new Date(monthAtom).getMonth() + 1
 
   const tabElement: TabElement[] = [

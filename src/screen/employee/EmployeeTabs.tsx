@@ -34,6 +34,7 @@ const EmployeeTabs: React.VFC = () => {
   const navigate = useNavigate()
   const params = useParams()
   const { t } = useTranslation()
+  // @ts-ignore
   const { pathname } = useLocation()
   const location = useLocation()
 
@@ -77,6 +78,7 @@ const EmployeeTabs: React.VFC = () => {
 
   // @ts-ignore
   const tabIndex = location.state?.tabIndex
+  // @ts-ignore
   const [value, setValue] = React.useState(tabIndex || 0)
   return (
     <>

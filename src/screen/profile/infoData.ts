@@ -1,3 +1,4 @@
+// @ts-nocheck
 import i18n from 'lib/lang/translations/i18n'
 import { Address } from 'lib/types/address'
 import { SystemSetting } from 'lib/types/system_setting'

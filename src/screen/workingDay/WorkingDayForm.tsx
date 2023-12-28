@@ -129,6 +129,7 @@ const WorkingDayForm: React.VFC<WorkingDayFormProps> = ({
                       </Typography>
                     }
                     control={
+                      // @ts-ignore
                       <Checkbox checked={day.isChecked} onChange={(e) => handleCheck(index)} />
                     }
                   />

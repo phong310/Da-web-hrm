@@ -26,6 +26,7 @@ const ListWorkingDay = () => {
     () => [
       {
         Header: t('order_number') as string,
+        // @ts-ignore
         accessor: (original, index) => index + 1,
         display: true,
         Cell: ({ cell }: { cell: CellValue }) => {

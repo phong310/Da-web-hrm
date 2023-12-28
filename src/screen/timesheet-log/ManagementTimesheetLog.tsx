@@ -1,5 +1,4 @@
 import { Box, styled, Typography } from '@mui/material'
-import ReactTableWithToolBar from 'components/ReactTable/ReactTableWithToolBar/ReactTableWithToolBar'
 import ReactTableWithToolBarv2 from 'components/ReactTable/ReactTableWithToolBar/ReactTableWithToolBarv2'
 import { V1 } from 'constants/apiVersion'
 import { TIMESHEET_TYPE, TIMESHEET_TYPE_TIME } from 'constants/timeSheetType'
@@ -29,6 +28,7 @@ const ManagementTimesheetLog =  () => {
   const params: Record<string, unknown> = {
     month: formatYearMonth(new Date(month).getMonth() + 1, new Date(month).getFullYear())
   }
+  // @ts-ignore
   const navigate = useNavigate()
 
   const daysInMonth = getAllDaysInMonth(

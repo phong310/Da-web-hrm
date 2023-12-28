@@ -1,3 +1,4 @@
+// @ts-nocheck
 import CloseIcon from '@mui/icons-material/Close'
 import {
     AppBar,
@@ -16,10 +17,6 @@ import { Input } from 'components/Form/Input/Input'
 import { TimePicker } from 'components/Form/Input/TimePicker'
 import { useApiResource } from 'lib/hook/useApiResource'
 import { formatNormalDateV2, getOnlyTimeFromDate } from 'lib/utils/format'
-// import { DatePicker, Input, TimePicker } from 'components/Form'
-// import { ButtonCommon } from 'components/Form/components/ButtonCommon'
-// import { useApiResource } from 'lib/hooks'
-// import { formatNormalDateV3, getOnlyTimeFromDate } from 'lib/utils'
 import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'

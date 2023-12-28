@@ -16,14 +16,9 @@ import {
 } from '@mui/material'
 import { ModalSkeleton } from 'components/Skeleton/ModalSkeleton'
 import { useAtomValue } from 'jotai'
-// import { systemSettingAtom } from 'lib/atom'
-// import { RequestChangeTimesheetFormType } from 'lib/types'
-// import { STATUSCHECK, convertDatetimeTZWithoutSecond } from 'lib/utils'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
-// import { Status } from 'screen/application/v2/Status'
-// import { Green, Orange, Red, Yellow, blue } from 'styles/v2'
 import { styled } from '@mui/system'
 import { Approvers } from 'screen/application/Atoms/Approvers'
 import { RequestChangeTimesheetFormType } from 'lib/types/applicationForm'
@@ -32,8 +27,6 @@ import { STATUSCHECK } from 'lib/utils/contants'
 import { convertDatetimeTZWithoutSecond } from 'lib/utils/format'
 import { Status } from 'components/Status/Status'
 import { Green, Red, Yellow, blue } from 'styles/colors'
-// import { stylePopUp } from 'screen/application/LeaveForm/v2/ModalDetailLeaveApplication'
-// import { styleDialog } from 'screen/application/OverTime/v2/ModalDetailOverTimeApplication'
 
 type PropType = DialogProps & {
   handleClose: () => void
@@ -46,7 +39,6 @@ type PropType = DialogProps & {
 const ModalDetailRequestChangeTimesheetApplication: React.FC<PropType> = ({
   open,
   handleClose,
-  updateSuccess,
   idDetail,
   handleEdit
 }) => {
@@ -209,6 +201,7 @@ const styleGridHeader = {
 const styleIconClose = {
   width: { xs: '20px', sm: '30px' }
 }
+  // @ts-ignore
 const BoxItem = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between'
@@ -220,15 +213,6 @@ const styleTitle = {
   fontSize: { xs: 14, sm: 16, md: 18 },
   mb: 2,
   pt: 1
-}
-
-const styletitleDetail = {
-  color: 'black',
-  fontSize: { xs: '13px', sm: '18px' },
-  fontStyle: 'normal',
-  fontWeight: '600',
-  lineHeight: '26px',
-  mb: 2
 }
 
 const styleTime = {
@@ -250,13 +234,6 @@ const styleBelow = {
   lineHeight: '22px',
   mb: 3,
   color: '#111'
-}
-const styleBelow2 = {
-  fontSize: { xs: '13px', sm: '16px' },
-  fontStyle: 'normal',
-  fontWeight: '600',
-  lineHeight: '22px',
-  mb: 3
 }
 export const styleBoxNote = {
   width: { xs: '60%', sm: '60%' },
@@ -292,6 +269,7 @@ const stylePopUp = {
 
 const BoxTimeStyle = styled(Box)<{
   status: number
+  // @ts-ignore
 }>(({ status, theme }) => {
   return {
     display: 'flex',

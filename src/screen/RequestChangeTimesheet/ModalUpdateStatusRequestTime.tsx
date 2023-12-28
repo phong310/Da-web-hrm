@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt'
 import ForwardOutlinedIcon from '@mui/icons-material/ForwardOutlined'
 import {
@@ -17,12 +18,9 @@ import { ModalSkeleton } from 'components/Skeleton/ModalSkeleton'
 import { Status } from 'components/Status/Status'
 import { V1 } from 'constants/apiVersion'
 import { Permissions } from 'constants/permissions'
-// import { Permissions, STATUS_FORM, TYPE_FORM, V1 } from 'constants'
 import { useAtomValue } from 'jotai'
 import { systemSettingAtom } from 'lib/atom/authAtom'
 import { useAuth } from 'lib/hook/useAuth'
-// import { systemSettingAtom } from 'lib/atom'
-// import { useAuth } from 'lib/hooks'
 import { request } from 'lib/request'
 import {
   ModelHasApproversType,

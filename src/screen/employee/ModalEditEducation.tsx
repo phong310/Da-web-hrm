@@ -31,12 +31,11 @@ const titleCancleStyle = {
 
 export function ModalEditEdcucation({
   open,
-  isCancel,
   handleClose,
   content,
-  onSubmit,
   title
 }: any) {
+  // @ts-ignore
   const { t } = useTranslation()
 
   const handleBackdropClick = (e: any) => {

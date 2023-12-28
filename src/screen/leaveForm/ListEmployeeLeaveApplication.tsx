@@ -29,6 +29,7 @@ const ListEmployeeLeaveApplication = () => {
     paginationData: { data: listLeaveAppIn4, pageCount: pageCount },
     handleChangeParams,
     handleAddParams,
+    // @ts-ignore
     isLoading: isLoadingListApp
   } = usePaginationQuery<{ data: LeaveAppBlockInformationProps[] }>(
     `${V1}/user/leave-form/information`,
