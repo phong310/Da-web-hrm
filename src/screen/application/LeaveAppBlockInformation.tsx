@@ -50,9 +50,11 @@ const LeaveAppBlockInformation: any = ({
     (new Date().getTime() - new Date(created_at).getTime()) / (1000 * 60 * 60 * 24)
 
   const theme = useTheme()
+  // @ts-ignore
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   const responsiveGrid = { xs: 12, sm: 6, md: 6, lg: 7, xl: 6 }
+  // @ts-ignore
   const restGrid = {
     ...responsiveGrid,
     xs: 12 - responsiveGrid.xs,
@@ -215,41 +217,6 @@ const styleTypographyCreateDate = {
   fontStyle: 'normal',
   fontWeight: 400,
   lineHeight: '20px'
-}
-
-const styleTypographyStartDate = {
-  color: '#111111',
-  fontSize: { xs: '14px', md: '16px' },
-  fontStyle: 'normal',
-  fontWeight: 400,
-  lineHeight: '20px'
-}
-
-const styleBoxIcon = {
-  marginTop: 2
-}
-
-const styleBoxIconSvg = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: 1
-}
-
-const styleTypographyTime = {
-  color: '#111111',
-  fontSize: 16,
-  fontStyle: 'normal',
-  fontWeight: 400,
-  lineHeight: '20px',
-  display: 'flex',
-  alignItems: 'center',
-  gap: 1
-}
-
-const styleIsMobileTime = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: 1
 }
 
 const styleBoxKind = {

@@ -9,46 +9,15 @@ import {
   Toolbar,
   Typography
 } from '@mui/material'
-// import { DatePicker, DateTimePickerSeparate, Input, Select, SelectOption } from 'components/Form'
-// import { KEY_SCREEN, Permissions, STATUS_FORM, TYPE_FORM } from 'constants'
 import { V1 } from 'constants/apiVersion'
 import { useAtomValue } from 'jotai'
-// import { systemSettingAtom } from 'lib/atom'
-// import { useApiResource, useAuth } from 'lib/hooks'
 import { request } from 'lib/request'
-// import {
-//   CompensatoryLeaveFormType,
-//   CompensatoryWorkingDayData,
-//   EmployeeType,
-//   KindOfLeaveType,
-//   ModelHasApproversType,
-//   WorkingDayData
-// } from 'lib/types'
-// import {
-//   addHours,
-//   checkFormIsDisableEdit,
-//   checkIsManager,
-//   convertDatetimeTZ,
-//   convertDatetimeUTC,
-//   convertLocalDatetimeToTZ,
-//   formatDate,
-//   formatDateTime,
-//   getDayIdInDate,
-//   getLastDateinMonth,
-//   isWeekend,
-//   KIND_OF_LEAVE_TYPES,
-//   minutesToDays,
-//   numberLeaveDay
-// } from 'lib/utils'
 import React, { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
-// import { ApprovalInformation } from '../ApprovalInformation'
-// import { EmployeeSummaryInfo } from '../EmployeeSummaryInfo'
-// import { FooterApplication } from './FooterApplication'
 import CloseIcon from '@mui/icons-material/Close'
 import { ModalSkeleton } from 'components/Skeleton/ModalSkeleton'
 import { useAuth } from 'lib/hook/useAuth'
@@ -69,7 +38,6 @@ import { ApprovalInformation } from 'screen/leaveForm/ApprovalInformation'
 import { DateTimePickerSeparate } from 'components/Form/Input/DateTimePickerSeparator'
 import { Input } from 'components/Form/Input/Input'
 import { FooterApplication } from 'screen/leaveForm/FooterApplication'
-// import { styleHeightInput } from './ModalLeaveForm'
 type DataResponse<T> = {
   data: T[]
 }
@@ -89,7 +57,7 @@ const ModalCompensatoryForm: React.VFC<PropType> = ({
   closeModalEdit
 }) => {
   const queryString = window.location.search
-
+  // @ts-ignore
   const urlParams = new URLSearchParams(queryString)
   const { permissions } = useAuth()
   const multipleValueInWeekend = isWeekend(new Date(new Date().valueOf() + 1000 * 60 * 60 * 24))
@@ -98,11 +66,11 @@ const ModalCompensatoryForm: React.VFC<PropType> = ({
   const [reasons, setReasons] = useState<SelectOption[]>()
   const { t } = useTranslation()
   const location: any = useLocation()
-
+  // @ts-ignore
   const params = useParams()
   const { user } = useAuth()
   const [numberOfLeaveDay, setNumberOfLeaveDay] = useState<number>(0)
-
+  // @ts-ignore
   const navigate = useNavigate()
   const { createOrUpdateApi } = useApiResource<CompensatoryLeaveFormType>(
     '1.0/user/compensatory-leave'
@@ -299,7 +267,7 @@ const ModalCompensatoryForm: React.VFC<PropType> = ({
         toast(res.data.message)
         handleEditSuccess()
       }
-    } catch (error:any) {
+    } catch (error: any) {
       toast.error(error.errors)
       if (error.errors) {
         for (const [key, value] of Object.entries(error.errors)) {
@@ -319,7 +287,7 @@ const ModalCompensatoryForm: React.VFC<PropType> = ({
         handleEditSuccess()
         setIsCancel(false)
       }
-    } catch (error:any) {
+    } catch (error: any) {
       toast.error(error.errors)
       if (error.errors) {
         for (const [key, value] of Object.entries(error.errors)) {
@@ -361,7 +329,7 @@ const ModalCompensatoryForm: React.VFC<PropType> = ({
         toast(res.data.message)
         handleEditSuccess()
       }
-    } catch (error:any) {
+    } catch (error: any) {
       toast.error(error.message)
     }
   }

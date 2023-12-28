@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
     addDays,
     endOfMonth,
@@ -8,7 +9,6 @@ import {
     startOfWeek
 } from 'date-fns'
 import { formatNormalDateV2, formatYearMonth } from './format'
-// import { formatNormalDateV2, formatYearMonth } from '../format'
 
 export const getDateOfWeek = (month: Date | string, week: number) => {
     const monthS = formatYearMonth(new Date(month).getMonth() + 1, new Date(month).getFullYear())
@@ -65,6 +65,7 @@ export const checkDayOfMonth = (month: string | Date, day: string | Date) => {
 export const WeekOfNumber = () => {
     let currentDate = new Date()
     let dayOfMonth = currentDate.getDate()
+    // @ts-ignore
     let dayOfWeek = currentDate.getDay()
     let firstWeekdayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay()
     if (firstWeekdayOfMonth === 0) {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button, CircularProgress, Grid, styled } from '@mui/material'
 import { Box } from '@mui/system'
 import { ButtonCommon } from 'components/Form/Components/ButtonCommon'

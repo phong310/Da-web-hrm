@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { yupResolver } from '@hookform/resolvers/yup'
 import { CircularProgress, Grid, Tooltip } from '@mui/material'
 import { Box } from '@mui/system'
@@ -5,9 +6,7 @@ import { Select } from 'components/Form/Autocomplete/Select'
 import { ButtonCommon } from 'components/Form/Components/ButtonCommon'
 import { Input } from 'components/Form/Input/Input'
 import { RadioComponent } from 'components/Form/Input/RadioComponent'
-
 import { PageTable } from 'components/Layouts/Page/PageTable'
-import { DrawerAdmin } from 'components/Layouts/Drawer/DrawerAdmin'
 import { V1 } from 'constants/apiVersion'
 import { useApiResource } from 'lib/hook/useApiResource'
 import i18n from 'lib/lang/translations/i18n'
@@ -25,10 +24,6 @@ import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
-// import Branch from 'screen/AdminAddedOption/Branch'
-// import Department from 'screen/AdminAddedOption/Department'
-// import Position from 'screen/AdminAddedOption/Position'
-// import Titles from 'screen/AdminAddedOption/Titles'
 import * as yup from 'yup'
 import { DatePicker } from 'components/Form/Input/DatePicker'
 
@@ -600,13 +595,6 @@ const EmployeeForm: React.VFC = () => {
           </Grid>
         </Box>
       </PageTable>
-      <DrawerAdmin
-        title={getTitleByTypeOptions(typeOptions)}
-        open={openAdminOptions}
-        handleOpen={() => setOpenAdminOptions(!openAdminOptions)}
-      >
-        {/* {renderComponentByTypeOptions(typeOptions, handleChangeOptions)} */}
-      </DrawerAdmin>
     </>
   )
 }

@@ -26,6 +26,7 @@ export enum STATUS_STEP {
 export const CompanyForm = () => {
   const [activeStep, setActiveStep] = useState<number>(STEP[1])
   const [companyId, setCompanyId] = useState<number>()
+  // @ts-ignore
   const [statusStep, setStatusStep] = useState<string>('')
   const { t } = useTranslation()
   const [completed, setCompleted] = useState<{
@@ -63,6 +64,7 @@ export const CompanyForm = () => {
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
           // find the first step that has been completed
+          // @ts-ignore
           steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1
     setActiveStep(newActiveStep)

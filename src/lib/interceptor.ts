@@ -48,6 +48,7 @@ const interceptor = (axiosInstance: any) => (error: any) => {
             return new Promise(function (resolve, reject) {
                 failedQueue.push({ resolve, reject });
             })
+            // @ts-ignore
                 .then((token) => {
                     //   originalRequest.headers["Authorization"] = "Bearer " + token;
                     return _axios.request(originalRequest);

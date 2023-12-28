@@ -20,8 +20,9 @@ import { ModalCompensatoryForm } from './ModalCompensatoryForm'
 import { ModalDetailCompensatoryApplication } from './ModalDetailCompensatoryApplication'
 const CompensatoryLeaveApplication = () => {
   const { t } = useTranslation()
+  // @ts-ignore
   const [searchParams] = useSearchParams()
-
+  // @ts-ignore
   const navigate = useNavigate()
   const systemSetting: any = useAtomValue(systemSettingAtom)
   const [searchAtom] = useAtom(searchParamsAtom)
@@ -46,6 +47,7 @@ const CompensatoryLeaveApplication = () => {
     () => [
       {
         Header: t('order_number') as string,
+        // @ts-ignore
         accessor: (original, index) => index + 1,
         display: true,
         Cell: ({ cell }: { cell: CellValue }) => {

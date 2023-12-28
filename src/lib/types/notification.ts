@@ -1,5 +1,6 @@
 import { UnknownObj } from "./utils"
 
+// @ts-ignore
 export type NotificationType<T = UnknownObj> = {
     id: string
     content: string

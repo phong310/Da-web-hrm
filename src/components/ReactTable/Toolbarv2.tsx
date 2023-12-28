@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next'
 import { Column } from 'react-table'
 import { SettingFieldsDisplay } from './Components/SettingFieldsDisplay'
 import { FilterBar } from './FilterBar'
+// @ts-ignore
 type ToolbarProps<T extends object> = {
   onActionCreate?: () => void
   loading: boolean
@@ -51,23 +52,24 @@ export default function Toolbarv2<T extends object>({
   isShowSearchFast,
   filterCalender,
   loading,
+  // @ts-ignore
   ...props
 }: ToolbarProps<T>) {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const [expandedFilter, setExpandedFlter] = React.useState(false)
   const [textInput, setTextInput] = React.useState<string>('')
   const handleExpandFilterClick = () => {
     setExpandedFlter(!expandedFilter)
   }
-//   const onExport = async () => {
-//     exportApi(`${exportUrl}?rows=all`, exportFileName)
-//   }
+  //   const onExport = async () => {
+  //     exportApi(`${exportUrl}?rows=all`, exportFileName)
+  //   }
 
-//   const onDownloadTemplate = async () => {
-//     if (templateUrl) {
-//       exportApi(templateUrl, exportFileName || 'regions.xlsx')
-//     }
-//   }
+  //   const onDownloadTemplate = async () => {
+  //     if (templateUrl) {
+  //       exportApi(templateUrl, exportFileName || 'regions.xlsx')
+  //     }
+  //   }
 
   const handleTextInputChange = (event: InputEvent) => {
     //@ts-ignore
@@ -89,6 +91,7 @@ export default function Toolbarv2<T extends object>({
   return (
     <>
       {expandedFilter ? (
+        // @ts-ignore
         <FilterBar
           searchColumns={searchColumns}
           handleChangeParams={handleChangeParams}

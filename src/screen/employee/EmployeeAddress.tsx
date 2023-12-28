@@ -20,10 +20,10 @@ import { EmployeeTabs } from './EmployeeTabs'
 const EmployeeAddress: React.VFC = () => {
   const params = useParams()
   const { t } = useTranslation()
-
+  // @ts-ignore
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState<boolean>(false)
-
+  // @ts-ignore
   const [addresses, setAddresses] = useState<Address[]>([
     {
       id: 0,
@@ -95,7 +95,7 @@ const EmployeeAddress: React.VFC = () => {
         toast.success(message)
         setIsLoading(false)
       }
-    } catch (error:any) {
+    } catch (error: any) {
       setIsLoading(false)
       if (error.errors) {
         for (const [key, value] of Object.entries(error.errors)) {

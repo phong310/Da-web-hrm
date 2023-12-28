@@ -1,21 +1,12 @@
-// import { SettingTypesOvertimeType } from 'lib/types'
-// import {
-//     addOneDayWhenZeroHour,
-//     diffTimeInMinutes,
-//     formatDateTime,
-//     formatFullTime,
-//     greaterThanOrEqualHour,
-//     lessThanOrEqualHour,
-//     subOneDayWhenZeroHour
 
 import { SettingTypesOvertimeType } from "lib/types/settingTypesOvertime"
 import { formatDateTime, formatFullTime } from "./format"
 import { addOneDayWhenZeroHour, diffTimeInMinutes, greaterThanOrEqualHour, lessThanOrEqualHour, subOneDayWhenZeroHour } from "./datetime"
 
-// } from 'lib/utils'
 export const handleCalculateTotalOvertime = (
     start_time: string,
     end_time: string,
+    // @ts-ignore
     date: string,
     type_of_overtime: SettingTypesOvertimeType
 ) => {

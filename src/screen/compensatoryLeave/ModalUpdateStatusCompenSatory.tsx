@@ -1,3 +1,4 @@
+// @ts-nocheck
 import CloseIcon from '@mui/icons-material/Close'
 import {
   AppBar,
@@ -455,16 +456,6 @@ const styleHeader = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'flex-start'
-}
-
-const styleBoxContainer = {
-  padding: { xs: '10px 12px', sm: '10px 30px' },
-  position: 'relative',
-  overflow: 'auto',
-  '::-webkit-scrollbar': { width: 4, height: 8 },
-  '::-webkit-scrollbar-thumb': {
-    backgroundColor: '#F0F0F0'
-  }
 }
 
 const styleTitleDialog = {

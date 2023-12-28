@@ -55,7 +55,7 @@ const EmployeeAccountInformation: React.VFC = () => {
   const [openResetPasswordModal, setOpenResetPasswordModal] = useState(false)
   const [checked, setChecked] = React.useState(true)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const { control, handleSubmit, setValue, getValues, setError, clearErrors, reset } =
+  const { control, handleSubmit, setValue, getValues, setError, clearErrors } =
     useForm<UserType>({
       defaultValues: {
         id: 0,

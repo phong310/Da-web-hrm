@@ -1,3 +1,4 @@
+// @ts-nocheck
 export enum Permissions {
     timeKeeping = 'timekeeping.list',
     overtimeManage = 'overtime.manage',

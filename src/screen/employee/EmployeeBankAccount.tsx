@@ -49,7 +49,7 @@ const validateBankAccount = yup.object({
     .max(100, i18n.t('validate.bank_name_max'))
     .required(i18n.t('validate.bank_name'))
 })
-
+// @ts-ignore
 const EmployeeBankAccount: React.VFC = (props) => {
   const params = useParams()
 

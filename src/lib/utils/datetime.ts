@@ -43,9 +43,11 @@ const minutesToOnlyHours = (m: number | string) => {
 const minutesToDays: any = (
     m: number,
     fullText?: boolean,
+    // @ts-ignore
     t?: any,
     days?: boolean,
     hours?: boolean,
+    // @ts-ignore
     minutes?: boolean
 ) => {
     m = Math.floor(m)

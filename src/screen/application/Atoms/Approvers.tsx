@@ -112,11 +112,7 @@ const styleNoTime = {
   alignItems: 'flex-start',
   justifyContent: 'space-between'
 }
-const styleAvatarApprove = {
-  width: { xs: '45px', sm: '60px' },
-  height: { xs: '45px', sm: '60px' },
-  display: { xs: 'block' }
-}
+
 
 const styleNameApproveWithTime = {
   display: 'flex',

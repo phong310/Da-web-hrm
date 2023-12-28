@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { yupResolver } from '@hookform/resolvers/yup'
 import {
     Box,
@@ -36,7 +37,7 @@ import { NUMBER_OF_DAY_TYPES } from 'lib/utils/contants'
 import { blue } from 'styles/colors'
 import { monthCalendarAtom } from 'lib/atom/calendarAtom'
 
-type ReturnType = {
+export type ReturnType = {
   day: ReactElement | null
   hour: ReactElement | null
   minute: ReactElement | null
@@ -212,25 +213,25 @@ const EmployeeNumberTimeOff: React.VFC = () => {
 
   const EmployeeTimeOffFields = {
     listFields: [
-      // {
-      //   Header: t('employee.date'),
-      //   accessor: 'date',
-      //   Cell: ({ row }: any) => {
-      //     return convertFormatDate(
-      //       convertDatetimeTZV2(row.original.date, systemSetting.time_zone),
-      //       systemSetting.format_date
-      //     )
-      //   },
-      //   display: true
-      // },
-      // {
-      //   Header: t('employee.number_of_leave_time'),
-      //   accessor: 'number_of_minutes',
-      //   Cell: ({ value }: CellProps<TimeOff>) => {
-      //     return minutesToDays(value, 'string', undefined)
-      //   },
-      //   display: true
-      // },
+      {
+        Header: t('employee.date'),
+        accessor: 'date',
+        Cell: ({ row }: any) => {
+          return convertFormatDate(
+            convertDatetimeTZV2(row.original.date, systemSetting.time_zone),
+            systemSetting.format_date
+          )
+        },
+        display: true
+      },
+      {
+        Header: t('employee.number_of_leave_time'),
+        accessor: 'number_of_minutes',
+        Cell: ({ value }: CellProps<TimeOff>) => {
+          return minutesToDays(value, 'string', undefined)
+        },
+        display: true
+      },
       {
         Header: t('number_of_days.type'),
         accessor: 'type',

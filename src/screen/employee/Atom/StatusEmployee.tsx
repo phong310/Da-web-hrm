@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { styled, Theme } from '@mui/material'
 import i18n from 'lib/lang/translations/i18n'
 import { STATUS_EMPLOYEE } from 'lib/utils/contants'

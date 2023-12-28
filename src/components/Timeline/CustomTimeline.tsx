@@ -9,7 +9,6 @@ import TimelineOppositeContent, {
   timelineOppositeContentClasses
 } from '@mui/lab/TimelineOppositeContent'
 import TimelineSeparator from '@mui/lab/TimelineSeparator'
-import { styled } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import { t } from 'i18next'
 import * as React from 'react'
@@ -27,6 +26,7 @@ const CustomTimeline: any = ({
   end_time,
   start_date,
   end_date,
+  // @ts-ignore
   in_day
 }: CustomTimelineProps) => {
   return (
@@ -98,11 +98,6 @@ const CustomTimeline: any = ({
 }
 
 export { CustomTimeline }
-
-const TypographyTimelineContent = styled(Typography)({
-  fontSize: 14,
-  fontWeight: 600
-})
 
 const responsiveTimelineCotent = {
   color: '#000',

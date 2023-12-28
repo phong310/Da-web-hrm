@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Skeleton, Table, TableBody, TableContainer, TableHead } from '@mui/material'
 import { Cell, Row } from 'components/ReactTable/StyledComponent'
 

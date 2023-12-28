@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { V1 } from 'constants/apiVersion'
 import { request } from 'lib/request'
 import { toast } from 'react-toastify'

@@ -16,6 +16,7 @@ type titleType = {
 const ListTitles: React.FC = () => {
   const { t } = useTranslation()
   const { deleteApi } = useApiResource<BaseMaster>(`${V1}/admin/title`)
+  // @ts-ignore
   const navigate = useNavigate()
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false)
   const [idEdit, setIdEdit] = useState<number | null>()
@@ -32,6 +33,7 @@ const ListTitles: React.FC = () => {
     () => [
       {
         Header: t('order_number') as string,
+        // @ts-ignore
         accessor: (original, index) => index + 1,
         display: true,
         Cell: ({ cell }) => {

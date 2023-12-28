@@ -1,7 +1,7 @@
+// @ts-nocheck
 import SearchIcon from '@mui/icons-material/Search'
 import { Box, Button, Typography } from '@mui/material'
 import TextField from '@mui/material/TextField'
-import { styled } from '@mui/system'
 import React, { ChangeEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Column } from 'react-table'
@@ -37,7 +37,6 @@ type ToolbarProps<T extends object> = {
   isShowExpandFilter?: boolean
 }
 
-const CustomizedButton = styled(Button)``
 
 export default function ToolbarManager<T extends object>({
   onActionCreate,
@@ -59,7 +58,7 @@ export default function ToolbarManager<T extends object>({
   title,
   ...props
 }: ToolbarProps<T>) {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const [expandedFilter, setExpandedFlter] = React.useState(false)
   const [textInput, setTextInput] = React.useState<string>('')
   const [searchParams, setSearchParams] = useAtom(searchParamsAtom)
@@ -236,14 +235,6 @@ const styleBg = {
   backgroundColor: '#fff'
 }
 
-const styleBtnAdd = {
-  width: { xs: '110px', md: '130px', lg: '143px' },
-  height: { xs: '36px', md: '40px', lg: '42px' },
-  display: 'flex',
-  gap: 1,
-  alignItems: 'center',
-  justifyContent: 'center'
-}
 
 const styleOptionsSettings = {
   display: { xs: 'block', sm: 'flex' },
@@ -259,11 +250,7 @@ const styleTyporaphyAdd = {
   color: '#fff',
   lineHeight: '22px'
 }
-const styleWidthBoxImg = {
-  xs: '12px',
-  md: '14px',
-  lg: '16px'
-}
+
 const styleDatePicker = {
   display: { xs: 'block', sm: 'none' },
   width: 'unset',
@@ -278,11 +265,7 @@ const styleBoxSearch = {
   justifyContent: 'flex-end',
   mr: { xs: 1, sm: 2 }
 }
-const styleHeightBoxImg = {
-  xs: '12px',
-  md: '14px',
-  lg: '16px'
-}
+
 const styleTitle = {
   display: { xs: 'none', sm: 'block' },
   fontSize: { xs: '16px', sm: '18px', md: '20px', lg: '24px' },

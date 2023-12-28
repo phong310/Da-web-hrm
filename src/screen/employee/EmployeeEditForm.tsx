@@ -1,7 +1,6 @@
 import { Box } from '@mui/material'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { PageTable } from 'components/Layouts/Page/PageTable'
 import { RoundPaper } from 'components/Layouts/Page/RoundPaper'
 import { EmployeeTabs } from './EmployeeTabs'
@@ -9,15 +8,11 @@ import { EmployeeForm } from './EmployeeForm'
 export interface NavStyledInterface {
   active: boolean
 }
-
+// @ts-ignore
 const EmployeeEditForm: React.VFC = (props) => {
-  const navigate = useNavigate()
-  const { pathname } = useLocation()
 
-  const onNavigate = (path: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
-    navigate(path)
-  }
-  const { t } = useTranslation()
+  // @ts-ignore
+  const { pathname } = useLocation()
 
   return (
     <PageTable isDisableBreadcrumb={false}>

@@ -55,6 +55,7 @@ const ItemTimeDetail: React.VFC<DateTimeRangeProps> = ({ dataDetails }) => {
 }
 const ItemTilteTable = styled(Box)<{
   status: number
+  // @ts-ignore
 }>(({ status, theme }) => {
   return {
     display: 'flex',

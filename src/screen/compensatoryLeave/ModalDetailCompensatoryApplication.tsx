@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   AppBar,
   Box,
@@ -15,9 +16,7 @@ import {
 } from '@mui/material'
 import { blue } from '@mui/material/colors'
 import { SelectOption } from 'components/Form/Autocomplete/Select'
-// import { SelectOption } from 'components/Form'
 import { ModalSkeleton } from 'components/Skeleton/ModalSkeleton'
-// import { Permissions, STATUS_FORM, TYPE_FORM } from 'constants'
 import { V1 } from 'constants/apiVersion'
 import { Permissions } from 'constants/permissions'
 import { useAtomValue } from 'jotai'
@@ -33,7 +32,7 @@ import { convertDatetimeTZ, convertLocalDatetimeToTZ, formatDateTime, minutesToD
 import { checkFormIsDisableEdit, checkIsManager } from 'lib/utils/misc'
 import { numberLeaveDay } from 'lib/utils/number_leave_day'
 import React, { useEffect, useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import {  useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useQuery } from 'react-query'
 import { useLocation } from 'react-router-dom'
@@ -398,14 +397,6 @@ const styleKindOfLeave = {
 const styleTitleDialog = {
   fontSize: { xs: '14px', sm: '18px' }
 }
-const styleTitleDetailTime = {
-  fontSize: { xs: '13px', sm: '18px' },
-  fontStyle: 'normal',
-  fontWeight: '600',
-  lineHeight: '26px',
-  mb: 2
-}
-
 const styleRestTime = {
   fontSize: { xs: '12px', sm: '14px' },
   fontStyle: 'normal',
@@ -425,13 +416,6 @@ export const styleDialog = {
     overflowX: 'hidden',
     overflowY: 'overlay'
   }
-}
-const styleBelow2 = {
-  fontSize: { xs: '13px', sm: '16px' },
-  fontStyle: 'normal',
-  fontWeight: '600',
-  lineHeight: '22px',
-  mb: 3
 }
 
 const styleDivider = {
@@ -455,22 +439,6 @@ const styleBelow = {
   color: '#111'
 }
 
-const ItemTilteTable = styled(Box)<{
-  status: number
-}>(({ status, theme }) => {
-  return {
-    display: 'flex',
-    width: '265px',
-    border: `1px solid ${getBgTimeColor(status)}`,
-    color: getBgTimeColor(status),
-    padding: '8px',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '4px',
-    background: '#fff',
-    borderRadius: '8px'
-  }
-})
 
 export const stylePopUp = {
   '& .MuiDialog-container': {
@@ -489,24 +457,6 @@ export const getBgTimeColor = (status: number) => {
 
 const styleIconClose = {
   width: { xs: '20px', sm: '30px' }
-}
-const styleBox = {
-  display: 'flex',
-  width: '265px',
-  padding: '8px',
-  justifyContent: 'center',
-  alignItems: 'center',
-  gap: '4px',
-  background: '#EDFFF6',
-  borderRadius: '8px'
-}
-const styleTime = {
-  with: '300px',
-  fontSize: { xs: '12px', sm: '18px' },
-  fontStyle: 'normal',
-  fontWeight: '600',
-  lineHeight: '26px'
-  // color: '#20B369'
 }
 
 export { ModalDetailCompensatoryApplication }

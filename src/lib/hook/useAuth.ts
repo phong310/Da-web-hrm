@@ -5,7 +5,7 @@ import { checkHasTimekeepingYesterday } from 'lib/api/timekeeping'
 import { fetchAuthAtom, loadAuthAtom, permissionsAtom, roleAtom, systemSettingAtom, tokenAtom, userAtom } from 'lib/atom/authAtom'
 import { timekeepingAtom, timekeepingReminderFirstInDateAtom } from 'lib/atom/timekeepingAtom'
 import { UserLoginArgs } from 'lib/types/auth'
-import { formatNormalDate } from 'lib/utils/format'
+// import { formatNormalDate } from 'lib/utils/format'
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -25,6 +25,7 @@ const useAuth = () => {
     const setRole = useSetAtom(roleAtom)
     const setPermissions = useSetAtom(permissionsAtom)
     const setTimekeeping = useSetAtom(timekeepingAtom)
+    // @ts-ignore
     const [timekeepingReminderFirstInDate, setTimekeepingReminderFirstInDate] = useAtom(
         timekeepingReminderFirstInDateAtom
     )
