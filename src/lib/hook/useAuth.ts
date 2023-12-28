@@ -5,7 +5,7 @@ import { checkHasTimekeepingYesterday } from 'lib/api/timekeeping'
 import { fetchAuthAtom, loadAuthAtom, permissionsAtom, roleAtom, systemSettingAtom, tokenAtom, userAtom } from 'lib/atom/authAtom'
 import { timekeepingAtom, timekeepingReminderFirstInDateAtom } from 'lib/atom/timekeepingAtom'
 import { UserLoginArgs } from 'lib/types/auth'
-// import { formatNormalDate } from 'lib/utils/format'
+import { formatNormalDate } from 'lib/utils/format'
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -32,6 +32,7 @@ const useAuth = () => {
     
 
     const auth = !!user
+
 
     const login = async (args: UserLoginArgs) => {
         const res = await loginApi(args)
@@ -75,21 +76,21 @@ const useAuth = () => {
                         setUser(res?.data)
                         setSystemSetting(res?.data?.setting)
                         localStorage.setItem('system-setting', JSON.stringify(res?.data?.setting))
-                        if (res.data.is_first_time_login) {
+                        if (res.data.is_first_time_login == 0) {
                             navigate('/time-keeping/timekeeping', {
                                 replace: true
                             })
                         }
 
-                        // const hasTimekeepingYesterday = await checkHasTimekeepingYesterday()
-                        // setTimekeeping(hasTimekeepingYesterday.data)
+                        const hasTimekeepingYesterday = await checkHasTimekeepingYesterday()
+                        setTimekeeping(hasTimekeepingYesterday.data)
 
-                        // setTimekeepingReminderFirstInDate({
-                        //     date: hasTimekeepingYesterday.data.date,
-                        //     is_first:
-                        //         formatNormalDate(timekeepingReminderFirstInDate.date) !==
-                        //         formatNormalDate(hasTimekeepingYesterday.data.date)
-                        // })
+                        setTimekeepingReminderFirstInDate({
+                            date: hasTimekeepingYesterday.data.date,
+                            is_first:
+                                formatNormalDate(timekeepingReminderFirstInDate.date) !==
+                                formatNormalDate(hasTimekeepingYesterday.data.date)
+                        })
                     }
                     setFetching(false)
                     
