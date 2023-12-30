@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router'
 import { CellValue, ColumnInterface, Row } from 'react-table'
 import { BaseMaster } from 'lib/types/baseMaster'
 import { EmployeeType } from 'lib/types/user'
-import { V1 } from 'constants/apiVersion'
+import { ADMIN_URL, V1 } from 'constants/apiVersion'
 import { Employee } from 'lib/types/employee'
 import { STATUS_EMPLOYEE_OPTIONS } from 'lib/utils/contants'
 import { StatusEmployee } from './Atom/StatusEmployee'
@@ -180,10 +180,10 @@ const ListEmployee: React.VFC = () => {
       // defaultActionDelete={true}
       // deleteApi={deleteApi}
       isShowSearchFast={false}
-      // exportUrl={`${V1}/user/employee/export`}
-      //   importUrl={`${ADMIN_URL}/employee/import`}
-      // exportFileName="employees.xlsx"
-      // templateUrl={`${V1}/user/employee/template`}
+      exportUrl={`${ADMIN_URL}/employee/export`}
+      importUrl={`${ADMIN_URL}/employee/import`}
+      templateUrl={`${ADMIN_URL}/employee/template`}
+      exportFileName="employees.xlsx"
       titleDeleteAppBar={t('title_modal.delete_employee')}
       title={t('employee.list')}
       titlePage={t('employee.list')}
@@ -196,4 +196,3 @@ const ListEmployee: React.VFC = () => {
 }
 
 export { ListEmployee }
-

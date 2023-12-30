@@ -346,3 +346,37 @@ export const ACTION_FORM = [
     'public',
     'extend'
 ]
+
+export const TEMPLATE_HEADINGS = [
+    "first_name",
+    "last_name",
+    "sex",
+    "marital_status",
+    "birthday",
+    "nickname",
+    "email",
+    "card_number",
+    "phone_number",
+    "employee_code",
+    "branch",
+    "department",
+    "position",
+    "title",
+    "country",
+    "ethnic",
+    "date_start_work",
+    "official_employee_date",
+    "note",
+    "user_email",
+    "role",
+    "password",
+    "province",
+    "district",
+    "ward",
+    "address",
+    "id_no",
+    "issued_by",
+    "issued_date",
+    "id_expire",
+    "name"
+]

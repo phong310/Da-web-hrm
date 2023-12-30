@@ -118,7 +118,9 @@ function ReactTableWithToolBar<T extends object>(props: ReactTableWithToolBarPro
           isTableCalendar={isTableCalendar}
           isShowSearchFast={isShowSearchFast}
           headerOptions={headerOptions}
+          handleRefreshDataImport={() => refetch()}
           importUrl={importUrl}
+          exportUrl={exportUrl}
         />
         <ReactTable
           onActionEdit={props?.onActionEdit}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import SearchSharpIcon from '@mui/icons-material/SearchSharp'
 import {
@@ -7,6 +8,7 @@ import {
   DialogContent,
   DialogTitle,
   Grid,
+  Tooltip,
   Typography,
   styled
 } from '@mui/material'
@@ -16,9 +18,8 @@ import { useTranslation } from 'react-i18next'
 import { Column } from 'react-table'
 import adjust from '../../../assets/svgs/adjust.svg'
 import check from '../../../assets/svgs/check.svg'
-import { ButtonCommon } from '../../Form/Components/ButtonCommon'
+import { ButtonCommon } from 'components/Form/Components/ButtonCommon'
 
-// @ts-ignore
 type SettingFieldsDisplayPros<T extends object> = {
   columns: any
   disabled?: boolean
@@ -125,22 +126,20 @@ function SettingFieldsDisplayComponent<T extends object>({
   return (
     <>
       {!disabled ? (
-        <ButtonCommon
-          sx={{ ...styleButtonCustom }}
-          onClick={openDialog}
-          error={true}
-          variant="outlined"
-        >
-          <Box sx={{ ...styleIconSvgs }}>
-            <Box
-              component={'img'}
-              width={{ ...styleWidthBoxImg }}
-              height={{ ...styleHeightBoxImg }}
-              src={adjust}
-              alt=""
-            />
-          </Box>
-          {t('custom')}
+        <ButtonCommon onClick={openDialog} sx={{ minWidth: 30 }}>
+          <Tooltip title={t('custom')} arrow placement="top">
+            <Box sx={{ ...styleIconSvgs }}>
+              <Box
+                component={'img'}
+                width={{ ...styleBoxImgItem }}
+                height={{ ...styleBoxImgItem }}
+                src={adjust}
+                alt=""
+              />
+            </Box>
+          </Tooltip>
+
+          {/* {t('custom')} */}
         </ButtonCommon>
       ) : null}
 
@@ -205,7 +204,6 @@ function SettingFieldsDisplayComponent<T extends object>({
 
 const SettingFieldsDisplay = memo(SettingFieldsDisplayComponent)
 
-// @ts-ignore
 const BoxButton = styled(Box)(({ theme }) => ({
   width: '120px',
   height: '36px'
@@ -213,22 +211,20 @@ const BoxButton = styled(Box)(({ theme }) => ({
 
 export { SettingFieldsDisplay }
 
-const styleWidthBoxImg = {
-  xs: '12px',
-  md: '14px',
-  lg: '16px'
+const styleBoxImgItem = {
+  xs: '28px',
+  lg: '24px'
 }
 
-const styleHeightBoxImg = {
-  xs: '12px',
-  md: '14px',
-  lg: '16px'
-}
 const styleIconSvgs = {
   display: 'flex',
   alignItems: 'center'
 }
 
+const styleBoxImg = {
+  xs: '12px',
+  md: '14px'
+}
 const stylecolumnOptionsTyporaphy = {
   cursor: 'pointer',
   fontSize: '16px !important',
@@ -240,7 +236,7 @@ const stylecolumnOptionsTyporaphy = {
 }
 const styleButtonCustom = {
   height: '40px',
-  minWidth: { sm: '140px' }
+  minWidth: '140px'
 }
 const styleCheckbox = {
   '&.Mui-checked': {
@@ -264,6 +260,13 @@ const styleCheckbox = {
 const styleIcon = {
   width: { xs: '12px', md: '16px' },
   height: { xs: '12px', md: '16px' }
+}
+
+const styleTyporaphy = {
+  fontSize: { xs: '12px', md: '16px' },
+  color: '#146BD2',
+  fontWeight: 600,
+  lineHeight: '22px'
 }
 
 const styleDialog = {
@@ -300,12 +303,24 @@ const styleButtonReset = {
   padding: 0
 }
 
+const styleTaporafyReset = {
+  fontSize: { xs: '12px', md: '16px' },
+  lineHeight: '20px',
+  fontWeight: 500
+}
+
 const styleButtonSubmit = {
   width: { xs: '120px', md: '120px' },
   height: '36px',
   display: 'flex',
   gap: '3px',
   padding: 0
+}
+
+const styleTaporaphyApply = {
+  fontSize: { xs: '12px', md: '16px' },
+  lineHeight: '20px',
+  fontWeight: 500
 }
 
 const styleDialogContent = {
