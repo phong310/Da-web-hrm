@@ -1,6 +1,6 @@
 // @ts-nocheck
 import ReactTableWithToolBar from 'components/ReactTable/ReactTableWithToolBar/ReactTableWithToolBar'
-import { V1 } from 'constants/apiVersion'
+import { ADMIN_URL, V1 } from 'constants/apiVersion'
 import { useApiResource } from 'lib/hook/useApiResource'
 import { BaseMaster } from 'lib/types/baseMaster'
 import { useMemo, useState } from 'react'
@@ -83,10 +83,10 @@ const ListBranch: React.FC = () => {
         data={[]}
         title={t('branch_admin.list')}
         titlePage={t('branch_admin.list')}
-        // exportUrl={`${ADMIN_URL}/branch/export`}
-        // importUrl={`${ADMIN_URL}/branch/import`}
-        // templateUrl={`${ADMIN_URL}/branch/template`}
-        // exportFileName="branchs.xlsx"
+        exportUrl={`${ADMIN_URL}/branch/export`}
+        importUrl={`${ADMIN_URL}/branch/import`}
+        templateUrl={`${ADMIN_URL}/branch/template`}
+        exportFileName="branchs.xlsx"
       />
       <ModalCreateBranch
         openModal={openModalEdit}

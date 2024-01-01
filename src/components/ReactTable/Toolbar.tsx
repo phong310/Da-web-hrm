@@ -18,6 +18,7 @@ import { OptionExportImportData } from './Components/OptionImportExportData'
 import { SettingFieldsDisplay } from './Components/SettingFieldsDisplay'
 import { FilterBar } from './FilterBar'
 import { FullScreenLoadingCompany } from 'components/Loader/FullScreenLoadingCompany'
+import { toast } from 'react-toastify'
 type ToolbarProps<T extends object> = {
   onActionCreate?: () => void
   loading: boolean
@@ -110,7 +111,7 @@ export default function Toolbar<T extends object>({
       }
     } catch (error) {
       setIsLoading(false)
-      toast.error(error.message)
+      // toast.error(error.message)
     }
   }
 
@@ -123,9 +124,9 @@ export default function Toolbar<T extends object>({
         if (data.status == 200) {
           setIsLoading(false)
         }
-      } catch (error) {
+      } catch (error:any) {
         setIsLoading(false)
-        toast.error(error.message)
+        // toast.error(error.message)
       }
     }
   }

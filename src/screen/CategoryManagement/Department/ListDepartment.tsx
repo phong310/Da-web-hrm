@@ -1,6 +1,6 @@
 // @ts-nocheck
 import ReactTableWithToolBar from 'components/ReactTable/ReactTableWithToolBar/ReactTableWithToolBar'
-import { V1 } from 'constants/apiVersion'
+import { ADMIN_URL, V1 } from 'constants/apiVersion'
 import { useApiResource } from 'lib/hook/useApiResource'
 import { BaseMaster } from 'lib/types/baseMaster'
 import { useMemo, useState } from 'react'
@@ -84,10 +84,10 @@ const ListDepartment: React.FC = () => {
         data={[]}
         title={t('department_admin.list')}
         titlePage={t('department_admin.list')}
-        // exportUrl={`${ADMIN_URL}/department/export`}
-        // importUrl={`${ADMIN_URL}/department/import`}
-        // templateUrl={`${ADMIN_URL}/department/template`}
-        // exportFileName="departments.xlsx"
+        exportUrl={`${ADMIN_URL}/department/export`}
+        importUrl={`${ADMIN_URL}/department/import`}
+        templateUrl={`${ADMIN_URL}/department/template`}
+        exportFileName="departments.xlsx"
       />
       <ModalCreateDepartment
         openModal={openModalEdit}

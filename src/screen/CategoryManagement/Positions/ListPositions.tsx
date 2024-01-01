@@ -1,6 +1,5 @@
-// @ts-nocheck
 import ReactTableWithToolBar from 'components/ReactTable/ReactTableWithToolBar/ReactTableWithToolBar'
-import { V1 } from 'constants/apiVersion'
+import { ADMIN_URL, V1 } from 'constants/apiVersion'
 import { useApiResource } from 'lib/hook/useApiResource'
 import { BaseMaster } from 'lib/types/baseMaster'
 import { useMemo, useState } from 'react'
@@ -31,6 +30,7 @@ const ListPositions: React.FC = () => {
     () => [
       {
         Header: t('order_number') as string,
+        // @ts-ignore
         accessor: (original, index) => index + 1,
         display: true,
         Cell: ({ cell }) => {
@@ -81,6 +81,10 @@ const ListPositions: React.FC = () => {
         data={[]}
         title={t('position_admin.list')}
         titlePage={t('position_admin.list')}
+        exportUrl={`${ADMIN_URL}/position/export`}
+        importUrl={`${ADMIN_URL}/position/import`}
+        templateUrl={`${ADMIN_URL}/position/template`}
+        exportFileName="positions.xlsx"
       />
       <ModalCreatePosition
         openModal={openModalEdit}

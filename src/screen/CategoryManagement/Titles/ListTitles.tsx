@@ -1,5 +1,5 @@
 import ReactTableWithToolBar from 'components/ReactTable/ReactTableWithToolBar/ReactTableWithToolBar'
-import { V1 } from 'constants/apiVersion'
+import { ADMIN_URL, V1 } from 'constants/apiVersion'
 import { useApiResource } from 'lib/hook/useApiResource'
 import { BaseMaster } from 'lib/types/baseMaster'
 import { useMemo, useState } from 'react'
@@ -84,10 +84,10 @@ const ListTitles: React.FC = () => {
         data={[]}
         title={t('titles_admin.list')}
         titlePage={t('titles_admin.list')}
-        // exportUrl={`${ADMIN_URL}/title/export`}
-        // importUrl={`${ADMIN_URL}/title/import`}
-        // templateUrl={`${ADMIN_URL}/title/template`}
-        // exportFileName="titles.xlsx"
+        exportUrl={`${ADMIN_URL}/title/export`}
+        importUrl={`${ADMIN_URL}/title/import`}
+        templateUrl={`${ADMIN_URL}/title/template`}
+        exportFileName="titles.xlsx"
       />
       <ModalCreateTitles
         openModal={openModalEdit}
