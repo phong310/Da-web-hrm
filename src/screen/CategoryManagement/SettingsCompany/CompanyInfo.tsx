@@ -78,7 +78,7 @@ export const CompanyInfo: React.FC = () => {
       )
       setValue('status', data.status)
       setValue('address', data.address)
-      setValue('logo_url', data.logo_url)
+      setValue('logo_url', data.logo_url.replace('http://localhost:8000/storage/', ''))
       setValue('phone_number', data.phone_number)
       setValue('register_date', data.register_date)
     }

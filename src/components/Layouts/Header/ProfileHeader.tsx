@@ -93,7 +93,12 @@ export const ProfileHeader = () => {
       >
         <AvatarCustom
           thumbnail_url={
-            avatar ? URL.createObjectURL(avatar) : user?.employee.personal_information.thumbnail_url
+            avatar
+              ? URL.createObjectURL(avatar)
+              : user?.employee.personal_information.thumbnail_url?.replace(
+                  'http://localhost:8000/storage/',
+                  ''
+                )
           }
           size={AVATAR_SIZE.ORDINARY}
           alt="AvatarHeader"

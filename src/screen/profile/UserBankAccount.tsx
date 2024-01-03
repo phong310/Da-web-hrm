@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Grid, Stack } from '@mui/material'
+import { CircularProgress, Grid, Stack } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 // import { Input } from 'components/Form'
@@ -72,7 +72,11 @@ export const UserBankAccount: React.VFC<InfoPropsType> = () => {
     mode: 'onChange'
   })
 
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
+
   const onSubmit = async (data: IBackAccount) => {
+    setIsLoading(true)
     const formData = {
       account_name: data.account_name,
       account_number: data.account_number,
@@ -84,6 +88,7 @@ export const UserBankAccount: React.VFC<InfoPropsType> = () => {
     if (res.status == 200) {
       toast.success(res.data.message)
       refetch()
+      setIsLoading(false)
       setUpdate(false)
       navigate('/general/profile/bank-account')
     }
@@ -173,7 +178,13 @@ export const UserBankAccount: React.VFC<InfoPropsType> = () => {
             </Stack>
             <Stack direction={'row'} m={2} justifyContent={'end'} spacing={1}>
               <Grid container justifyContent="flex-end" gap={2} style={{ marginTop: 20 }}>
-                <ButtonCommon sx={{ maxWidth: '150px' }} type="submit" variant="contained">
+                <ButtonCommon
+                  sx={{ maxWidth: '150px' }}
+                  type="submit"
+                  variant="contained"
+                  disabled={isLoading}
+                  startIcon={isLoading ? <CircularProgress size={12} /> : ''}
+                >
                   {t('update')}
                 </ButtonCommon>
               </Grid>

@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Box, Button, Grid, Stack, styled, Typography } from '@mui/material'
+import { Box, Button, CircularProgress, Grid, Stack, styled, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import AvtDefault from 'assets/images/no-image.jpg'
@@ -122,9 +122,11 @@ export const TableProfileInfo: React.VFC<InfoPropsType> = () => {
   }, [user, systemSetting, t])
 
   const { createOrUpdateApi } = useApiResource<EmployeeType>('/1.0/user/employee/me/info')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const onSubmit = async (_d: profileType) => {
     const formData = new FormData()
+    setIsLoading(true)
     if (files) {
       formData.append('avatar', files)
     }
@@ -142,6 +144,7 @@ export const TableProfileInfo: React.VFC<InfoPropsType> = () => {
       }
       toast.success(res.data.message)
       setUpdate(false)
+      setIsLoading(false)
       navigate('/general/profile')
       refetch()
     }
@@ -212,7 +215,10 @@ export const TableProfileInfo: React.VFC<InfoPropsType> = () => {
                           <AvtImg
                             src={
                               user?.employee.personal_information.thumbnail_url
-                                ? user?.employee.personal_information.thumbnail_url
+                                ? user?.employee.personal_information.thumbnail_url?.replace(
+                                    'http://localhost:8000/storage/',
+                                    ''
+                                  )
                                 : AvtDefault
                             }
                             alt="imageUpload"
@@ -436,7 +442,13 @@ export const TableProfileInfo: React.VFC<InfoPropsType> = () => {
                 </Grid>
                 <Stack direction={'row'} m={2} justifyContent={'end'} spacing={1}>
                   <Grid container justifyContent="flex-end" gap={2} style={{ marginTop: 20 }}>
-                    <ButtonCommon sx={{ maxWidth: '150px' }} type="submit" variant="contained">
+                    <ButtonCommon
+                      sx={{ maxWidth: '150px' }}
+                      type="submit"
+                      variant="contained"
+                      disabled={isLoading}
+                      startIcon={isLoading ? <CircularProgress size={12} /> : ''}
+                    >
                       {t('update')}
                     </ButtonCommon>
                   </Grid>

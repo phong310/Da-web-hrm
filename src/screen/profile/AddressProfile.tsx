@@ -1,4 +1,4 @@
-import { Grid, Stack } from '@mui/material'
+import { CircularProgress, Grid, Stack } from '@mui/material'
 import { ButtonCommon } from 'components/Form/Components/ButtonCommon'
 import { Input } from 'components/Form/Input/Input'
 import { RoundPaper } from 'components/Layouts/Page/RoundPaper'
@@ -172,7 +172,13 @@ const AddressProfile: React.VFC<InfoPropsType> = () => {
         })}
         <Stack direction={'row'} m={2} justifyContent={'end'} spacing={1}>
           <Grid container justifyContent="flex-end" gap={2} style={{ marginTop: 20 }}>
-            <ButtonCommon sx={{ maxWidth: '150px' }} type="submit" variant="contained">
+            <ButtonCommon
+              sx={{ maxWidth: '150px' }}
+              type="submit"
+              variant="contained"
+              disabled={isLoading}
+              startIcon={isLoading ? <CircularProgress size={12} /> : ''}
+            >
               {t('update')}
             </ButtonCommon>
           </Grid>

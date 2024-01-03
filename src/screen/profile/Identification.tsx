@@ -1,4 +1,4 @@
-import { Grid, Stack } from '@mui/material'
+import { CircularProgress, Grid, Stack } from '@mui/material'
 import { ButtonCommon } from 'components/Form/Components/ButtonCommon'
 import { DatePicker } from 'components/Form/Input/DatePicker'
 import { Input } from 'components/Form/Input/Input'
@@ -179,7 +179,13 @@ export const Identification: React.VFC<InfoPropsType> = () => {
             </Stack>
             <Stack direction={'row'} m={4} justifyContent={'end'} spacing={1}>
               <Grid container justifyContent="flex-end" gap={2} style={{ marginTop: 20 }}>
-                <ButtonCommon sx={{ maxWidth: '150px' }} type="submit" variant="contained">
+                <ButtonCommon
+                  sx={{ maxWidth: '150px' }}
+                  type="submit"
+                  variant="contained"
+                  disabled={isLoading}
+                  startIcon={isLoading ? <CircularProgress size={12} /> : ''}
+                >
                   {t('update')}
                 </ButtonCommon>
               </Grid>
