@@ -53,6 +53,7 @@ export const CompanyInfo: React.FC = () => {
         status: 1,
         type_of_business: 1,
         representative: '',
+        logo:'',
         logo_url: '',
         start_time: '',
         end_time: '',
@@ -78,9 +79,10 @@ export const CompanyInfo: React.FC = () => {
       )
       setValue('status', data.status)
       setValue('address', data.address)
-      setValue('logo_url', data.logo_url.replace('http://localhost:8000/storage/', ''))
+      setValue('logo_url', data.logo_url)
       setValue('phone_number', data.phone_number)
       setValue('register_date', data.register_date)
+      setValue('logo', data.logo)
     }
   })
   const onSubmit: SubmitHandler<CompanyDataInfo> = async (value) => {
@@ -159,11 +161,11 @@ export const CompanyInfo: React.FC = () => {
                         <Stack direction={'column'} justifyContent="center" mt={'unset'}>
                           <AvatarCustom
                             thumbnail_url={
-                              watch('logo_url')
-                                ? watch('logo_url').indexOf('https') !== -1
-                                  ? watch('logo_url').substring(watch('logo_url').indexOf('https'))
-                                  : null
-                                : null
+                              watch('logo')
+                                // ? watch('logo_url').indexOf('https') !== -1
+                                //   ? watch('logo_url').substring(watch('logo_url').indexOf('https'))
+                                //   : null
+                                // : null
                             }
                             alt="imageUpload"
                             size={AVATAR_SIZE.MAX}
