@@ -72,10 +72,13 @@ const ListEmployee: React.VFC = () => {
         Cell: ({ row }: { row: any }) => (
           <TimesheetEmployee
             employee_code={row.original.employee_code}
-            avatar={row.original?.personal_information?.avatar?.replace(
-              'http://localhost:8000/storage/',
-              ''
-            )}
+            avatar={
+              row.original?.personal_information?.avatar?.indexOf('https') !== -1
+                ? row.original?.personal_information?.avatar?.substring(
+                    row.original?.personal_information?.avatar?.indexOf('https')
+                  )
+                : null
+            }
             fullname={row.original.personal_information?.full_name}
             job={row.original?.position?.name}
           />

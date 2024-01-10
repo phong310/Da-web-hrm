@@ -51,8 +51,7 @@ export const ProfileHeader = () => {
         handleClose()
         navigate('/login')
       }
-    } catch (error) {
-    }
+    } catch (error) {}
   }
 
   // const onProfileClick = () => {
@@ -95,10 +94,11 @@ export const ProfileHeader = () => {
           thumbnail_url={
             avatar
               ? URL.createObjectURL(avatar)
-              : user?.employee.personal_information.thumbnail_url?.replace(
-                  'http://localhost:8000/storage/',
-                  ''
+              : user?.employee.personal_information.thumbnail_url?.indexOf('https') !== -1
+              ? user?.employee.personal_information.thumbnail_url.substring(
+                  user?.employee.personal_information.thumbnail_url.indexOf('https')
                 )
+              : null
           }
           size={AVATAR_SIZE.ORDINARY}
           alt="AvatarHeader"

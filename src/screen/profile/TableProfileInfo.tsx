@@ -215,10 +215,15 @@ export const TableProfileInfo: React.VFC<InfoPropsType> = () => {
                           <AvtImg
                             src={
                               user?.employee.personal_information.thumbnail_url
-                                ? user?.employee.personal_information.thumbnail_url?.replace(
-                                    'http://localhost:8000/storage/',
-                                    ''
-                                  )
+                                ? user?.employee.personal_information.thumbnail_url?.indexOf(
+                                    'https'
+                                  ) !== -1
+                                  ? user?.employee.personal_information.thumbnail_url.substring(
+                                      user?.employee.personal_information.thumbnail_url.indexOf(
+                                        'https'
+                                      )
+                                    )
+                                  : AvtDefault
                                 : AvtDefault
                             }
                             alt="imageUpload"
