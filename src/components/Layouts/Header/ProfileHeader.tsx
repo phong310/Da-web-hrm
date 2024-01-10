@@ -95,8 +95,8 @@ export const ProfileHeader = () => {
             avatar
               ? URL.createObjectURL(avatar)
               : user?.employee.personal_information.thumbnail_url?.indexOf('https') !== -1
-              ? user?.employee.personal_information.thumbnail_url.substring(
-                  user?.employee.personal_information.thumbnail_url.indexOf('https')
+              ? user?.employee.personal_information.thumbnail_url?.substring(
+                  user?.employee.personal_information.thumbnail_url?.indexOf('https')
                 )
               : null
           }
