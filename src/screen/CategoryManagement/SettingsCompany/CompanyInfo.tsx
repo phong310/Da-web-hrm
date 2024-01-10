@@ -116,6 +116,7 @@ export const CompanyInfo: React.FC = () => {
       }
     }
   }
+
   return (
     <Grid container>
       <Grid
@@ -157,7 +158,13 @@ export const CompanyInfo: React.FC = () => {
                       ) : (
                         <Stack direction={'column'} justifyContent="center" mt={'unset'}>
                           <AvatarCustom
-                            thumbnail_url={watch('logo_url')}
+                            thumbnail_url={
+                              watch('logo_url')
+                                ? watch('logo_url').indexOf('https') !== -1
+                                  ? watch('logo_url').substring(watch('logo_url').indexOf('https'))
+                                  : null
+                                : null
+                            }
                             alt="imageUpload"
                             size={AVATAR_SIZE.MAX}
                           />
