@@ -380,3 +380,10 @@ export const TEMPLATE_HEADINGS = [
     "id_expire",
     "name"
 ]
+
+export const TYPE_OF_STATUS = [
+    { value: 0, label: i18n.t('companies.status_option.new') },
+    { value: 1, label: i18n.t('companies.status_option.active') },
+    { value: 2, label: i18n.t('companies.status_option.rejected') },
+    { value: 3, label: i18n.t('companies.status_option.inactive') }
+]

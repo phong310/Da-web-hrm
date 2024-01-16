@@ -6,7 +6,7 @@ import Manage_timeKeeping from 'assets/svgs/sidebar-icons/manage_timeKeeping.svg
 import TimeKeeping from 'assets/svgs/sidebar-icons/TimeKeeping.svg'
 import { useAuth } from 'lib/hook/useAuth'
 import * as _ from 'lodash'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { ModalTimekeepingReminder } from 'screen/application/ModalTimekeepingReminder'
@@ -15,6 +15,7 @@ import { Header } from '../Header/Header'
 import { Route, Sidebar } from './Sidebar'
 import { sidebarList } from './SidebarList'
 import { MessageAlert } from 'components/Skeleton/MessageAlert'
+import { sidebarSupperAdmin } from './v2/SidebarList'
 
 const Layout: React.VFC = () => {
   const isDesktop = useMediaQuery<Theme>((theme) => theme.breakpoints.up('md'), { noSsr: true })
@@ -24,9 +25,10 @@ const Layout: React.VFC = () => {
     setSidebarOpen(!isSidebarOpen)
   }
 
+
   const { t } = useTranslation()
 
-  const { permissions } = useAuth()
+  const { permissionsm, role, company } = useAuth()
   const hasManagePermission = _.values(Permissions).every((value: any) => {
     return permissions?.includes(value)
   })
@@ -67,6 +69,8 @@ const Layout: React.VFC = () => {
     setValue(newValue)
     navigate(tabItems[newValue].path)
   }
+
+
   return (
     <>
       <Box sx={{ display: 'flex' }} bgcolor="background.default">
@@ -75,7 +79,7 @@ const Layout: React.VFC = () => {
         <Sidebar
           isSidebarOpen={isSidebarOpen}
           triggerSidebar={triggerSidebar}
-          sidebar={sidebarList}
+          sidebar={role !== 'super_admin' ? sidebarList : sidebarSupperAdmin}
         />
         {/* )} */}
         <Main open={isSidebarOpen}>
@@ -139,7 +143,7 @@ const Layout: React.VFC = () => {
         </CustomTabs>
       </Hidden>
 
-      <ModalTimekeepingReminder />
+      {role === 'super_admin' ? '' : <ModalTimekeepingReminder />}
     </>
   )
 }

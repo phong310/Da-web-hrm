@@ -8,15 +8,17 @@ import { toast } from 'react-toastify'
 import { STEP } from './CompanyForm'
 import { useAtom } from 'jotai'
 import { companyAtom } from 'lib/atom/CompanyInfoAtom'
-import { V1 } from 'constants/apiVersion'
+import { ADMIN_URL, V1 } from 'constants/apiVersion'
 import { readAsDataURL, setLocalStorageCleanup } from './file'
 import { Input } from 'components/Form/Input/Input'
 import { UploadFiles } from 'components/Form/Components/UploadFiles'
 import { useApiResource } from 'lib/hook/useApiResource'
 import { CompanyData } from 'lib/types/companyGroup'
 import { BaseMaster } from 'lib/types/baseMaster'
-import { TYPE_OF_BUSSINESS_OPTIONS } from 'lib/utils/contants'
+import { TYPE_OF_BUSSINESS_OPTIONS, TYPE_OF_STATUS } from 'lib/utils/contants'
 import { Select } from 'components/Form/Autocomplete/Select'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useQuery } from 'react-query'
 type CompanyInfoProps = {
   companyId?: number
   setCompanyId: (s: number) => void
@@ -26,25 +28,46 @@ type CompanyInfoProps = {
 
 const CompanyInfo: React.VFC<CompanyInfoProps> = ({ handleComplete }) => {
   const { t } = useTranslation()
+  const params = useParams()
   const [files, setFiles] = useState<any>()
   const [company_Atom, setCompanyAtom] = useAtom<CompanyData>(companyAtom)
+  const navigate = useNavigate()
   const { createOrUpdateApi } = useApiResource<BaseMaster>(`${V1}/user/companies/check_company`)
-  const { control, handleSubmit, setError, clearErrors, formState } = useForm<CompanyData>({
-    defaultValues: {
-      id: 0,
-      name: company_Atom?.name ?? '',
-      phone_number: company_Atom?.phone_number ?? '',
-      tax_code: company_Atom?.tax_code ?? '',
-      address: company_Atom?.address ?? '',
-      status: company_Atom?.status ?? 0,
-      type_of_business: company_Atom?.type_of_business ?? 1,
-      representative: company_Atom?.representative ?? '',
-      logo: '',
-      start_time: company_Atom?.start_time ?? '',
-      end_time: company_Atom?.end_time ?? '',
-      register_date: company_Atom?.register_date ?? ''
-    }
+  // API update đó đừng quên
+  const { createApi } = useApiResource<any>(`${ADMIN_URL}/companies/${params.id}?_method=PATCH`)
+
+  const { control, handleSubmit, setError, clearErrors, formState, setValue } =
+    useForm<CompanyData>({
+      defaultValues: {
+        id: 0,
+        name: company_Atom?.name ?? '',
+        phone_number: company_Atom?.phone_number ?? '',
+        tax_code: company_Atom?.tax_code ?? '',
+        address: company_Atom?.address ?? '',
+        status: company_Atom?.status ?? 0,
+        type_of_business: company_Atom?.type_of_business ?? 1,
+        representative: company_Atom?.representative ?? '',
+        logo: '',
+        start_time: company_Atom?.start_time ?? '',
+        end_time: company_Atom?.end_time ?? '',
+        register_date: company_Atom?.register_date ?? ''
+      }
+    })
+
+  useQuery<CompanyData>([`1.0/admin/companies/${params.id}`], {
+    onSuccess: (data) => {
+      for (const [key, v] of Object.entries(data)) {
+        if (key == 'logo_url') {
+          setFiles(v)
+        } else {
+          //@ts-ignore
+          setValue(key, v !== null ? v : '')
+        }
+      }
+    },
+    enabled: !!params?.id
   })
+
   const { isSubmitting } = formState
   const onSubmit: SubmitHandler<CompanyData> = async (value) => {
     clearErrors()
@@ -52,7 +75,7 @@ const CompanyInfo: React.VFC<CompanyInfoProps> = ({ handleComplete }) => {
       const formData = new FormData()
 
       for (const [key, v] of Object.entries(value)) {
-        if (key == 'id' && v == 0) {
+        if (key === 'id' && v === 0) {
           continue
         }
         formData.append(key, v as string)
@@ -63,15 +86,20 @@ const CompanyInfo: React.VFC<CompanyInfoProps> = ({ handleComplete }) => {
         value.logo = base64Image as string
       }
       value.is_create = 1
-      const res = await createOrUpdateApi(formData)
-      if (res.status == 200) {
+
+      const res = params.id ? await createApi(formData) : await createOrUpdateApi(formData)
+
+      if (res.status === 200) {
+        if (params?.id) {
+          navigate('/companies')
+          toast.success(res.data.message)
+        }
         handleComplete(STEP[1])
         //@ts-ignore
         setCompanyAtom(value)
         setLocalStorageCleanup('company_info')
       }
-      handleComplete(STEP[1])
-    } catch (error:any) {
+    } catch (error: any) {
       toast.error(error.error)
       if (error.errors) {
         Object.entries(error.errors).forEach(([key, value]) => {
@@ -141,17 +169,32 @@ const CompanyInfo: React.VFC<CompanyInfoProps> = ({ handleComplete }) => {
               required
             />
           </Grid>
-
-          <Grid item {...gridFull}>
-            <Select
-              fullWidth
-              required
-              placeholder={t('companies.type_of_business')}
-              label={t('companies.type_of_business')}
-              name="type_of_business"
-              options={TYPE_OF_BUSSINESS_OPTIONS}
-              control={control}
-            />
+          <Grid container item {...gridFull} spacing={2}>
+            <Grid item {...(params?.id ? grid : gridFull)}>
+              <Select
+                fullWidth
+                required
+                placeholder={t('companies.type_of_business')}
+                label={t('companies.type_of_business')}
+                name="type_of_business"
+                options={TYPE_OF_BUSSINESS_OPTIONS}
+                control={control}
+              />
+            </Grid>
+            {params?.id ? (
+              <Grid item {...grid}>
+                <Select
+                  fullWidth
+                  placeholder={t('companies.status')}
+                  label={t('companies.status')}
+                  name="status"
+                  options={TYPE_OF_STATUS}
+                  control={control}
+                />
+              </Grid>
+            ) : (
+              ''
+            )}
           </Grid>
         </Grid>
         <Grid item {...grid} mt={3}>
@@ -164,9 +207,15 @@ const CompanyInfo: React.VFC<CompanyInfoProps> = ({ handleComplete }) => {
         </Grid>
 
         <Grid item md={12} mt={3}>
-          <LoadingButton type="submit" size={'large'} variant="contained" loading={isSubmitting}>
-            {t('companies.steps.next')}
-          </LoadingButton>
+          {params ? (
+            <LoadingButton type="submit" size={'large'} variant="contained" loading={isSubmitting}>
+              Cập nhật
+            </LoadingButton>
+          ) : (
+            <LoadingButton type="submit" size={'large'} variant="contained" loading={isSubmitting}>
+              {t('companies.steps.next')}
+            </LoadingButton>
+          )}
         </Grid>
       </Grid>
     </Box>

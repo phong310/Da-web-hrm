@@ -1,7 +1,8 @@
-import { useAtom, useSetAtom, useAtomValue } from 'jotai'
+import { useAtom, useSetAtom, useAtomValue} from 'jotai'
 import { useAtomCallback } from 'jotai/utils'
 import { loginApi, logoutApi, userApi } from 'lib/api/auth'
 import { checkHasTimekeepingYesterday } from 'lib/api/timekeeping'
+import { companyAtom } from 'lib/atom/CompanyInfoAtom'
 import { fetchAuthAtom, loadAuthAtom, permissionsAtom, roleAtom, systemSettingAtom, tokenAtom, userAtom } from 'lib/atom/authAtom'
 import { timekeepingAtom, timekeepingReminderFirstInDateAtom } from 'lib/atom/timekeepingAtom'
 import { UserLoginArgs } from 'lib/types/auth'
@@ -25,6 +26,7 @@ const useAuth = () => {
     const setRole = useSetAtom(roleAtom)
     const setPermissions = useSetAtom(permissionsAtom)
     const setTimekeeping = useSetAtom(timekeepingAtom)
+    const setCompany = useSetAtom(companyAtom)
     // @ts-ignore
     const [timekeepingReminderFirstInDate, setTimekeepingReminderFirstInDate] = useAtom(
         timekeepingReminderFirstInDateAtom
@@ -57,6 +59,7 @@ const useAuth = () => {
         setUser(null)
         setPermissions(null)
         setRole(null)
+        setCompany(null)
         setSystemSetting(null)
         localStorage.removeItem('user-token')
         localStorage.removeItem('system-setting')
@@ -72,12 +75,19 @@ const useAuth = () => {
                     if (token?.access_token) {
                         const res = await userApi()
                         setRole(res?.data.role)
+                        if (res?.data?.company) {
+                            setCompany(res?.data?.company)
+                        }
                         setPermissions(res?.data.all_permissions)
                         setUser(res?.data)
                         setSystemSetting(res?.data?.setting)
                         localStorage.setItem('system-setting', JSON.stringify(res?.data?.setting))
                         if (res.data.is_first_time_login == 0) {
                             navigate('/time-keeping/timekeeping', {
+                                replace: true
+                            })
+                        } else if(res.data.role === "super_admin") {
+                            navigate('/companies', {
                                 replace: true
                             })
                         }
@@ -113,6 +123,7 @@ const useAuth = () => {
         loading,
         permissions,
         role,
+        setCompany,
         timekeeping
     }
 }

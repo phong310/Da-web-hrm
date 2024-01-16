@@ -53,6 +53,7 @@ import { ListLaborContract } from 'screen/labor-contract/list/ListLaborContract'
 import { ListLaborContractHistory } from 'screen/labor-contract/list/ListLaborContractHistory'
 import { ListContractEmployees } from 'screen/labor-contract-employees/List/ListContractEmployees'
 import ListLaborContractType from 'screen/SystemManagement/LaborContractType/ListLaborContractType'
+import { routerSuperAdmin } from './routePerms'
 
 interface RouterItem {
   path: string
@@ -748,6 +749,20 @@ const Router: React.VFC = () => {
             )
           } else {
             return <Route key={index} path={router.path} element={<Forbidden />} />
+          }
+        })}
+
+        {routerSuperAdmin.map((router, index) => {
+          let path = router.path
+
+          if (!router.permissions || !router.permissions.length) {
+            return <Route key={index} path={path} element={router.element} />
+          }
+          let checkHas = checkHasPermission(router.permissions)
+          if (checkHas) {
+            return <Route key={index} path={path} element={router.element} />
+          } else {
+            return <Route key={index} path={path} element={<Forbidden />} />
           }
         })}
 

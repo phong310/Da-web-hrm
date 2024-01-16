@@ -253,6 +253,17 @@ const sidebarList: Route[] = [
   }
 ]
 
+const sidebarSupperAdmin: any = [
+  {
+    label: 'Quản lý công ty',
+    path: '/companies',
+    Icon: () => <img style={{ width: '20px', height: '20px' }} src={system_management} />,
+    Icon_active: () => (
+      <img style={{ width: '20px', height: '20px' }} src={system_management_active} />
+    )
+  }
+]
+
 const sidebarApp: Route[] = [
   {
     label: i18n.t('menu.my_application'),
@@ -389,5 +400,6 @@ export {
   sidebarProfile,
   sidebarTimekeepingManager,
   sidebarEmployeeManagement,
-  sidebarEmployee
+  sidebarEmployee,
+  sidebarSupperAdmin
 }

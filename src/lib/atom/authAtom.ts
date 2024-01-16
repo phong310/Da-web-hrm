@@ -22,6 +22,7 @@ const fetchAuthAtom = atom(true)
 const loadAuthAtom = atom((get) => get(storeAuth) && get(fetchAuthAtom))
 const roleAtom = atom<string | null>(null)
 const permissionsAtom = atom<Array<string> | null>(null)
+const companyAtom = atom<CompanyData | null>(null)
 
 export {
     userAtom,

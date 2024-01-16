@@ -31,7 +31,7 @@ export const updateName = atom('')
 
 export const ProfileHeader = () => {
   const navigate = useNavigate()
-  const { logout, auth, user } = useAuth()
+  const { logout, auth, user, role } = useAuth()
   const { t } = useTranslation()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -78,7 +78,7 @@ export const ProfileHeader = () => {
     <Box sx={{ ...styleBoxContainer }}>
       {user && (
         <Hidden mdDown>
-          <UserName>{name ? name : `${user?.employee?.personal_information.full_name}`}</UserName>
+          <UserName>{name ? name : role === 'super_admin' ? `${user?.user_name}` : `${user?.employee?.personal_information.full_name}`}</UserName>
         </Hidden>
       )}
       <IconButton
@@ -94,10 +94,10 @@ export const ProfileHeader = () => {
           thumbnail_url={
             avatar
               ? URL.createObjectURL(avatar)
-              : user?.employee.personal_information.thumbnail_url?.indexOf('https') !== -1
-              ? user?.employee.personal_information.thumbnail_url.substring(
-                  user?.employee.personal_information.thumbnail_url.indexOf('https')
-                )
+              // : user?.employee.personal_information.thumbnail_url?.indexOf('https') !== -1
+              // ? user?.employee.personal_information.thumbnail_url.substring(
+              //     user?.employee.personal_information.thumbnail_url.indexOf('https')
+              //   )
               : null
           }
           size={AVATAR_SIZE.ORDINARY}

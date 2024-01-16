@@ -21,7 +21,7 @@ export type UserLoginArgs = {
 }
 
 export const Login = () => {
-  const { login, auth } = useAuth()
+  const { login, auth, role } = useAuth()
   const navigate = useNavigate()
   const { t } = useTranslation()
 
@@ -34,11 +34,18 @@ export const Login = () => {
 
   useEffect(() => {
     if (auth) {
-      navigate('/time-keeping/timekeeping', {
-        replace: true
-      })
+      if (role === 'super_admin') {
+        navigate('/companies', {
+          replace: true
+        })
+      } else {
+        navigate('/time-keeping/timekeeping', {
+          replace: true
+        })
+      }
     }
   }, [auth, navigate])
+
 
   const [error, setError] = useState('')
 
@@ -59,8 +66,8 @@ export const Login = () => {
 
   const onSubmit: SubmitHandler<UserLoginArgs> = async (values) => {
     try {
-      await login(values)
-      navigate('/time-keeping/timekeeping')
+      const res = await login(values)
+      // navigate('/time-keeping/timekeeping')
     } catch (error: any) {
       if (error.message) {
         setError((error as UserLoginError).message)
