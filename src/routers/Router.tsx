@@ -53,6 +53,8 @@ import { ListLaborContract } from 'screen/labor-contract/list/ListLaborContract'
 import { ListLaborContractHistory } from 'screen/labor-contract/list/ListLaborContractHistory'
 import { ListContractEmployees } from 'screen/labor-contract-employees/List/ListContractEmployees'
 import ListLaborContractType from 'screen/SystemManagement/LaborContractType/ListLaborContractType'
+import { ForgetPassword } from 'screen/forget-password/ForgetPassword'
+import { ResetPassword } from 'screen/forget-password'
 
 interface RouterItem {
   path: string
@@ -729,6 +731,8 @@ const Router: React.VFC = () => {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/companies/create" element={<CompanyForm />} />
+      <Route path="forget-password" element={<ForgetPassword />} />
+      <Route path="reset-password" element={<ResetPassword />} />
       <Route
         path="/"
         element={
