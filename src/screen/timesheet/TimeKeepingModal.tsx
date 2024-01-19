@@ -14,29 +14,11 @@ import {
   Typography
 } from '@mui/material'
 import { styled } from '@mui/styles'
-import { minutesToHours } from 'date-fns'
 import { useAuth } from 'lib/hook/useAuth'
 import { TYPE_FORM } from 'lib/types/applicationForm'
 import { CompensatoryWorkingDayData, TimesheetCalendarType } from 'lib/types/timeSheet'
-import { isCompensatoryWorkingDay, isWeekend } from 'lib/utils/datetime'
+import { isCompensatoryWorkingDay, isWeekend, minutesToHours } from 'lib/utils/datetime'
 import { formatDate, formatISODate, formatNormalDateV2, formatTime, getAllDaysInMonth, minutesToDays } from 'lib/utils/format'
-// import { TYPE_FORM } from 'constants'
-// import {
-//   CompensatoryWorkingDayData,
-//   OvertimeSalaryCoefficientsType,
-//   TimesheetCalendarType
-// } from 'lib/types'
-// import {
-//   formatDate,
-//   formatISODate,
-//   formatNormalDateV2,
-//   formatTime,
-//   getAllDaysInMonth,
-//   isCompensatoryWorkingDay,
-//   isWeekend,
-//   minutesToDays,
-//   minutesToHours
-// } from 'lib/utils'
 import React, { MouseEventHandler, useEffect, useMemo, useState } from 'react'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { useTranslation } from 'react-i18next'
@@ -44,10 +26,6 @@ import { useQuery } from 'react-query'
 import { LeaveFromTimeSheet } from './Atom/LeaveFromTimeSheet'
 import { CompensatoryLeaveTimeSheet } from './Atom/CompensatoryLeaveTimeSheet'
 import { OverTimeSheet } from './Atom/OverTimeSheet'
-// import { CompensatoryLeaveTimeSheet } from '../Atoms/CompensatoryLeaveTimeSheet'
-// import { LeaveFromTimeSheet } from '../Atoms/LeaveFromTimeSheet'
-// import { OverTimeSheet } from '../Atoms/OverTimeSheet'
-// import { useAuth } from 'lib/hooks'
 
 type checkStartOrEndTimeNullType = {
   start: boolean
